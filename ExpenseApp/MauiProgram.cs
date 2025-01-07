@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using ExpenseApp.Models;
 using Microsoft.Extensions.Logging;
-using MauiIcons.Material.Outlined;
 
 namespace ExpenseApp
 {
@@ -16,7 +15,6 @@ namespace ExpenseApp
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
-                .UseMaterialOutlinedMauiIcons()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

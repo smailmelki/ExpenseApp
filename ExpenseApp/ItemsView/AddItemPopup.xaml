@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseApp.ItemsView.AddItemPopup"
+             xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"               
+             Size="270,250">
+    <VerticalStackLayout Spacing="10" Padding="10">
+        <Label 
+            x:Name="lblTitle"
+            Text="اضافة عنصر جديد"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"
+            Margin="10"/>
+        <Entry Placeholder="الاسم" FlowDirection="RightToLeft"/>
+        <Button Text="تعديل الايقونة" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+        <Button Text="تعديل اللون" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+        <HorizontalStackLayout Spacing="5" Padding="10">
+            <Button Text="اضافة" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            <Button Text="الغاء" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</Toolkit:Popup>

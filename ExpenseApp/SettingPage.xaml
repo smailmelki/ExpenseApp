@@ -2,11 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExpenseApp.SettingPage"
-             Title="Setting Page">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Setting Page!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             FlowDirection="RightToLeft"
+             Title="اعدادات التطبيق">
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Border 
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    Padding="20,5"
+                    HorizontalOptions="Center">
+                <VerticalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="165">
+                        <Label Text="اعداد اللغة"/>
+                        <Switch />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="100">
+                        <Label Text="الوضع العادي / الداكن"/>
+                        <Switch x:Name="swMode" Toggled="swMode_Toggled"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Border  StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="20,5"
+                     HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="تعديل الاسم والصورة الرمزية" HorizontalOptions="Center"/>
+                    <Entry Placeholder="الاسم" HorizontalTextAlignment="Center"/>
+                    <Button Text="save" WidthRequest="100"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border>
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="رصيد المحفضة" VerticalOptions="Center"/>
+                        <Entry Placeholder="0.00"/>
+                    </HorizontalStackLayout>
+                    <Label Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="حدد العملة :" VerticalOptions="Center"/>
+                        <Picker/>
+                        <Label Text="دج" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Button Text="حفظ التعديلات" WidthRequest="130"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border Padding="5">
+                <Button x:Name="btnItems" Text="تعديل عناصر المصروفات" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="30" HeightRequest="30" FontSize="12" Padding="0"/>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

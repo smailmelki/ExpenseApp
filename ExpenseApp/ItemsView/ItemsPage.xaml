@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseApp.ItemsView.ItemsPage"             
+             Title="تعديل عناصر المصروفات">
+    <VerticalStackLayout>
+        <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" EmptyView="لا يوجد عناصر للمصروفات">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="40,*,40,40" Padding="10">
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button x:Name="btnAddItem"
+                Clicked="btnAddItem_Clicked"
+                Text="+"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                TextColor="White"
+                Margin="10"/>
+    </VerticalStackLayout>
+</ContentPage>
