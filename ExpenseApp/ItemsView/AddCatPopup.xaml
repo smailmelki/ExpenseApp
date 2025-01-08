@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpenseApp.ItemsView.AddCatPopup"
-             xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"               
-             Size="270,250">
-    <VerticalStackLayout Spacing="10" Padding="10">
-        <Label 
-            x:Name="lblTitle"
-            Text="اضافة عنصر جديد"
-            VerticalOptions="Center" 
-            HorizontalOptions="End"
-            Margin="10"/>
-        <Entry x:Name="txtItemTitle" Placeholder="الاسم" FlowDirection="RightToLeft"/>
-        <Button x:Name="btnIcon" Text="تعديل الايقونة" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-        <Button x:Name="btnColor" Text="تعديل اللون" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-        <HorizontalStackLayout Spacing="5" Padding="10">
-            <Button x:Name="btnSave" Text="اضافة" Clicked="btnSave_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-            <Button x:Name="btnCancel" Text="الغاء" Clicked="btnCancel_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="ExpenseApp.ItemsView.AddCatPopup"
+               xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+               Color="Transparent"
+               Size="270,250">
+    <Border BackgroundColor="Gray">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Label 
+                   x:Name="lblTitle"
+                   Text="اضافة عنصر جديد"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"
+                   Margin="10"/>
+            <Entry x:Name="txtItemTitle" Placeholder="الاسم" TextColor="Black" FlowDirection="RightToLeft"/>
+            <Button x:Name="btnIcon" Text="تعديل الايقونة" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            <Button x:Name="btnColor" Text="تعديل اللون" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            <HorizontalStackLayout Spacing="5" Padding="10">
+                <Button x:Name="btnSave" Text="اضافة" Clicked="btnSave_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+                <Button x:Name="btnCancel" Text="الغاء" Clicked="btnCancel_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Border>    
 </Toolkit:Popup>

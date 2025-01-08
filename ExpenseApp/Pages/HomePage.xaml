@@ -5,29 +5,32 @@
              Title="الصفحة الرئيسية">
     <AbsoluteLayout>
         <Grid AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-      AbsoluteLayout.LayoutFlags="All"
-      Margin="5"
-          FlowDirection="RightToLeft"
-          ColumnDefinitions="*,*" RowDefinitions="auto,auto,auto,*">
+              AbsoluteLayout.LayoutFlags="All"
+              ColumnDefinitions="*,*" RowDefinitions="auto,auto,auto,*"
+              Margin="10"
+              FlowDirection="RightToLeft"
+              ColumnSpacing="10"
+              RowSpacing="10">
             <VerticalStackLayout Grid.Column="0" Grid.Row="0">
                 <Label Text="مرحبا"/>
                 <Label Text="Smail" FontSize="Title"/>
-                <DatePicker Format="MMMM yyyy"/>
-                <Label Text="هيا سجل مصروفاتك ولا تنس التسجيل اليومي" FontSize="16"/>
+                <Label Text="{Binding CurrentDate}" FontSize="Title" Padding="0,10"/>
+                <Label Text="هيا, سجل مصروفاتك ولا تنس التسجيل اليومي!" FontSize="16"/>
             </VerticalStackLayout>
-            <Border Grid.Column="0" Grid.Row="1">
-                <VerticalStackLayout>
-                    <Label Text="مصروفات اليوم" FontSize="Body"/>
-                    <Label Text="0.00 دج"/>
+            <Border Grid.Column="0" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="مصروفات اليوم" FontSize="Body" HorizontalOptions="Center"/>
+                    <Label Text="0.00 دج" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1">
-                <VerticalStackLayout>
-                    <Label Text="اجمالي المصروف" FontSize="Body"/>
-                    <Label Text="0.00 دج"/>
+            <Border Grid.Column="1" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="اجمالي المصروف" FontSize="Body" HorizontalOptions="Center"/>
+                    <Label Text="0.00 دج" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة" VerticalTextAlignment="End"/>
+            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة" 
+                   VerticalTextAlignment="End" FontSize="Large"/>
             <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" EmptyView="لم تنفق أي مال اليوم ؟ لا تنس أن تسجل مصروفاتك">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

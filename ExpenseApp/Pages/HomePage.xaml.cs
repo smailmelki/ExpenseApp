@@ -5,10 +5,16 @@ namespace ExpenseApp.Pages;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
+    public string CurrentDate
+    {
+        get => DateTime.Now.ToString("MMMM yyyy", new System.Globalization.CultureInfo("ar-SA"));
+    }
+
+    public HomePage()
 	{
 		InitializeComponent();
-	}
+        BindingContext = this;
+    }
 
     private async void btnAddItem_Clicked(object sender, EventArgs e)
     {

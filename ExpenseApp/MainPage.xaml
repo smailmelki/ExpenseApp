@@ -4,7 +4,7 @@
             xmlns:local="clr-namespace:ExpenseApp.Pages"
              x:Class="ExpenseApp.MainPage">
     
-    <local:SettingPage Title="اعدادات التطبيق" IconImageSource="edit_icon.png"/>
+    <local:SettingPage Title="اعدادات التطبيق" IconImageSource="add_icon.png"/>
     <local:HomePage Title="الرئيسية" IconImageSource="edit_icon.png" x:Name="HomeItem"/>
-    <local:StatePage Title="الإحصائيات" IconImageSource="edit_icon.png"/>
+    <local:StatePage Title="الإحصائيات" IconImageSource="delete_icon.png"/>
 </TabbedPage>

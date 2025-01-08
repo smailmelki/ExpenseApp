@@ -24,7 +24,7 @@
                 <VerticalStackLayout Spacing="5">
                     <Label Text="تعديل الاسم والصورة الرمزية" HorizontalOptions="Center"/>
                     <Entry Placeholder="الاسم" HorizontalTextAlignment="Center"/>
-                    <Button Text="save" WidthRequest="100" CornerRadius="40"/>
+                    <Button Text="حفظ" WidthRequest="100" CornerRadius="40"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
@@ -57,9 +57,9 @@
                     </HorizontalStackLayout>
                     <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                        <Button WidthRequest="90" Text="3 ساعات" CornerRadius="0"/>
-                        <Button WidthRequest="90" Text="6 ساعات" CornerRadius="0"/>
-                        <Button WidthRequest="90" Text="12 ساعة" CornerRadius="0"/>
+                        <Button x:Name="btn3" WidthRequest="90" Text="3 ساعات" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
+                        <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
+                        <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
                     </HorizontalStackLayout>
                     <Button Text="حفظ اعدادات الاشعارات"/>
                 </VerticalStackLayout>

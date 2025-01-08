@@ -3,10 +3,10 @@ using ExpenseApp.Models;
 
 namespace ExpenseApp.ItemsView;
 
-public partial class ItemsPage : ContentPage
+public partial class CatigoryPage : ContentPage
 {
     DBContext db = new DBContext();
-    public ItemsPage()
+    public CatigoryPage()
 	{
 		InitializeComponent();
         collectionItem.ItemsSource = db.TreeItems.ToList();
@@ -40,16 +40,14 @@ public partial class ItemsPage : ContentPage
                 db.SaveChanges();
                 collectionItem.ItemsSource = db.TreeItems.ToList();
             }
-        }
-        
+        }        
     }
 
     private async void btnDelete_Clicked(object sender, EventArgs e)
     {
-        TreeItem? item = (sender as ImageButton).BindingContext as TreeItem;
-        if (item != null)
+        if ((sender as ImageButton).BindingContext is TreeItem item)
         {
-            bool answer = await DisplayAlert("delete?", "Would you want to remove", "Yes", "No");
+            bool answer = await DisplayAlert("Õ–›", "Â·  —Ìœ Õ–› Â–« «·⁄‰’—", "‰⁄„", "·«");
             if (answer)
             {
                 db = new DBContext();

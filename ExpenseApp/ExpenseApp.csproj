@@ -70,6 +70,9 @@
 	  <Compile Update="ItemsView\AddCatPopup.xaml.cs">
 	    <DependentUpon>AddCatPopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="ItemsView\CatigoryPage.xaml.cs">
+	    <DependentUpon>CatigoryPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -79,7 +82,7 @@
 	  <MauiXaml Update="ItemsView\AddItemPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ItemsView\ItemsPage.xaml">
+	  <MauiXaml Update="ItemsView\CatigoryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">

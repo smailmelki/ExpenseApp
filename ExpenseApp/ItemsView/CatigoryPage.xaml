@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpenseApp.ItemsView.ItemsPage"   
+             x:Class="ExpenseApp.ItemsView.CatigoryPage"   
              FlowDirection="RightToLeft"
              Title="تعديل عناصر المصروفات">
     <AbsoluteLayout>
@@ -9,11 +9,11 @@
                               AbsoluteLayout.LayoutFlags="All" x:Name="collectionItem" EmptyView="لا يوجد عناصر للمصروفات">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="40,*,40,40" Padding="10" ColumnSpacing="5">
+                    <Grid ColumnDefinitions="40,*,40,40" Padding="5" ColumnSpacing="5">
                         <Label Grid.Column="0" Text="{Binding ID}"/>
                         <Label Grid.Column="1" Text="{Binding Title}"/>
-                        <ImageButton Grid.Column="2" x:Name="btnEdit" Source="edit_icon.png" Clicked="btnEdit_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="30" MinimumWidthRequest="30"/>
-                        <ImageButton Grid.Column="3" x:Name="btnDelete" Source="delete_icon.jpg" Clicked="btnDelete_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="30" MinimumWidthRequest="30"/>
+                        <ImageButton Grid.Column="2" x:Name="btnEdit" Source="edit_icon.png" Clicked="btnEdit_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
+                        <ImageButton Grid.Column="3" x:Name="btnDelete" Source="delete_icon.png" Clicked="btnDelete_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -23,7 +23,8 @@
                 x:Name="btnAddItem"
                 Clicked="btnAddItem_Clicked"
                 Text="+"
-                FontSize="Header"
+                Padding="0"
+                FontSize="40"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 WidthRequest="60"
