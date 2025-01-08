@@ -1,15 +1,13 @@
-using CommunityToolkit.Maui.Views;
+using ExpenseApp.Models;
 
 namespace ExpenseApp.ItemsView;
 
-public partial class AddItemPopup : Popup
+public partial class AddItemPopup
 {
-	public AddItemPopup(int ID = 0)
+    DBContext db = new DBContext();
+    public AddItemPopup()
 	{
 		InitializeComponent();
-        if (ID!=0)
-        {
-            lblTitle.Text = " ⁄œÌ· «·⁄‰’—";
-        }
+        PkrCat.ItemsSource = db.TreeItems.ToList();
     }
 }

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseApp.ItemsView.AddCatPopup"
              xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"               
-             x:Class="ExpenseApp.ItemsView.AddItemPopup"
              Size="270,250">
-    <VerticalStackLayout Spacing="5" Padding="10">
+    <VerticalStackLayout Spacing="10" Padding="10">
         <Label 
             x:Name="lblTitle"
             Text="اضافة عنصر جديد"
             VerticalOptions="Center" 
             HorizontalOptions="End"
             Margin="10"/>
-        <Picker x:Name="PkrCat" ItemDisplayBinding="{Binding Title}"/>
         <Entry x:Name="txtItemTitle" Placeholder="الاسم" FlowDirection="RightToLeft"/>
         <Button x:Name="btnIcon" Text="تعديل الايقونة" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
         <Button x:Name="btnColor" Text="تعديل اللون" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-
+        <HorizontalStackLayout Spacing="5" Padding="10">
+            <Button x:Name="btnSave" Text="اضافة" Clicked="btnSave_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            <Button x:Name="btnCancel" Text="الغاء" Clicked="btnCancel_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </Toolkit:Popup>

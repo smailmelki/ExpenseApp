@@ -1,4 +1,4 @@
-namespace ExpenseApp;
+namespace ExpenseApp.Pages;
 
 public partial class StatePage : ContentPage
 {

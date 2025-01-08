@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseApp.Pages.SettingPage"
+             FlowDirection="RightToLeft"
+             Title="اعدادات التطبيق">
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Border 
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    Padding="15"
+                    Margin="10">                
+                <Grid RowDefinitions="*,*" ColumnDefinitions="2*,*">                    
+                    <Label Grid.Column="0" Grid.Row="0" Text="اعداد اللغة" VerticalTextAlignment="Center"/>
+                    <Switch Grid.Column="1" Grid.Row="0" />
+                    <Label Grid.Column="0" Grid.Row="1"  Text="الوضع العادي / الداكن"/>
+                    <Switch Grid.Column="1" Grid.Row="1"  x:Name="SwitchMode" Toggled="SwitchMode_Toggled"/>
+                </Grid>
+            </Border>
+            <Border  StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="15"
+                     Margin="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="تعديل الاسم والصورة الرمزية" HorizontalOptions="Center"/>
+                    <Entry Placeholder="الاسم" HorizontalTextAlignment="Center"/>
+                    <Button Text="save" WidthRequest="100" CornerRadius="40"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="15"
+                     Margin="10">
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="2*,*">
+                    <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
+                    <Entry Grid.Column="1" Grid.Row="0" Placeholder="0.00"/>
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
+                    <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="2">                        
+                    <Picker HorizontalOptions="StartAndExpand" WidthRequest="100"/>
+                    <Label Text="دج" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                    <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="حفظ التعديلات" WidthRequest="130"/>
+                </Grid>
+            </Border>
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="15"
+                     Margin="10">
+                <Button x:Name="btnItems" Text="تعديل عناصر المصروفات" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="30" HeightRequest="30" FontSize="12" Padding="0"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="15"
+                     Margin="10">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="80">
+                        <Label Text="تلفي الاشعارات ؟" VerticalTextAlignment="Center" />
+                        <Switch/>
+                    </HorizontalStackLayout>
+                    <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
+                    <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                        <Button WidthRequest="90" Text="3 ساعات" CornerRadius="0"/>
+                        <Button WidthRequest="90" Text="6 ساعات" CornerRadius="0"/>
+                        <Button WidthRequest="90" Text="12 ساعة" CornerRadius="0"/>
+                    </HorizontalStackLayout>
+                    <Button Text="حفظ اعدادات الاشعارات"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                     Padding="15"
+                     Margin="10">
+                <VerticalStackLayout>
+                <Label Text="نسخ احتياطي واستعادة بياناتك "/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <Button Text="نسخ احتياطي للبيانات" CornerRadius="20"/>
+                        <Button Text="استعادة وتحميل البيانات" CornerRadius="20"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

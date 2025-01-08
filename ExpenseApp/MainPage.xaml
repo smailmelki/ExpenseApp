@@ -1,56 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpenseApp.MainPage"
-             Title="Main Page">
-    <AbsoluteLayout>
-        <Grid AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-          AbsoluteLayout.LayoutFlags="All"
-          Margin="5"
-              FlowDirection="RightToLeft"
-              ColumnDefinitions="*,*" RowDefinitions="140,50,50,*">
-            <VerticalStackLayout Grid.Column="0" Grid.Row="0">
-                <Label Text="مرحبا"/>
-                <Label Text="Smail"/>
-                <DatePicker Format="MMMM yyyy" FlowDirection="LeftToRight"/>
-                <Label Text="هيا سجل مصروفاتك ولا تنس التسجيل اليومي" FontSize="16"/>
-            </VerticalStackLayout>
-            <Border Grid.Column="0" Grid.Row="1">
-                <VerticalStackLayout>
-                    <Label Text="مصروفات اليوم"/>
-                    <Label Text="0.00 دج"/>
-                </VerticalStackLayout>
-            </Border>
-            <Border Grid.Column="1" Grid.Row="1">
-                <VerticalStackLayout>
-                    <Label Text="اجمالي المصروف"/>
-                    <Label Text="0.00 دج"/>
-                </VerticalStackLayout>
-            </Border>
-            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة" VerticalTextAlignment="End"/>
-            <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" EmptyView="لم تنفق أي مال اليوم ؟ لا تنس أن تسجل مصروفاتك">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*,*" Padding="10">
-                                                      
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-
-        <!-- الزر يظهر أسفل الشبكة -->
-        <!-- الزر يظهر في الزاوية السفلية بشكل دائري -->
-        <Button Text="+"
-                FontSize="20"
-                AbsoluteLayout.LayoutBounds="0, 1"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                WidthRequest="60"
-                HeightRequest="60"
-                CornerRadius="30"
-                TextColor="White"
-                Margin="10"/>
-    </AbsoluteLayout>
-</ContentPage>
+            xmlns:local="clr-namespace:ExpenseApp.Pages"
+             x:Class="ExpenseApp.MainPage">
+    
+    <local:SettingPage Title="اعدادات التطبيق" IconImageSource="edit_icon.png"/>
+    <local:HomePage Title="الرئيسية" IconImageSource="edit_icon.png" x:Name="HomeItem"/>
+    <local:StatePage Title="الإحصائيات" IconImageSource="edit_icon.png"/>
+</TabbedPage>

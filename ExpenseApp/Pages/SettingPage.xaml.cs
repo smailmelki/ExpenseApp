@@ -1,6 +1,6 @@
 using ExpenseApp.ItemsView;
 
-namespace ExpenseApp;
+namespace ExpenseApp.Pages;
 
 public partial class SettingPage : ContentPage
 {
@@ -14,7 +14,7 @@ public partial class SettingPage : ContentPage
         await Navigation.PushAsync(new ItemsPage());
     }
 
-    private void swMode_Toggled(object sender, ToggledEventArgs e)
+    private void SwitchMode_Toggled(object sender, ToggledEventArgs e)
     {
         if (e.Value)
             Application.Current.UserAppTheme = AppTheme.Dark;
