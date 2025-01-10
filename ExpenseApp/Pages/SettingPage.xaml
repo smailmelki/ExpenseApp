@@ -11,11 +11,19 @@
                     StrokeShape="RoundRectangle 20,20,20,20"
                     Padding="15"
                     Margin="10">                
-                <Grid RowDefinitions="*,*" ColumnDefinitions="2*,*">                    
+                <Grid RowDefinitions="*,*" ColumnDefinitions="3*,2*">                    
                     <Label Grid.Column="0" Grid.Row="0" Text="اعداد اللغة" VerticalTextAlignment="Center"/>
-                    <Switch Grid.Column="1" Grid.Row="0" />
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
+                        <Label Text="العربية" VerticalTextAlignment="Center"/>
+                        <Switch x:Name="SwLang" Toggled="SwLang_Toggled"/>
+                        <Label Text="English" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
                     <Label Grid.Column="0" Grid.Row="1"  Text="الوضع العادي / الداكن"/>
-                    <Switch Grid.Column="1" Grid.Row="1"  x:Name="SwitchMode" Toggled="SwitchMode_Toggled"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
+                        <Label Text="Light" VerticalTextAlignment="Center"/>
+                        <Switch x:Name="SwMode" Toggled="SwitchMode_Toggled"/>
+                        <Label Text="Dark" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
                 </Grid>
             </Border>
             <Border  StrokeShape="RoundRectangle 20,20,20,20"
@@ -23,23 +31,36 @@
                      Margin="10">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="تعديل الاسم والصورة الرمزية" HorizontalOptions="Center"/>
-                    <Entry Placeholder="الاسم" HorizontalTextAlignment="Center"/>
-                    <Button Text="حفظ" WidthRequest="100" CornerRadius="40"/>
+                    <Entry x:Name="txtName" Placeholder="الاسم" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="btnName" Text="حفظ" Clicked="btnName_Clicked" WidthRequest="100" CornerRadius="40"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="2*,*">
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*">
                     <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
-                    <Entry Grid.Column="1" Grid.Row="0" Placeholder="0.00"/>
+                    <Entry x:Name="txtAmount" Grid.Column="1" Grid.Row="0" Placeholder="0.00"/>
                     <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
                     <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="2">                        
-                    <Picker HorizontalOptions="StartAndExpand" WidthRequest="100"/>
-                    <Label Text="دج" VerticalTextAlignment="Center"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
+                        <Picker
+                                x:Name="CurrencyPicker"
+                                HorizontalOptions="StartAndExpand"
+                                WidthRequest="200"
+                                SelectedIndexChanged="OnCurrencySelected">
+                            <Picker.ItemDisplayBinding>
+                                <Binding Path="Name" />
+                            </Picker.ItemDisplayBinding>
+                        </Picker>
+                        <Label 
+                                x:Name="lblCaruncy" 
+                                Text="دج" 
+                                FontSize="16"
+                                VerticalOptions="CenterAndExpand" />
                     </HorizontalStackLayout>
-                    <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="حفظ التعديلات" WidthRequest="130"/>
+                    <Button x:Name="btnAmount" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                            Text="حفظ التعديلات" WidthRequest="130" Clicked="btnAmount_Clicked"/>
                 </Grid>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
@@ -52,8 +73,8 @@
                      Margin="10">
                 <VerticalStackLayout Spacing="10">
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="80">
-                        <Label Text="تلفي الاشعارات ؟" VerticalTextAlignment="Center" />
-                        <Switch/>
+                        <Label Text="تلقي الاشعارات ؟" VerticalTextAlignment="Center" />
+                        <Switch x:Name="SwNotify"/>
                     </HorizontalStackLayout>
                     <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
@@ -61,17 +82,17 @@
                         <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
                         <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
                     </HorizontalStackLayout>
-                    <Button Text="حفظ اعدادات الاشعارات"/>
+                    <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_Clicked"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
                 <VerticalStackLayout>
-                <Label Text="نسخ احتياطي واستعادة بياناتك "/>
+                <Label Text="نسخ احتياطي واستعادة بياناتك " Padding="0,0,0,10"/>
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                        <Button Text="نسخ احتياطي للبيانات" CornerRadius="20"/>
-                        <Button Text="استعادة وتحميل البيانات" CornerRadius="20"/>
+                        <Button x:Name="btnBackUp" Text="نسخ احتياطي للبيانات" Clicked="btnBackUp_Clicked" CornerRadius="20"/>
+                        <Button x:Name="btnRestor" Text="استعادة وتحميل البيانات" Clicked="btnRestor_Clicked" CornerRadius="20"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
                 

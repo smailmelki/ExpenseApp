@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using ExpenseApp.Classes;
 using ExpenseApp.Models;
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +12,7 @@ namespace ExpenseApp
             DBContext db = new DBContext();
             //db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
+            Tools.Load();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

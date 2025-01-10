@@ -53,7 +53,15 @@ namespace ExpenseApp.Models
                       .IsRequired(true)
                       .HasMaxLength(20)
                       .HasColumnName("Title");
+                entity.HasData(
+                    new TreeItem { ID = 1, Title = "طعام" },
+                    new TreeItem { ID = 2, Title = "مواصلات" },
+                    new TreeItem { ID = 3, Title = "صحة" },
+                    new TreeItem { ID = 4, Title = "رفاهية" },
+                    new TreeItem { ID = 5, Title = "فواتير" }
+                );
             });
+
         }
     }
 }

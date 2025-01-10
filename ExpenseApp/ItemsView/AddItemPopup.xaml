@@ -11,8 +11,8 @@
         </Border.StrokeShape>
         <VerticalStackLayout Spacing="5" Padding="10" FlowDirection="RightToLeft">
             <Picker x:Name="PkrCat" ItemDisplayBinding="{Binding Title}" Title="نوع المصروف" TextColor="Black"/>
-            <Entry x:Name="txtItemAmont" FlowDirection="RightToLeft" Placeholder="المبلغ المصروف" TextColor="Black" PlaceholderColor="Gray" Keyboard="Numeric"/>
-            <Editor x:Name="txtItemNote" FlowDirection="RightToLeft" Placeholder="ملاحظات" TextColor="Black" PlaceholderColor="Gray"/>
+            <Entry x:Name="TxtAmount" FlowDirection="RightToLeft" Placeholder="المبلغ المصروف" TextColor="Black" PlaceholderColor="Gray" Keyboard="Numeric"/>
+            <Editor x:Name="TxtNote" FlowDirection="RightToLeft" Placeholder="ملاحظات" TextColor="Black" PlaceholderColor="Gray"/>
             <Label Text="يستخدم هذا الوصف لتسهيل البحث في مصروفاتك." FontSize="Body" TextColor="Black"/>
             <HorizontalStackLayout Spacing="5" FlowDirection="LeftToRight">
                 <Button x:Name="btnAdd" Text="اضافة" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
