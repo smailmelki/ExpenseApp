@@ -21,10 +21,6 @@ public partial class StatePage : ContentPage
 
     private void FillData(int year)
     {
-        // ÇáÎØæÉ 1: ÊÌãíÚ ÇáÈíÇäÇÊ ÍÓÈ ÇáÓäÉ æÇáÔåÑ
-        var detailItems = db.DetailItems.Where(d => d.Date.Year == year).ToList();
-        var treeItems = db.TreeItems.ToList();
-
         var data = (from d in db.DetailItems
                     where d.Date.Year == year
                     join t in db.TreeItems on d.ParentID equals t.ID
