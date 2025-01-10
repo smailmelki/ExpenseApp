@@ -10,7 +10,7 @@ public partial class HomePage : ContentPage
     DBContext db ;
     public string CurrentDate
     {
-        get => DateTime.Now.ToString("MMMM yyyy", new System.Globalization.CultureInfo("ar-SA"));
+        get => DateTime.Now.ToString("MMMM yyyy", new System.Globalization.CultureInfo(Tools.MyCultureInfo));
     }
     List<ExpensView> items = new List<ExpensView>();
     public HomePage()
@@ -31,12 +31,12 @@ public partial class HomePage : ContentPage
                      ID = d.ID,
                      ParentID = d.ParentID,
                      Title = t.Title + " (" + d.Note + ")",
-                     Date = d.Date.ToString("dd MMMM, HH:mm", new System.Globalization.CultureInfo("ar-SA")),
+                     Date = d.Date.ToString("dd MMMM, HH:mm", new System.Globalization.CultureInfo(Tools.MyCultureInfo)),
                      Amount = d.Amount,
                  }).ToList();
         itemCollection.ItemsSource = items;
-        AmountDay.Text = items.Sum(s => s.Amount).ToString();
-        AmountMonth.Text = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount).ToString();
+        AmountDay.Text = items.Sum(s => s.Amount).ToString("C", new System.Globalization.CultureInfo(Tools.MyCultureInfo));
+        AmountMonth.Text = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount).ToString("C", new System.Globalization.CultureInfo(Tools.MyCultureInfo));
     }
 
     private async void OnItemLongPressed(object sender, EventArgs e)
@@ -74,7 +74,8 @@ public partial class HomePage : ContentPage
                     var result = await this.ShowPopupAsync(popup);
                     if (result is DetailItem detail && detail != null)
                     {
-                        db.DetailItems.Add(detail);
+                        //db = new DBContext();
+                        db.DetailItems.Update(detail);
                         db.SaveChanges();
                         GetData();
                     }

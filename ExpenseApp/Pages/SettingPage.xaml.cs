@@ -1,4 +1,5 @@
-﻿using ExpenseApp.Classes;
+﻿using CommunityToolkit.Maui.Alerts;
+using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,15 @@ public partial class SettingPage : ContentPage
     {
         // قائمة العملات مع رموزها
         var currencies = new List<Currency>
-            {
-                new Currency { Name = "الدينار الجزائري", Symbol = "دج" },
-                new Currency { Name = "الدولار الأمريكي", Symbol = "$" },
-                new Currency { Name = "اليورو", Symbol = "€" },
-                new Currency { Name = "الجنيه الإسترليني", Symbol = "£" },
-                new Currency { Name = "الين الياباني", Symbol = "¥" },
-                new Currency { Name = "الريال السعودي", Symbol = "﷼" }
-            };
+        {
+            new Currency { Name = "الدينار الجزائري", Symbol = "دج", Culture = "ar-DZ" },
+            new Currency { Name = "الريال السعودي", Symbol = "﷼", Culture = "ar-SA" },
+            new Currency { Name = "الدولار الأمريكي", Symbol = "$", Culture = "en-US" },
+            new Currency { Name = "اليورو", Symbol = "€", Culture = "fr-FR" },
+            new Currency { Name = "الجنيه الإسترليني", Symbol = "£", Culture = "en-GB" },
+            new Currency { Name = "الين الياباني", Symbol = "¥", Culture = "ja-JP" }
+        };
+
 
         // ربط القائمة بـ Picker
         CurrencyPicker.ItemsSource = currencies;
@@ -35,6 +37,7 @@ public partial class SettingPage : ContentPage
     {
         SwLang.IsToggled = Tools.Long == "ar";
         SwMode.IsToggled = Tools.Mode == "Dark";
+        Application.Current.UserAppTheme = Tools.Mode == "Dark" ? AppTheme.Dark : AppTheme.Light;
         txtName.Text = Tools.Name;
         txtAmount.Text = Tools.Amount;
         CurrencyPicker.SelectedIndex = CurrencyPicker.ItemsSource.Cast<Currency>().ToList().FindIndex(c => c.Name == Tools.Caruncy);
@@ -101,7 +104,13 @@ public partial class SettingPage : ContentPage
     {
         Tools.Amount = txtAmount.Text;
         if (CurrencyPicker.SelectedItem != null)
-            Tools.Caruncy = ((Currency)CurrencyPicker.SelectedItem).Name;
+        {
+            if (CurrencyPicker.SelectedItem is Currency currency)
+            {
+                Tools.Caruncy = currency.Name;
+                Tools.MyCultureInfo = currency.Culture;
+            }
+        }
         Tools.SaveAmount();
     }
 
@@ -122,7 +131,7 @@ public partial class SettingPage : ContentPage
         string? backupFolder = await SqliteBackupManager.PickBackupFolderAsync();
         if (string.IsNullOrEmpty(backupFolder))
         {
-            await DisplayAlert("خطأ", "لم يتم اختيار مكان لحفظ نسخة من قاعدة البيانات ...", "موافق");
+            await Toast.Make("لم يتم اختيار مكان لحفظ نسخة من قاعدة البيانات ...").Show();
             return;
         }
         string backupPath = Path.Combine(backupFolder, GenerateBackupFileName());
@@ -133,11 +142,11 @@ public partial class SettingPage : ContentPage
 
             if (backupDone)
             {
-                await DisplayAlert("نسخ قاعدة البيانات", "تم انشاء نسخة من قاعدة البيانات", "موافق");
+                await Toast.Make("تم انشاء نسخة من قاعدة البيانات").Show();
             }
             else
             {
-                await DisplayAlert("خطأ", "خطأ في انشاء نسخة من قاعدة البيانات.", "موافق");
+                await Toast.Make("خطأ في انشاء نسخة من قاعدة البيانات.").Show();
             }
         }
     }
@@ -158,7 +167,7 @@ public partial class SettingPage : ContentPage
 
         if (string.IsNullOrEmpty(backupPath))
         {
-            await DisplayAlert("خطأ", "لم يتم العثور على قاعدة البيانات الاحتياطية.", "موافق");
+            await Toast.Make("لم يتم العثور على قاعدة البيانات الاحتياطية.").Show();
             return;
         }
 
@@ -172,23 +181,23 @@ public partial class SettingPage : ContentPage
                 bool RestoreDone = await SqliteBackupManager.BackupDatabaseAsync(backupPath, DatabasePath);
                 if (RestoreDone)
                 {
-                    await DisplayAlert("نجاح", "تمت استعادة قاعدة البيانات بنجاح.", "موافق");
+                    await Toast.Make("تمت استعادة قاعدة البيانات بنجاح.").Show();
                 }
                 else
                 {
-                    await DisplayAlert("خطأ", "فشلت عملية استعادة قاعدة البيانات.", "موافق");
+                    await Toast.Make("فشلت عملية استعادة قاعدة البيانات.").Show();
                 }
-            }
+            }   
             else
             {
-                await DisplayAlert("خطأ", "بنية قاعدة البيانات مختلفة.", "موافق");
+                await Toast.Make("بنية قاعدة البيانات مختلفة.").Show();
             }
             ///////////////////////////////
 
         }
         catch (Exception ex)
         {
-            await DisplayAlert("خطأ", $"حدث خطأ أثناء استعادة قاعدة البيانات: {ex.Message}", "موافق");
+            await Toast.Make("حدث خطأ أثناء استعادة قاعدة البيانات").Show();
         }
     }
 
@@ -206,4 +215,5 @@ public class Currency
 {
     public string Name { get; set; }
     public string Symbol { get; set; }
+    public string Culture { get; set; }
 }

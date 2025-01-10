@@ -40,14 +40,14 @@
                      Margin="10">
                 <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*">
                     <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
-                    <Entry x:Name="txtAmount" Grid.Column="1" Grid.Row="0" Placeholder="0.00"/>
+                    <Entry x:Name="txtAmount" Grid.Column="1" Grid.Row="0" Placeholder="0.00" Keyboard="Numeric"/>
                     <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
                     <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
                         <Picker
                                 x:Name="CurrencyPicker"
                                 HorizontalOptions="StartAndExpand"
-                                WidthRequest="200"
+                                WidthRequest="130"
                                 SelectedIndexChanged="OnCurrencySelected">
                             <Picker.ItemDisplayBinding>
                                 <Binding Path="Name" />

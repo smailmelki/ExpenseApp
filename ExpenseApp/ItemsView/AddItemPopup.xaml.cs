@@ -17,6 +17,7 @@ public partial class AddItemPopup
     public AddItemPopup(DetailItem detail)
     {
         InitializeComponent();
+        btnAdd.Text = "Õ›Ÿ";
         PkrCat.ItemsSource = db.TreeItems.ToList();
         detailItem = detail;
         GetData();
@@ -35,7 +36,7 @@ public partial class AddItemPopup
         detailItem.ParentID = ((dynamic)PkrCat.SelectedItem).ID;
         detailItem.Date = DateTime.Now;
         detailItem.Amount = Convert.ToDouble(TxtAmount.Text);
-        detailItem.Note = TxtNote.Text;
+        detailItem.Note = !string.IsNullOrWhiteSpace(TxtNote.Text) ? TxtNote.Text : "»œÊ‰  ›«’Ì·";
     }
     void GetData()
     {
@@ -61,9 +62,9 @@ public partial class AddItemPopup
             await Toast.Make("ÌÃ» ≈œŒ«· «·„»·€ »‘ﬂ· ’ÕÌÕ", ToastDuration.Short, 14).Show();
             return false;
         }
-        if (!string.IsNullOrWhiteSpace(TxtNote.Text) && TxtNote.Text.Length > 20)
+        if (!string.IsNullOrWhiteSpace(TxtNote.Text) && TxtNote.Text.Length > 12)
         {
-            await Toast.Make("ÌÃ» √‰ ·«   Ã«Ê“ «·‰’ 20 Õ—›", ToastDuration.Short, 14).Show();
+            await Toast.Make("ÌÃ» √‰ ·«   Ã«Ê“ «·‰’ 12 Õ—›«", ToastDuration.Short, 14).Show();
             return false;
         }
         return true;
