@@ -38,16 +38,21 @@
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*">
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" RowSpacing="5">
                     <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
-                    <Entry x:Name="txtAmount" Grid.Column="1" Grid.Row="0" Placeholder="0.00" Keyboard="Numeric"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
+                        <Entry x:Name="txtAmount" Placeholder="0.00" Keyboard="Numeric" 
+                               WidthRequest="145" HorizontalOptions="StartAndExpand"/>
+                        <Label x:Name="lblCaruncy2" Text="دج" 
+                               FontSize="16" VerticalOptions="CenterAndExpand"/>
+                    </HorizontalStackLayout>
                     <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
                     <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
                         <Picker
                                 x:Name="CurrencyPicker"
                                 HorizontalOptions="StartAndExpand"
-                                WidthRequest="130"
+                                WidthRequest="145"
                                 SelectedIndexChanged="OnCurrencySelected">
                             <Picker.ItemDisplayBinding>
                                 <Binding Path="Name" />
@@ -78,9 +83,12 @@
                     </HorizontalStackLayout>
                     <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                        <Button x:Name="btn3" WidthRequest="90" Text="3 ساعات" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
-                        <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
-                        <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" CornerRadius="0" Clicked="Button_Clicked"/>
+                        <Button x:Name="btn3" WidthRequest="90" Text="3 ساعات" BackgroundColor="Gray" BorderColor="DarkGray" 
+                                BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
+                        <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
+                        <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
                     </HorizontalStackLayout>
                     <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_Clicked"/>
                 </VerticalStackLayout>

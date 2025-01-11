@@ -42,9 +42,15 @@ public partial class SettingPage : ContentPage
         txtAmount.Text = Tools.Amount;
         CurrencyPicker.SelectedIndex = CurrencyPicker.ItemsSource.Cast<Currency>().ToList().FindIndex(c => c.Name == Tools.Caruncy);
         SwNotify.IsToggled = Tools.Notify;
+        lblCaruncy2.Text = lblCaruncy.Text;
         btn3.BackgroundColor = Tools.NotifyTime == btn3.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
         btn6.BackgroundColor = Tools.NotifyTime == btn6.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-        btn12.BackgroundColor = Tools.NotifyTime == btn12.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;     
+        btn12.BackgroundColor = Tools.NotifyTime == btn12.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+
+        btn3.TextColor = Tools.NotifyTime == btn3.Text ? Colors.Black : Colors.White;
+        btn6.TextColor = Tools.NotifyTime == btn6.Text ? Colors.Black : Colors.White;
+        btn12.TextColor = Tools.NotifyTime == btn12.Text ? Colors.Black : Colors.White;
+
     }
 
     // معالج حدث اختيار العملة
@@ -68,8 +74,15 @@ public partial class SettingPage : ContentPage
         btn6.BackgroundColor =
         btn12.BackgroundColor =
         Colors.Gray;
+
+        btn3.TextColor =
+        btn6.TextColor =
+        btn12.TextColor = 
+        Colors.White;
+
         var btn = sender as Button;
         btn.BackgroundColor = Color.FromArgb("#FFFFFF");
+        btn.TextColor = Colors.Black;
         NotifyTime = btn.Text;
     }
 

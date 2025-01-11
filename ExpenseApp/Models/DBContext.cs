@@ -12,6 +12,7 @@ namespace ExpenseApp.Models
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             optionsBuilder.UseSqlite($"Data Source={path}\\ExpenseDB.db;");
+            //optionsBuilder.UseSqlServer("Server=.;Database=ExpenseDB;Trusted_Connection=True;TrustServerCertificate = True;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

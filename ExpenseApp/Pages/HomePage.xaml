@@ -45,7 +45,7 @@
                             </Grid.GestureRecognizers>
                             <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" FontSize="Large"/>
                             <Label Grid.Column="0" Grid.Row="1" Text="{Binding Date}"/>
-                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount}" FontSize="Large" VerticalOptions="Center"/>                            
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Center"/>                            
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

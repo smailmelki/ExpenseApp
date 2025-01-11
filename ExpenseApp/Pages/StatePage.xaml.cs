@@ -32,10 +32,11 @@ public partial class StatePage : ContentPage
                         TotalAmount = g.Sum(item => item.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
                         IsExpanded = false,
                         Details = (from groupItem in g
-                                   join treeItem in db.TreeItems on groupItem.ParentID equals treeItem.ID
+                                   join treeItem in db.TreeItems on groupItem.ParentID equals treeItem.ID 
+                                   //group treeItems by new { groupItem.ID } into g2
                                    select new catTree
                                    {
-                                       ID = treeItem.ID,
+                                       ID = groupItem.ID,
                                        Title = treeItem.Title,
                                        Amount = groupItem.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo))
                                    }).ToList()
