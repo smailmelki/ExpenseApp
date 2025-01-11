@@ -1,4 +1,6 @@
+using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
+using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
@@ -21,6 +23,7 @@ public partial class StatePage : ContentPage
 
     private void FillData(int year)
     {
+
         var data = (from d in db.DetailItems
                     where d.Date.Year == year
                     join t in db.TreeItems on d.ParentID equals t.ID
@@ -32,19 +35,16 @@ public partial class StatePage : ContentPage
                         TotalAmount = g.Sum(item => item.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
                         IsExpanded = false,
                         Details = (from groupItem in g
-                                   join treeItem in db.TreeItems on groupItem.ParentID equals treeItem.ID 
+                                   join treeItem in db.TreeItems on groupItem.ParentID equals treeItem.ID
                                    //group treeItems by new { groupItem.ID } into g2
                                    select new catTree
                                    {
                                        ID = groupItem.ID,
                                        Title = treeItem.Title,
-                                       Amount = groupItem.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo))
+                                       Amount = groupItem.Amount
                                    }).ToList()
                     })
-              .ToList();
-
-
-
+             .ToList();
         // ÑÈØ ÇáÈíÇäÇÊ ÈÚäÕÑ ÇáÚÑÖ
         CollectionItemView.ItemsSource = data;
 
@@ -56,6 +56,15 @@ public partial class StatePage : ContentPage
             return;
         lblYear.Text = db.DetailItems.Where(b => b.Date.Year == Convert.ToInt32(pkrYear.SelectedItem)).Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo));
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
+    }
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        MonthlySummary item = (MonthlySummary)((Button)sender).BindingContext;
+        if (item != null)
+        {
+            await this.ShowPopupAsync(new ReportPopupPage(item));
+        }
     }
 }
 public class MonthlySummary
@@ -69,5 +78,5 @@ public class catTree
 {
     public int ID { get; set; }
     public string? Title { get; set; }
-    public string? Amount { get; set; }
+    public double Amount { get; set; }
 }
