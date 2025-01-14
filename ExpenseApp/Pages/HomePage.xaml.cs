@@ -3,26 +3,15 @@ using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using System.Globalization;
-using System.Xml;
 
 namespace ExpenseApp.Pages;
 
 public partial class HomePage : ContentPage
 {
     DBContext db ;
-    public string FormattedAmount
-    {
-        get
-        {
-            if (!string.IsNullOrEmpty(Tools.MyCultureInfo))
-                return string.Format(Tools.MyCultureInfo);
-            return "N/A";
-        }
-    }
-
     public string CurrentDate
     {
-        get => DateTime.Now.ToString("MMMM yyyy", new System.Globalization.CultureInfo(Tools.MyCultureInfo));
+        get => DateTime.Now.ToString("MMMM yyyy", new CultureInfo(Tools.MyCultureInfo));
     }
     List<ExpensView> items = new List<ExpensView>();
     public HomePage()

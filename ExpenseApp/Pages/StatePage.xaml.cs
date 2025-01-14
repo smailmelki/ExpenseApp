@@ -2,7 +2,6 @@ using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
@@ -23,31 +22,42 @@ public partial class StatePage : ContentPage
 
     private void FillData(int year)
     {
+        var detailItems = db.DetailItems
+            .Where(d => d.Date.Year == year)
+            .ToList(); // Load data into memory
 
-        var data = (from d in db.DetailItems
-                    where d.Date.Year == year
-                    join t in db.TreeItems on d.ParentID equals t.ID
+        var treeItems = db.TreeItems.ToList(); // Load data from the other table
+
+        var data = (from d in detailItems
+                    join t in treeItems on d.ParentID equals t.ID
                     group d by new { d.Date.Year, d.Date.Month } into g
                     select new MonthlySummary
                     {
-                        MonthName = "‘Â— " + new DateTime(g.Key.Year, g.Key.Month, 1)
-                                             .ToString("MMMM", new CultureInfo(Tools.MyCultureInfo)),
+                        MonthName = new DateTime(g.Key.Year, g.Key.Month, 1)
+                                   .ToString("MMMM", new CultureInfo(Tools.MyCultureInfo)),
+                        YearName = g.Key.Year.ToString(),
                         TotalAmount = g.Sum(item => item.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
                         IsExpanded = false,
-                        Details = (from groupItem in g
-                                   join treeItem in db.TreeItems on groupItem.ParentID equals treeItem.ID
-                                   //group treeItems by new { groupItem.ID } into g2
+                        SupDetails = (from groupItem in g
+                                      join treeItem in treeItems on groupItem.ParentID equals treeItem.ID
+                                      select new catTree
+                                      {
+                                          Title = treeItem.Title,
+                                          Amount = groupItem.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo)),
+                                          Note = groupItem.Note
+                                      }).ToList(),
+                        Details = (from item in g
+                                   join t in treeItems on item.ParentID equals t.ID
+                                   group item by new { item.ParentID, t.Title } into g2
                                    select new catTree
                                    {
-                                       ID = groupItem.ID,
-                                       Title = treeItem.Title,
-                                       Amount = groupItem.Amount
+                                       Title = g2.Key.Title,
+                                       Amount = g2.Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
                                    }).ToList()
-                    })
-             .ToList();
-        // —»ÿ «·»Ì«‰«  »⁄‰’— «·⁄—÷
-        CollectionItemView.ItemsSource = data;
+                    }).ToList();
 
+        // Bind data to the view element
+        CollectionItemView.ItemsSource = data;
     }
 
     private void pkrYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,22 +71,23 @@ public partial class StatePage : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         MonthlySummary item = (MonthlySummary)((Button)sender).BindingContext;
-        if (item != null)
-        {
-            await this.ShowPopupAsync(new ReportPopupPage(item));
-        }
+        await Navigation.PushAsync(new ItemDetailsPage(item));
     }
 }
 public class MonthlySummary
 {
+
     public string? MonthName { get; set; }
+    public string? YearName { get; set; }
     public string? TotalAmount { get; set; }
     public bool IsExpanded { get; set; }  // Œ«’Ì… «· Ê”Ì⁄
     public List<catTree>? Details { get; set; } //  ›«’Ì· «·”ÿ—
+    public List<catTree>? SupDetails { get; set; } //  ›«’Ì· «·”ÿ—
 }
 public class catTree
 {
-    public int ID { get; set; }
     public string? Title { get; set; }
-    public double Amount { get; set; }
+    public string? Amount { get; set; }
+    public string? Note { get; set; }
+
 }

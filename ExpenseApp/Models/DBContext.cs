@@ -11,8 +11,11 @@ namespace ExpenseApp.Models
             base.OnConfiguring(optionsBuilder);
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+#if ANDROID
             optionsBuilder.UseSqlite($"Data Source={path}\\ExpenseDB.db;");
-            //optionsBuilder.UseSqlServer("Server=.;Database=ExpenseDB;Trusted_Connection=True;TrustServerCertificate = True;");
+#elif WINDOWS
+            optionsBuilder.UseSqlServer("Server=.;Database=ExpenseDB;Trusted_Connection=True;TrustServerCertificate = True;");
+#endif
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

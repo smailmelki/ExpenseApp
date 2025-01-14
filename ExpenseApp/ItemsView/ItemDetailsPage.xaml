@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseApp.ItemsView.ItemDetailsPage"
+             Title="تفاصيل الشهر">
+    <VerticalStackLayout>
+        <Label 
+            x:Name="lblMonth"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button x:Name="btnBack"
+                IsVisible="False"
+            Text="Click Me!"
+            Clicked="Button_Clicked"
+            HorizontalOptions="Center" />
+        <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" FlowDirection="RightToLeft" Margin="10">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto">
+                    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="تفاصيل الشهر" 
+                           HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Grid.Column="0" Grid.Row="1" Text="المصروف" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Grid.Row="1" Text="الصنف" FontAttributes="Bold"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="المبلغ" FontAttributes="Bold"/>
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Margin="1" Padding="1">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25">
+                            <Label Grid.Column="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                            <Label Grid.Column="1" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                            <Label Grid.Column="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                        </Grid>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Label x:Name="lblTotal" Text="المجموع : " HorizontalOptions="Center" FontAttributes="Bold"/>
+            </CollectionView.Footer>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

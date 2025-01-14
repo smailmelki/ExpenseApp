@@ -71,7 +71,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
@@ -95,7 +96,7 @@
 	  <MauiXaml Update="ItemsView\CatigoryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ItemsView\ReportPopupPage.xaml">
+	  <MauiXaml Update="ItemsView\ItemDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
