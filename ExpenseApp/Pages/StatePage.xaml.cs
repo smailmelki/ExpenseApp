@@ -44,7 +44,8 @@ public partial class StatePage : ContentPage
                                       {
                                           Title = treeItem.Title,
                                           Amount = groupItem.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo)),
-                                          Note = groupItem.Note
+                                          Note = groupItem.Note,
+                                          date = groupItem.Date.ToString("dd MMMM HH:mm" , new CultureInfo(Tools.MyCultureInfo))
                                       }).ToList(),
                         Details = (from item in g
                                    join t in treeItems on item.ParentID equals t.ID
@@ -89,5 +90,5 @@ public class catTree
     public string? Title { get; set; }
     public string? Amount { get; set; }
     public string? Note { get; set; }
-
+    public string date { get; set; }
 }

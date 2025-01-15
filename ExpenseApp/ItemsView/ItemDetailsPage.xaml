@@ -14,6 +14,7 @@
             Text="Click Me!"
             Clicked="Button_Clicked"
             HorizontalOptions="Center" />
+        
         <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" FlowDirection="RightToLeft" Margin="10">
 
             <CollectionView.ItemsLayout>
@@ -21,28 +22,35 @@
             </CollectionView.ItemsLayout>
 
             <CollectionView.Header>
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto">
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,1">
                     <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="تفاصيل الشهر" 
                            HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Grid.Column="0" Grid.Row="1" Text="المصروف" FontAttributes="Bold"/>
                     <Label Grid.Column="1" Grid.Row="1" Text="الصنف" FontAttributes="Bold"/>
                     <Label Grid.Column="2" Grid.Row="1" Text="المبلغ" FontAttributes="Bold"/>
+                    <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
                 </Grid>
             </CollectionView.Header>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView Margin="1" Padding="1">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25">
-                            <Label Grid.Column="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
-                            <Label Grid.Column="1" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
-                            <Label Grid.Column="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1">
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                            <Label Grid.Column="0" Grid.Row="1" Text="{Binding date , StringFormat='{0:dd MMMM HH:mm}'}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
                         </Grid>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            
             <CollectionView.Footer>
-                <Label x:Name="lblTotal" Text="المجموع : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Grid ColumnDefinitions="*" RowDefinitions="25,1">
+                    <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="المجموع : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <BoxView Grid.Column="0" Grid.Row="1" WidthRequest="100"/>                    
+                </Grid>
             </CollectionView.Footer>
         </CollectionView>
     </VerticalStackLayout>

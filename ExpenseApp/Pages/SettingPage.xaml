@@ -46,7 +46,7 @@
                         <Label x:Name="lblCaruncy2" Text="دج" 
                                FontSize="16" VerticalOptions="CenterAndExpand"/>
                     </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصبد المخصص للإنفاق الشهري"/>
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصيد المخصص للإنفاق الشهري"/>
                     <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
                         <Picker

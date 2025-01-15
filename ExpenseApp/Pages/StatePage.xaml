@@ -35,7 +35,10 @@
                                         </CollectionView.ItemsLayout>
 
                                         <CollectionView.Header>
-                                            <Label Text="مصروفات الشهر" HorizontalOptions="Center"/>
+                                            <HorizontalStackLayout>
+                                                <BoxView WidthRequest="135" BackgroundColor="Transparent"/>
+                                                <Label Text="مصروفات الشهر" HorizontalOptions="Center"/>                                                
+                                            </HorizontalStackLayout>
                                         </CollectionView.Header>
                                         
                                         <CollectionView.ItemTemplate>
@@ -49,9 +52,10 @@
                                             </DataTemplate>
                                         </CollectionView.ItemTemplate>
                                         <CollectionView.Footer>
-                                            <VerticalStackLayout>                                                
-                                                <Button Text="عرض التفاصيل" Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" BackgroundColor="Orange" Padding="0,4" MinimumHeightRequest="35" HeightRequest="35"/>
-                                            </VerticalStackLayout>
+                                            <HorizontalStackLayout>
+                                                <BoxView WidthRequest="135" BackgroundColor="Transparent"/>
+                                                <Button Text=" عرض التفاصيل " Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" BackgroundColor="Orange" Padding="0" Margin="0,8" MinimumHeightRequest="35" HeightRequest="35"/>
+                                            </HorizontalStackLayout>
                                         </CollectionView.Footer>
                                     </CollectionView>
 
