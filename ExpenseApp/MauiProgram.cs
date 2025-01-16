@@ -11,7 +11,7 @@ namespace ExpenseApp
         public static MauiApp CreateMauiApp()
         {
             DBContext db = new DBContext();
-           // db.Database.EnsureDeleted();
+            //db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
             Tools.Load();
             var builder = MauiApp.CreateBuilder();

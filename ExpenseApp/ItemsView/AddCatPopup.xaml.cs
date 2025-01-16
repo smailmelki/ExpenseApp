@@ -2,8 +2,6 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using ExpenseApp.Models;
-using SkiaSharp;
-using SkiaSharp.Views.Maui;
 
 namespace ExpenseApp.ItemsView;
 
@@ -24,17 +22,32 @@ public partial class AddCatPopup : Popup
     private void GetItem()
     {
         txtItemTitle.Text = treeItem.Title;
-    }
-    SKColor GetRandomColor()
-    {
-        Random rnd = new Random();
-        // ≈‰‘«¡ ·Ê‰ ⁄‘Ê«∆Ì »«” Œœ«„ ﬁÌ„ RGB
-        byte red = (byte)rnd.Next(256);
-        byte green = (byte)rnd.Next(256);
-        byte blue = (byte)rnd.Next(256);
 
-        // ≈‰‘«¡ SKColor »«” Œœ«„ «·ﬁÌ„ «·⁄‘Ê«∆Ì…
-        return new SKColor(red, green, blue);
+        string? hexColor = treeItem.color; // «··Ê‰ »’Ì€… Hex
+        if (string.IsNullOrEmpty(hexColor))
+            hexColor = "#FFFFFF"; // «··Ê‰ «·√»Ì÷
+                                  // ≈“«·… ⁄·«„… # ≈–« ﬂ«‰  „ÊÃÊœ…
+        hexColor = hexColor.TrimStart('#');
+
+        //  ÕÊÌ· «·ﬁÌ„ ≈·Ï √—ﬁ«„ Ê ÕÊÌ·Â« ≈·Ï ·Ê‰
+        boxColor.Color = Color.FromRgb(
+            Convert.ToInt32(hexColor.Substring(0, 2), 16), // «·√Õ„—
+            Convert.ToInt32(hexColor.Substring(2, 2), 16), // «·√Œ÷—
+            Convert.ToInt32(hexColor.Substring(4, 2), 16)  // «·√“—ﬁ
+            );
+    }
+
+    private static readonly Random _random = new Random();
+
+    Color GetRandomColor()
+    {
+        // ≈‰‘«¡ ·Ê‰ ⁄‘Ê«∆Ì »«” Œœ«„ ﬁÌ„ RGB
+        byte red = (byte)_random.Next(256);
+        byte green = (byte)_random.Next(256);
+        byte blue = (byte)_random.Next(256);
+
+        // ≈‰‘«¡ Color »«” Œœ«„ «·ﬁÌ„ «·⁄‘Ê«∆Ì…
+        return Color.FromRgb(red, green, blue);
     }
     private bool SetItem()
     {
@@ -46,8 +59,7 @@ public partial class AddCatPopup : Popup
         else
         {
             treeItem.Title = txtItemTitle.Text;
-            Color color = GetRandomColor().ToMauiColor();
-            treeItem.color = color.ToHex();
+            treeItem.color = GetRandomColor().ToHex();
             return true;
         }
     }

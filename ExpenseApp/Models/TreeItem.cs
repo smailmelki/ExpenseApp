@@ -5,6 +5,7 @@
         public int ID { get; set; }
         public string Title { get; set; } = "";
         public string? color { get; set; }
+        public string? iconPath { get; set; }
         public List<DetailItem>? Details { get; set; }
         public double Total
         {

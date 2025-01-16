@@ -16,7 +16,10 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="End"
                    Margin="10"/>
-            <Entry x:Name="txtItemTitle" Placeholder="الاسم" TextColor="Black" FlowDirection="RightToLeft"/>
+            <Grid ColumnDefinitions="*,50" ColumnSpacing="10" FlowDirection="RightToLeft">
+                <Entry Grid.Column="0" x:Name="txtItemTitle" Placeholder="الاسم" TextColor="Black"/>
+                <BoxView Grid.Column="1" x:Name="boxColor"/>
+            </Grid>
             <Button x:Name="btnIcon" Text="تعديل الايقونة" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
             <Button x:Name="btnColor" Text="تعديل اللون" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
             <HorizontalStackLayout Spacing="5" Padding="10">
