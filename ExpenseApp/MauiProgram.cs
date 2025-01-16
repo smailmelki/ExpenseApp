@@ -2,6 +2,7 @@
 using ExpenseApp.Classes;
 using ExpenseApp.Models;
 using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace ExpenseApp
 {
@@ -10,13 +11,14 @@ namespace ExpenseApp
         public static MauiApp CreateMauiApp()
         {
             DBContext db = new DBContext();
-            //db.Database.EnsureDeleted();
+           // db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
             Tools.Load();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseSkiaSharp()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

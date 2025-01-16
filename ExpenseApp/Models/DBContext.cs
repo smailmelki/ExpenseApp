@@ -57,12 +57,15 @@ namespace ExpenseApp.Models
                       .IsRequired(true)
                       .HasMaxLength(20)
                       .HasColumnName("Title");
+                entity.Property(e => e.color)
+                        .IsRequired(true)
+                        .HasColumnName("color");
                 entity.HasData(
-                    new TreeItem { ID = 1, Title = "طعام" },
-                    new TreeItem { ID = 2, Title = "مواصلات" },
-                    new TreeItem { ID = 3, Title = "صحة" },
-                    new TreeItem { ID = 4, Title = "رفاهية" },
-                    new TreeItem { ID = 5, Title = "فواتير" }
+                    new TreeItem { ID = 1, Title = "طعام" ,color = "#213456"},
+                    new TreeItem { ID = 2, Title = "مواصلات", color = "#f1e3e1" },
+                    new TreeItem { ID = 3, Title = "صحة", color = "#b00b69" },
+                    new TreeItem { ID = 4, Title = "رفاهية", color = "#a68105" },
+                    new TreeItem { ID = 5, Title = "فواتير", color = "#1bd635" }
                 );
             });
 

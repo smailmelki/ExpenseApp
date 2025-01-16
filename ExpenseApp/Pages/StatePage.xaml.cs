@@ -1,4 +1,3 @@
-using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
@@ -49,10 +48,12 @@ public partial class StatePage : ContentPage
                                       }).ToList(),
                         Details = (from item in g
                                    join t in treeItems on item.ParentID equals t.ID
-                                   group item by new { item.ParentID, t.Title } into g2
+                                   group item by new { item.ParentID, t.Title , t.color } into g2
                                    select new catTree
                                    {
                                        Title = g2.Key.Title,
+                                       color = g2.Key.color,
+                                       Cost = g2.Sum(s => s.Amount),
                                        Amount = g2.Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
                                    }).ToList()
                     }).ToList();
@@ -89,6 +90,8 @@ public class catTree
 {
     public string? Title { get; set; }
     public string? Amount { get; set; }
+    public double Cost { get; set; }
+    public string? color { get; set; }
     public string? Note { get; set; }
-    public string date { get; set; }
+    public string? date { get; set; }
 }
