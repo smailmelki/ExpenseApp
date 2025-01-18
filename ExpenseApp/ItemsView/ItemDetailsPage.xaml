@@ -7,7 +7,8 @@
     <VerticalStackLayout>
         <Label 
             x:Name="lblMonth"
-            Text="Welcome to .NET MAUI!"
+            Text="Welcome"
+            FontSize="Title"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button x:Name="btnBack"
@@ -28,10 +29,10 @@
                 <CollectionView.Header>
                     <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,1">
                         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="تفاصيل الشهر" 
-                           HorizontalOptions="Center" FontAttributes="Bold"/>
-                        <Label Grid.Column="0" Grid.Row="1" Text="المصروف" FontAttributes="Bold"/>
-                        <Label Grid.Column="1" Grid.Row="1" Text="الصنف" FontAttributes="Bold"/>
-                        <Label Grid.Column="2" Grid.Row="1" Text="المبلغ" FontAttributes="Bold"/>
+                           HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Margin="10"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="المصروف" FontAttributes="Bold" Margin="9"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="الصنف" FontAttributes="Bold" Margin="9"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="المبلغ" FontAttributes="Bold" Margin="9"/>
                         <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
                     </Grid>
                 </CollectionView.Header>
@@ -40,7 +41,7 @@
                     <DataTemplate>
                         <ContentView Margin="1" Padding="1">
                             <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1">
-                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill" FontSize="Subtitle" FontAttributes="Bold"/>
                                 <Label Grid.Column="0" Grid.Row="1" Text="{Binding date , StringFormat='{0:dd MMMM HH:mm}'}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
                                 <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
                                 <Label Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
@@ -51,8 +52,9 @@
                 </CollectionView.ItemTemplate>
 
                 <CollectionView.Footer>
-                    <Grid ColumnDefinitions="*" RowDefinitions="25,1">
-                        <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="المجموع : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="*" RowDefinitions="40,1">
+                        <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="المجموع : " Margin="5"
+                               HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
                         <BoxView Grid.Column="0" Grid.Row="1" WidthRequest="100"/>
                     </Grid>
                 </CollectionView.Footer>

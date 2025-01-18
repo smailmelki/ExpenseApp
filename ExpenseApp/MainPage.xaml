@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
             xmlns:local="clr-namespace:ExpenseApp.Pages"
             x:Class="ExpenseApp.MainPage">
 
-    <local:SettingPage Title="اعدادات التطبيق" IconImageSource="settings.png"/>
-    <local:HomePage Title="الرئيسية" IconImageSource="home.png" x:Name="HomeItem"/>
-    <local:StatePage Title="الإحصائيات" IconImageSource="statistic.png"/>
-</TabbedPage>
+</ContentPage>

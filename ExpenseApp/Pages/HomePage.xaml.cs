@@ -51,7 +51,28 @@ public partial class HomePage : ContentPage
         AmountMonth.Text = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo));
     }
 
-    private async void OnItemLongPressed(object sender, EventArgs e)
+    private async void btnAddItem_Clicked(object sender, EventArgs e)
+    {
+        var popup = new AddItemPopup();
+        var result = await this.ShowPopupAsync(popup);
+        if (result is DetailItem detail && detail != null)
+        {
+            db.DetailItems.Add(detail);
+            db.SaveChanges();
+            GetData();
+        }
+    }
+
+
+/* Unmerged change from project 'ExpenseApp (net9.0-android)'
+Before:
+    private void OnItemLongPressed(object sender, TappedEventArgs e)
+    {
+After:
+    private async Task OnItemLongPressedAsync(object sender, TappedEventArgs e)
+    {
+*/
+    private async void OnItemLongPressedAsync(object sender, TappedEventArgs e)
     {
         // «·Õ’Ê· ⁄·Ï «·⁄‰’— «·„Õœœ „‰ «·”Ì«ﬁ
         if (sender is Grid grid && grid.BindingContext is ExpensView selectedItem)
@@ -68,7 +89,7 @@ public partial class HomePage : ContentPage
             {
                 case "Õ–›":
                     //  ‰›Ì– ⁄„·Ì… «·Õ–›
-                    if (await DisplayAlert("Õ–›", $"Â·  —Ìœ Õ–› {selectedItem.Title}", "„Ê«›ﬁ", "«·€«¡")) 
+                    if (await DisplayAlert("Õ–›", $"Â·  —Ìœ Õ–› {selectedItem.Title}", "„Ê«›ﬁ", "«·€«¡"))
                     {
                         var item1 = db.DetailItems.Find(selectedItem.ID);
                         if (item1 != null)
@@ -97,18 +118,6 @@ public partial class HomePage : ContentPage
                     // ≈·€«¡
                     break;
             }
-        }
-    }
-
-    private async void btnAddItem_Clicked(object sender, EventArgs e)
-    {
-        var popup = new AddItemPopup();
-        var result = await this.ShowPopupAsync(popup);
-        if (result is DetailItem detail && detail != null)
-        {
-            db.DetailItems.Add(detail);
-            db.SaveChanges();
-            GetData();
         }
     }
 }

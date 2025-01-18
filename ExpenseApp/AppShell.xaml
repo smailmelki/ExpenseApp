@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ExpenseApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ExpenseApp"
+    xmlns:pages="clr-namespace:ExpenseApp.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="ExpenseApp">
+
+    <ShellContent
+        Title="MainPage"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <TabBar>        
+        <ShellContent
+            Title="اعدادات التطبيق"
+            ContentTemplate="{DataTemplate pages:SettingPage}"
+            Icon="settings.png"
+            Route="SettingPage" />
+        <ShellContent
+            Title="الرئيسية"
+            ContentTemplate="{DataTemplate pages:HomePage}"
+            Icon="home.png"
+            Route="HomePage"/>
+        <ShellContent
+            Title="الاحصائيات"
+            ContentTemplate="{DataTemplate pages:StatePage}"
+            Icon="statistic.png"
+            Route="StatePage" />
+    </TabBar>
+
+</Shell>

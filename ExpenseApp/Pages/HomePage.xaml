@@ -20,28 +20,28 @@
             <Border Grid.Column="0" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="مصروفات اليوم" FontSize="Large" HorizontalOptions="Center"/>
-                    <Label x:Name="AmountDay" FontSize="Body" HorizontalOptions="Center"/>
+                    <Label x:Name="AmountDay" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             <Border Grid.Column="1" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="مصروفات الشهر" FontSize="Large" HorizontalOptions="Center"/>
-                    <Label x:Name="AmountMonth" FontSize="Body" HorizontalOptions="Center"/>
+                    <Label x:Name="AmountMonth" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة" 
+            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة"
                    VerticalTextAlignment="End" FontSize="Large"/>
             <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
                             x:Name="itemCollection"
                             EmptyView="لم تنفق أي مال اليوم ؟ لا تنس أن تسجل مصروفاتك">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="3*,2*" RowDefinitions="*,*" Padding="10">
+                        <Grid ColumnDefinitions="3*,2*" RowDefinitions="*,*" Padding="10,5">
                             <!-- GestureRecognizer -->
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     NumberOfTapsRequired="2"                                 
-                                    Tapped="OnItemLongPressed"/>
+                                    Tapped="OnItemLongPressedAsync"/>
                             </Grid.GestureRecognizers>
                             <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" FontSize="Large"/>
                             <Label Grid.Column="0" Grid.Row="1" Text="{Binding Date}"/>

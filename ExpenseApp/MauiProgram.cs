@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using ExpenseApp.Classes;
 using ExpenseApp.Models;
+using Microsoft.Extensions.Logging;
 
 namespace ExpenseApp
 {

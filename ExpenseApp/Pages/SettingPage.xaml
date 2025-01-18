@@ -11,18 +11,29 @@
                     StrokeShape="RoundRectangle 20,20,20,20"
                     Padding="15"
                     Margin="10">                
-                <Grid RowDefinitions="*,*" ColumnDefinitions="3*,2*">                    
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">                    
                     <Label Grid.Column="0" Grid.Row="0" Text="اعداد اللغة" VerticalTextAlignment="Center"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
-                        <Label Text="العربية" VerticalTextAlignment="Center"/>
-                        <Switch x:Name="SwLang" Toggled="SwLang_Toggled"/>
-                        <Label Text="English" VerticalTextAlignment="Center"/>
-                    </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1"  Text="الوضع العادي / الداكن"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
-                        <Label Text="Light" VerticalTextAlignment="Center"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
+                        <Border >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="0,20,0,20" />
+                            </Border.StrokeShape>
+                            <Button x:Name="btnAr" Text="عربي" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
+                                    Padding="0" BackgroundColor="Orange" Clicked="btnAr_Clicked"/>
+                        </Border>
+                        <Border >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20,0,20,0" />
+                            </Border.StrokeShape>
+                            <Button x:Name="btnEn" Text="english" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
+                                    Padding="0" BackgroundColor="Transparent" Clicked="btnEn_Clicked"/>
+                        </Border>
+                            </HorizontalStackLayout>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="الوضع العادي / الداكن"/>
+                    <HorizontalStackLayout Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
+                        <Label Text="فاتح" VerticalTextAlignment="Center"/>
                         <Switch x:Name="SwMode" Toggled="SwitchMode_Toggled"/>
-                        <Label Text="Dark" VerticalTextAlignment="Center"/>
+                        <Label Text="داكن" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
@@ -42,7 +53,7 @@
                     <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
                         <Entry x:Name="txtAmount" Placeholder="0.00" Keyboard="Numeric" 
-                               WidthRequest="145" HorizontalOptions="StartAndExpand"/>
+                               WidthRequest="120" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center"/>
                         <Label x:Name="lblCaruncy2" Text="دج" 
                                FontSize="16" VerticalOptions="CenterAndExpand"/>
                     </HorizontalStackLayout>
@@ -52,7 +63,8 @@
                         <Picker
                                 x:Name="CurrencyPicker"
                                 HorizontalOptions="StartAndExpand"
-                                WidthRequest="145"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="120"
                                 SelectedIndexChanged="OnCurrencySelected">
                             <Picker.ItemDisplayBinding>
                                 <Binding Path="Name" />
@@ -65,13 +77,13 @@
                                 VerticalOptions="CenterAndExpand" />
                     </HorizontalStackLayout>
                     <Button x:Name="btnAmount" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                            Text="حفظ التعديلات" WidthRequest="130" Clicked="btnAmount_Clicked"/>
+                            Text="حفظ التعديلات" WidthRequest="130" Clicked="btnAmount_ClickedAsync"/>
                 </Grid>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Button x:Name="btnItems" Text="تعديل عناصر المصروفات" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="30" HeightRequest="30" FontSize="12" Padding="0"/>
+                <Button x:Name="btnItems" Text="تعديل عناصر المصروفات" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="40" HeightRequest="40" FontSize="12" Padding="0"/>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
@@ -90,7 +102,7 @@
                         <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" 
                                 BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
                     </HorizontalStackLayout>
-                    <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_Clicked"/>
+                    <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_ClickedAsync"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"

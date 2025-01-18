@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
@@ -35,7 +36,8 @@ public partial class SettingPage : ContentPage
     }
     private void GetDefault()
     {
-        SwLang.IsToggled = Tools.Long == "ar";
+        btnAr.BackgroundColor = Tools.Long == "ar" ? Colors.Orange : Colors.Transparent;
+        btnEn.BackgroundColor = Tools.Long == "en" ? Colors.Orange : Colors.Transparent;
         SwMode.IsToggled = Tools.Mode == "Dark";
         Application.Current.UserAppTheme = Tools.Mode == "Dark" ? AppTheme.Dark : AppTheme.Light;
         txtName.Text = Tools.Name;
@@ -50,7 +52,6 @@ public partial class SettingPage : ContentPage
         btn3.TextColor = Tools.NotifyTime == btn3.Text ? Colors.Black : Colors.White;
         btn6.TextColor = Tools.NotifyTime == btn6.Text ? Colors.Black : Colors.White;
         btn12.TextColor = Tools.NotifyTime == btn12.Text ? Colors.Black : Colors.White;
-
     }
 
     // معالج حدث اختيار العملة
@@ -86,11 +87,6 @@ public partial class SettingPage : ContentPage
         NotifyTime = btn.Text;
     }
 
-    private void SwLang_Toggled(object sender, ToggledEventArgs e)
-    {
-        Tools.Long = e.Value ? "ar" : "en";
-        Tools.SaveLong();
-    }
 
     private void SwitchMode_Toggled(object sender, ToggledEventArgs e)
     {
@@ -107,13 +103,14 @@ public partial class SettingPage : ContentPage
         Tools.SaveMode();
     }
 
-    private void btnName_Clicked(object sender, EventArgs e)
+    private async void btnName_Clicked(object sender, EventArgs e)
     {
         Tools.Name = txtName.Text;
         Tools.SaveName();
+        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
 
-    private void btnAmount_Clicked(object sender, EventArgs e)
+    private async void btnAmount_ClickedAsync(object sender, EventArgs e)
     {
         Tools.Amount = txtAmount.Text;
         if (CurrencyPicker.SelectedItem != null)
@@ -125,14 +122,9 @@ public partial class SettingPage : ContentPage
             }
         }
         Tools.SaveAmount();
+        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
 
-    private void btnNotify_Clicked(object sender, EventArgs e)
-    {
-        Tools.Notify = SwNotify.IsToggled;
-        Tools.NotifyTime = NotifyTime;
-        Tools.SaveNotify();
-    }
     /// <summary>
     /// إنشاء نسخة احتياطية من قاعدة البيانات
     /// </summary>
@@ -221,6 +213,30 @@ public partial class SettingPage : ContentPage
     private static string GenerateBackupFileName()
     {
         return $"backup_Exp_{DateTime.Now:yyyyMMdd_HHmmss}.db";
+    }
+
+    private void btnAr_Clicked(object sender, EventArgs e)
+    {
+        btnAr.BackgroundColor = Colors.Orange;
+        btnEn.BackgroundColor = Colors.Transparent;
+        Tools.Long = "ar";
+        Tools.SaveLong();
+    }
+
+    private void btnEn_Clicked(object sender, EventArgs e)
+    {
+        btnEn.BackgroundColor = Colors.Orange;
+        btnAr.BackgroundColor = Colors.Transparent;
+        Tools.Long = "en";
+        Tools.SaveLong();
+    }
+
+    private async void btnNotify_ClickedAsync(object sender, EventArgs e)
+    {
+        Tools.Notify = SwNotify.IsToggled;
+        Tools.NotifyTime = NotifyTime;
+        Tools.SaveNotify();
+        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
 }
 // كائن لتمثيل العملة

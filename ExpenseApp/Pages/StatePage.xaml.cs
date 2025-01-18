@@ -14,9 +14,17 @@ public partial class StatePage : ContentPage
     public StatePage()
 	{
 		InitializeComponent();
-        pkrYear.ItemsSource = Enumerable.Range(2024, 7).Select(year => year.ToString()).ToList();
-        pkrYear.SelectedIndex = 0;
+        FillPicker();
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
+    }
+
+    private void FillPicker()
+    {
+        pkrYear.ItemsSource = Enumerable.Range(2024, 7).Select(year => year.ToString()).ToList();
+        int index = pkrYear.ItemsSource.IndexOf(DateTime.Now.Date.Year.ToString());
+        if (index == -1)
+            index = 0;
+        pkrYear.SelectedIndex = index;
     }
 
     private void FillData(int year)
@@ -78,7 +86,6 @@ public partial class StatePage : ContentPage
 }
 public class MonthlySummary
 {
-
     public string? MonthName { get; set; }
     public string? YearName { get; set; }
     public string? TotalAmount { get; set; }
