@@ -14,7 +14,7 @@ public partial class StatePage : ContentPage
     public StatePage()
 	{
 		InitializeComponent();
-        pkrYear.ItemsSource = Enumerable.Range(2025, 5).Select(year => year.ToString()).ToList();
+        pkrYear.ItemsSource = Enumerable.Range(2024, 7).Select(year => year.ToString()).ToList();
         pkrYear.SelectedIndex = 0;
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
     }

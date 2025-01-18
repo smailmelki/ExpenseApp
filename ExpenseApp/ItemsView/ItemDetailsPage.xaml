@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              x:Class="ExpenseApp.ItemsView.ItemDetailsPage"
              Title="تفاصيل الشهر">
+             <!--xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"-->
     <VerticalStackLayout>
         <Label 
             x:Name="lblMonth"
@@ -16,7 +16,7 @@
             Clicked="Button_Clicked"
             HorizontalOptions="Center" />
 
-        <microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>
+        <!--<microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>-->
         
         <ScrollView>
             <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" FlowDirection="RightToLeft" Margin="10">
