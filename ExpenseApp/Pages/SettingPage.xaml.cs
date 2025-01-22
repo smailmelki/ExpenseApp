@@ -217,6 +217,11 @@ public partial class SettingPage : ContentPage
         Tools.SaveLong();
     }
 
+    private void SwNotify_Toggled(object sender, ToggledEventArgs e)
+    {
+        btn3.IsEnabled = btn6.IsEnabled = btn12.IsEnabled = SwNotify.IsToggled;
+    }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
         btn3.BackgroundColor =
@@ -237,19 +242,41 @@ public partial class SettingPage : ContentPage
 
     private async void btnNotify_ClickedAsync(object sender, EventArgs e)
     {
+        // التحقق من اختيار وقت التنبيه إذا كان التبديل مفعلاً
+        if (SwNotify.IsToggled && NotifyTime == null)
+        {
+            await Toast.Make("يجب عليك اختيار وقت التنبيه ...", ToastDuration.Short, 14).Show();
+            return;
+        }
+
+        // حفظ الإعدادات
         Tools.Notify = SwNotify.IsToggled;
         Tools.NotifyTime = NotifyTime;
         Tools.SaveNotify();
+
 #if ANDROID
-        int t = NotifyTime == btn3.Text ? 3 :
-            NotifyTime == btn6.Text ? 6 : 12;
+        // إلغاء جميع الإشعارات الحالية
         _notificationService.CancelAll();
-        //await ShowNotify();
-        ScheduleNotificationEveryThreeHours(t);
+
+        if (SwNotify.IsToggled)
+        {
+            // تحديد عدد الساعات بناءً على اختيار المستخدم
+            int Hours = NotifyTime == btn3.Text ? 3 :
+                    NotifyTime == btn6.Text ? 6 :
+                    NotifyTime == btn12.Text ? 12 : 0;
+
+            if (Hours > 0)
+            {
+                // جدولة الإشعار بناءً على الوقت المختار
+                ScheduleNotificationEveryHours(Hours);
+            }
+        }
 #endif
 
+        // عرض رسالة تأكيد الحفظ
         await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
+
     #region Notify
     private async Task<byte[]> GetImageBytesAsync(string fileName)
     {
@@ -298,26 +325,26 @@ public partial class SettingPage : ContentPage
         }
     }
 
-    private void ScheduleNotificationEveryThreeHours(int t)
+    private void ScheduleNotificationEveryHours(int hours)
     {
-        // إنشاء معرف فريد للإشعار بناءً على الوقت الحالي
+        // إنشاء معرف فريد للإشعار
         var notificationId = (int)DateTime.Now.Ticks;
 
-        // إعداد الإشعار مع التفاصيل
+        // إعداد الإشعار
         var notification = new NotificationRequest
         {
-            NotificationId = notificationId, // معرف الإشعار الفريد
-            Title = "تذكير", // عنوان الإشعار
-            Description = "لا تنس تسجيل مصروفاتك اليومبة.", // وصف الإشعار
+            NotificationId = notificationId,
+            Title = "تذكير",
+            Description = $"لا تنس تسجبل مصروفاتك اليومية.",
             Schedule = new NotificationRequestSchedule
             {
-                NotifyTime = DateTime.Now.AddSeconds(3), // تحديد وقت بدء الإشعار (10 ثوانٍ من الآن كمثال)
-                RepeatType = NotificationRepeat.TimeInterval, // نوع التكرار على فترات زمنية
-                NotifyRepeatInterval = TimeSpan.FromHours(t) // تكرار الإشعار كل ثلاث ساعات
+                NotifyTime = DateTime.Now.AddSeconds(10), // وقت بدء الإشعار
+                RepeatType = NotificationRepeat.TimeInterval,
+                NotifyRepeatInterval = TimeSpan.FromHours(hours) // تكرار الإشعار كل عدد الساعات المحددة
             }
         };
 
-        // عرض الإشعار باستخدام خدمة الإشعارات
+        // عرض الإشعار
         _notificationService.Show(notification);
     }
 

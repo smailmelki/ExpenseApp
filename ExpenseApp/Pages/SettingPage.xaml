@@ -91,16 +91,16 @@
                 <VerticalStackLayout Spacing="10">
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="80">
                         <Label Text="تلقي الاشعارات ؟" VerticalTextAlignment="Center" />
-                        <Switch x:Name="SwNotify"/>
+                        <Switch x:Name="SwNotify" Toggled="SwNotify_Toggled"/>
                     </HorizontalStackLayout>
                     <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
                         <Button x:Name="btn3" WidthRequest="90" Text="3 ساعات" BackgroundColor="Gray" BorderColor="DarkGray" 
-                                BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
+                                BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
                         <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
                         <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked"/>
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
                     </HorizontalStackLayout>
                     <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_ClickedAsync"/>
                 </VerticalStackLayout>
