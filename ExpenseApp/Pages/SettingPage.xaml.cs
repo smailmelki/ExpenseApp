@@ -241,8 +241,9 @@ public partial class SettingPage : ContentPage
         Tools.Notify = SwNotify.IsToggled;
         Tools.NotifyTime = NotifyTime;
         Tools.SaveNotify();
-
+#if ANDROID
         await ShowNotify();
+#endif
 
         await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
