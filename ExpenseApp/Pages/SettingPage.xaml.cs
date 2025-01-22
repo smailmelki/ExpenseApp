@@ -4,15 +4,20 @@ using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Plugin.LocalNotification;
 
 namespace ExpenseApp.Pages;
 
 public partial class SettingPage : ContentPage
 {
     string NotifyTime = string.Empty;
-    public SettingPage()
+    int _tapCount;
+    private readonly INotificationService _notificationService;
+
+    public SettingPage(INotificationService notificationService)
 	{
 		InitializeComponent();
+        _notificationService = notificationService;
         FillCurrencyPicker();
         GetDefault();
 	}
@@ -236,8 +241,59 @@ public partial class SettingPage : ContentPage
         Tools.Notify = SwNotify.IsToggled;
         Tools.NotifyTime = NotifyTime;
         Tools.SaveNotify();
+
+        await ShowNotify();
+
         await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
     }
+    #region Notify
+    private async Task<byte[]> GetImageBytesAsync(string fileName)
+    {
+        var imageStream = await FileSystem.OpenAppPackageFileAsync(fileName);
+        if (imageStream == null) return Array.Empty<byte>();
+
+        using var ms = new MemoryStream();
+        await imageStream.CopyToAsync(ms);
+        return ms.ToArray();
+    }
+
+    public async Task ShowNotify()
+    {
+        var imageBytes = await GetImageBytesAsync("appicon1.png");
+        _tapCount++;
+
+        var request = new NotificationRequest
+        {
+            NotificationId = 100 + _tapCount,
+            Title = "Test",
+            Subtitle = $"Tap Count: {_tapCount}",
+            Description = $"Tap Count: {_tapCount}",
+            BadgeNumber = _tapCount,
+            Image = { Binary = imageBytes },
+            CategoryType = NotificationCategoryType.Status
+        };
+
+        try
+        {
+            if (!await _notificationService.AreNotificationsEnabled())
+            {
+                bool granted = await _notificationService.RequestNotificationPermission();
+                if (!granted)
+                {
+                    await DisplayAlert("Permission Denied", "Notifications are not enabled. Please enable them from settings.", "OK");
+                    return;
+                }
+            }
+
+            await _notificationService.Show(request);
+        }
+        catch (Exception exception)
+        {
+            //Console.WriteLine($"Error showing notification: {exception.Message}");
+            //await DisplayAlert("Error", "Failed to show notification. Please try again.", "OK");
+        }
+    }
+    #endregion
 }
 // كائن لتمثيل العملة
 public class Currency

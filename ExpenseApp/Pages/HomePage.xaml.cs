@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
+using Plugin.LocalNotification;
 using System.Globalization;
 
 namespace ExpenseApp.Pages;
@@ -9,14 +10,16 @@ namespace ExpenseApp.Pages;
 public partial class HomePage : ContentPage
 {
     DBContext db ;
+    private readonly INotificationService _notificationService;
     public string CurrentDate
     {
         get => DateTime.Now.ToString("MMMM yyyy", new CultureInfo(Tools.MyCultureInfo));
     }
     List<ExpensView> items = new List<ExpensView>();
-    public HomePage()
+    public HomePage(INotificationService notificationService)
 	{
 		InitializeComponent();
+        _notificationService = notificationService;
         BindingContext = this;
         db = new DBContext();
         lblname.Text = Tools.Name;
