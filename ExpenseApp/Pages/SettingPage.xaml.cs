@@ -74,25 +74,6 @@ public partial class SettingPage : ContentPage
         await Navigation.PushAsync(new CatigoryPage());
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        btn3.BackgroundColor =
-        btn6.BackgroundColor =
-        btn12.BackgroundColor =
-        Colors.Gray;
-
-        btn3.TextColor =
-        btn6.TextColor =
-        btn12.TextColor = 
-        Colors.White;
-
-        var btn = sender as Button;
-        btn.BackgroundColor = Color.FromArgb("#FFFFFF");
-        btn.TextColor = Colors.Black;
-        NotifyTime = btn.Text;
-    }
-
-
     private void SwitchMode_Toggled(object sender, ToggledEventArgs e)
     {
         if (e.Value)
@@ -236,13 +217,35 @@ public partial class SettingPage : ContentPage
         Tools.SaveLong();
     }
 
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        btn3.BackgroundColor =
+        btn6.BackgroundColor =
+        btn12.BackgroundColor =
+        Colors.Gray;
+
+        btn3.TextColor =
+        btn6.TextColor =
+        btn12.TextColor =
+        Colors.White;
+
+        var btn = sender as Button;
+        btn.BackgroundColor = Color.FromArgb("#FFFFFF");
+        btn.TextColor = Colors.Black;
+        NotifyTime = btn.Text;
+    }
+
     private async void btnNotify_ClickedAsync(object sender, EventArgs e)
     {
         Tools.Notify = SwNotify.IsToggled;
         Tools.NotifyTime = NotifyTime;
         Tools.SaveNotify();
 #if ANDROID
-        await ShowNotify();
+        int t = NotifyTime == btn3.Text ? 3 :
+            NotifyTime == btn6.Text ? 6 : 12;
+        _notificationService.CancelAll();
+        //await ShowNotify();
+        ScheduleNotificationEveryThreeHours(t);
 #endif
 
         await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
@@ -294,12 +297,37 @@ public partial class SettingPage : ContentPage
             //await DisplayAlert("Error", "Failed to show notification. Please try again.", "OK");
         }
     }
+
+    private void ScheduleNotificationEveryThreeHours(int t)
+    {
+        // إنشاء معرف فريد للإشعار بناءً على الوقت الحالي
+        var notificationId = (int)DateTime.Now.Ticks;
+
+        // إعداد الإشعار مع التفاصيل
+        var notification = new NotificationRequest
+        {
+            NotificationId = notificationId, // معرف الإشعار الفريد
+            Title = "تذكير", // عنوان الإشعار
+            Description = "لا تنس تسجيل مصروفاتك اليومبة.", // وصف الإشعار
+            Schedule = new NotificationRequestSchedule
+            {
+                NotifyTime = DateTime.Now.AddSeconds(3), // تحديد وقت بدء الإشعار (10 ثوانٍ من الآن كمثال)
+                RepeatType = NotificationRepeat.TimeInterval, // نوع التكرار على فترات زمنية
+                NotifyRepeatInterval = TimeSpan.FromHours(t) // تكرار الإشعار كل ثلاث ساعات
+            }
+        };
+
+        // عرض الإشعار باستخدام خدمة الإشعارات
+        _notificationService.Show(notification);
+    }
+
+
     #endregion
 }
 // كائن لتمثيل العملة
 public class Currency
 {
-    public string Name { get; set; }
-    public string Symbol { get; set; }
-    public string Culture { get; set; }
+    public string? Name { get; set; }
+    public string? Symbol { get; set; }
+    public string? Culture { get; set; }
 }
