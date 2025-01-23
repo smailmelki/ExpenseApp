@@ -11,8 +11,8 @@
                     StrokeShape="RoundRectangle 20,20,20,20"
                     Padding="15"
                     Margin="10">                
-                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">                    
-                    <Label Grid.Column="0" Grid.Row="0" Text="اعداد اللغة" VerticalTextAlignment="Center"/>
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                    <Label Grid.Column="0" Grid.Row="0" Text="اللغة" VerticalTextAlignment="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
                         <Border >
                             <Border.StrokeShape>
@@ -29,7 +29,7 @@
                                     Padding="0" BackgroundColor="Transparent" Clicked="btnEn_Clicked"/>
                         </Border>
                             </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="الوضع العادي / الداكن"/>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="الوضع داكن/فاتح"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
                         <Label Text="فاتح" VerticalTextAlignment="Center"/>
                         <Switch x:Name="SwMode" Toggled="SwitchMode_Toggled"/>

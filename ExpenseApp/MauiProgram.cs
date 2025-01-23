@@ -2,6 +2,7 @@
 using ExpenseApp.Classes;
 using ExpenseApp.Models;
 using ExpenseApp.Pages;
+using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;
 using Plugin.LocalNotification.iOSOption;
@@ -87,7 +88,7 @@ namespace ExpenseApp
                });
 
 #if DEBUG
-            LocalNotificationCenter.LogLevel = LogLevel.Debug;
+            LocalNotificationCenter.LogLevel =LogLevel.Debug;
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddTransient<SettingPage>();

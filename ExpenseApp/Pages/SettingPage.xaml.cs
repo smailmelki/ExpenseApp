@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using CommunityToolkit.Maui.Alerts;
+﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
@@ -334,7 +333,7 @@ public partial class SettingPage : ContentPage
         var notification = new NotificationRequest
         {
             NotificationId = notificationId,
-            Title = "مصروفاتي",
+            Title = "تذكير",
             Description = "لا تنس تسجبل مصروفات اليوم",
             Schedule = new NotificationRequestSchedule
             {
