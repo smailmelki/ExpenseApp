@@ -2,7 +2,6 @@
 using ExpenseApp.Classes;
 using ExpenseApp.Models;
 using ExpenseApp.Pages;
-using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;
 using Plugin.LocalNotification.iOSOption;
@@ -57,6 +56,7 @@ namespace ExpenseApp
                                 Title = "Close",
                                 Android =
                                 {
+                                    PendingIntentFlags = AndroidPendingIntentFlags.CancelCurrent,
                                     LaunchAppWhenTapped = false,
                                     IconName =
                                     {

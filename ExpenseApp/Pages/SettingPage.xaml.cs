@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using Azure.Core;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
@@ -318,14 +319,13 @@ public partial class SettingPage : ContentPage
 
             await _notificationService.Show(request);
         }
-        catch (Exception exception)
+        catch (Exception)
         {
-            //Console.WriteLine($"Error showing notification: {exception.Message}");
-            //await DisplayAlert("Error", "Failed to show notification. Please try again.", "OK");
+            await DisplayAlert("Error", "Failed to show notification. Please try again.", "OK");
         }
     }
 
-    private void ScheduleNotificationEveryHours(int hours)
+    private async void ScheduleNotificationEveryHours(int hours)
     {
         // إنشاء معرف فريد للإشعار
         var notificationId = (int)DateTime.Now.Ticks;
@@ -334,18 +334,35 @@ public partial class SettingPage : ContentPage
         var notification = new NotificationRequest
         {
             NotificationId = notificationId,
-            Title = "تذكير",
-            Description = $"لا تنس تسجبل مصروفاتك اليومية.",
+            Title = "مصروفاتي",
+            Description = "لا تنس تسجبل مصروفات اليوم",
             Schedule = new NotificationRequestSchedule
             {
-                NotifyTime = DateTime.Now.AddSeconds(10), // وقت بدء الإشعار
+                NotifyTime = DateTime.Now.AddSeconds(3), // وقت بدء الإشعار
                 RepeatType = NotificationRepeat.TimeInterval,
                 NotifyRepeatInterval = TimeSpan.FromHours(hours) // تكرار الإشعار كل عدد الساعات المحددة
             }
         };
 
         // عرض الإشعار
-        _notificationService.Show(notification);
+        try
+        {
+            if (!await _notificationService.AreNotificationsEnabled())
+            {
+                bool granted = await _notificationService.RequestNotificationPermission();
+                if (!granted)
+                {
+                    await DisplayAlert("Permission Denied", "Notifications are not enabled. Please enable them from settings.", "OK");
+                    return;
+                }
+            }
+
+            await _notificationService.Show(notification);
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Error", "Failed to show notification. Please try again.", "OK");
+        }
     }
 
 
