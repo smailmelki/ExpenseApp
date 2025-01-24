@@ -205,7 +205,7 @@
     <value>مصروفات سنة</value>
   </data>
   <data name="lblStatisTotal" xml:space="preserve">
-    <value>الاجمالي</value>
+    <value>الاجمالي  :</value>
   </data>
   <data name="statisticTitle" xml:space="preserve">
     <value>الاحصائيات</value>
@@ -263,5 +263,17 @@
   </data>
   <data name="lblPrix" xml:space="preserve">
     <value>المبلغ</value>
+  </data>
+  <data name="lblDeleteMsg" xml:space="preserve">
+    <value>هل تريد حذف هذا العنصر</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="lblDelete" xml:space="preserve">
+    <value>حذف</value>
   </data>
 </root>

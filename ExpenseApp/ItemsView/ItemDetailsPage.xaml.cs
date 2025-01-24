@@ -1,5 +1,6 @@
 using System.Globalization;
 using ExpenseApp.Pages;
+using ExpenseApp.Resources.languag;
 
 
 namespace ExpenseApp.ItemsView;
@@ -14,7 +15,7 @@ public partial class ItemDetailsPage : ContentPage
         lblMonth.Text = data.MonthName +" "+data.YearName;
 
         CollectionDetails.ItemsSource = data.SupDetails;
-        lblTotal.Text = "«·„Ã„Ê⁄ : "+ data.TotalAmount;
+        lblTotal.Text = AppResource.lblStatisTotal + data.TotalAmount;
 #if WINDOWS
         btnBack.IsVisible = true;
 #endif      

@@ -264,4 +264,16 @@
   <data name="lblPrix" xml:space="preserve">
     <value>Prix</value>
   </data>
+  <data name="lblDeleteMsg" xml:space="preserve">
+    <value>Delete message</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="lblDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

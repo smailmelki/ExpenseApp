@@ -55,7 +55,7 @@
 
                 <CollectionView.Footer>
                     <Grid ColumnDefinitions="*" RowDefinitions="40,1">
-                        <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="المجموع : " Margin="5"
+                        <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="{x:Static lang:AppResource.lblStatisTotal}" Margin="5"
                                HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
                         <BoxView Grid.Column="0" Grid.Row="1" WidthRequest="100"/>
                     </Grid>

@@ -20,7 +20,7 @@
                     <toolkit:Expander>
                         <toolkit:Expander.Header>
                             <Grid ColumnDefinitions="*,*" RowDefinitions="40" BackgroundColor="Transparent">
-                                <Label Grid.Column="0" Text="{Binding MonthName,StringFormat='شهر {0}'}" FontSize="20"/>
+                                <Label Grid.Column="0" Text="{Binding MonthName,StringFormat='{0}'}" FontSize="20"/>
                                 <Label Grid.Column="1" Text="{Binding TotalAmount}" FontSize="20" />
                             </Grid>
                         </toolkit:Expander.Header>

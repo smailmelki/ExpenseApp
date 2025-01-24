@@ -259,6 +259,24 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string lblDelete {
+            get {
+                return ResourceManager.GetString("lblDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete message.
+        /// </summary>
+        internal static string lblDeleteMsg {
+            get {
+                return ResourceManager.GetString("lblDeleteMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string lblDescription {
@@ -349,6 +367,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string lblNo {
+            get {
+                return ResourceManager.GetString("lblNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NoI tems.
         /// </summary>
         internal static string lblNoItems {
@@ -426,6 +453,15 @@ namespace ExpenseApp.Resources.languag {
         internal static string lblStatisYearly {
             get {
                 return ResourceManager.GetString("lblStatisYearly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string lblYes {
+            get {
+                return ResourceManager.GetString("lblYes", resourceCulture);
             }
         }
         

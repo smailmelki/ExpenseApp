@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using ExpenseApp.Models;
+using ExpenseApp.Resources.languag;
 
 namespace ExpenseApp.ItemsView;
 
@@ -47,7 +48,7 @@ public partial class CatigoryPage : ContentPage
     {
         if ((sender as ImageButton).BindingContext is TreeItem item)
         {
-            bool answer = await DisplayAlert("Õ–›", "Â·  —Ìœ Õ–› Â–« «·⁄‰’—", "‰⁄„", "·«");
+            bool answer = await DisplayAlert(AppResource.lblDelete, AppResource.lblDeleteMsg, AppResource.lblYes, AppResource.lblNo);
             if (answer)
             {
                 db = new DBContext();
