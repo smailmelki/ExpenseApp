@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
              x:Class="ExpenseApp.ItemsView.CatigoryPage"   
              FlowDirection="RightToLeft"
              Shell.TabBarIsVisible="False"
-             Title="تعديل عناصر المصروفات">
+             Title="{x:Static lang:AppResource.Edit}">
     <AbsoluteLayout>
               <CollectionView AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                              AbsoluteLayout.LayoutFlags="All" x:Name="collectionItem" EmptyView="لا يوجد عناصر للمصروفات">
+                              AbsoluteLayout.LayoutFlags="All" x:Name="collectionItem" EmptyView="{x:Static lang:AppResource.lblNoItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions="40,*,50,50,50" Padding="5" ColumnSpacing="5">

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"               
-             x:Class="ExpenseApp.ItemsView.AddItemPopup"  
-             Color="Transparent"
-             Size="270,270">
-    <Border BackgroundColor="White">
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
+               xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"               
+               x:Class="ExpenseApp.ItemsView.AddItemPopup"  
+               Color="Transparent"
+               Size="270,270">
+    <Border BackgroundColor="White" x:Name="borderContainer">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="20" />
         </Border.StrokeShape>
-        <VerticalStackLayout Spacing="5" Padding="10" FlowDirection="RightToLeft">
-            <Picker x:Name="PkrCat" ItemDisplayBinding="{Binding Title}" Title="نوع المصروف" TextColor="Black"/>
-            <Entry x:Name="TxtAmount" FlowDirection="RightToLeft" Placeholder="المبلغ المصروف" TextColor="Black" PlaceholderColor="Gray" Keyboard="Numeric"/>
-            <Editor x:Name="TxtNote" FlowDirection="RightToLeft" Placeholder="ملاحظات" TextColor="Black" PlaceholderColor="Gray"/>
-            <Label Text="يستخدم هذا الوصف لتسهيل البحث في مصروفاتك." FontSize="Body" TextColor="Black"/>
+        <VerticalStackLayout Spacing="5" Padding="10">
+            <Picker x:Name="PkrCat" ItemDisplayBinding="{Binding Title}" Title="{x:Static lang:AppResource.lblExpenseType}" TextColor="Black"/>
+            <Entry x:Name="TxtAmount" Placeholder="{x:Static lang:AppResource.lblAmountSpent}" TextColor="Black" PlaceholderColor="Gray" Keyboard="Numeric"/>
+            <Editor x:Name="TxtNote" Placeholder="{x:Static lang:AppResource.lblNote}" TextColor="Black" PlaceholderColor="Gray"/>
+            <Label Text="{x:Static lang:AppResource.lblDescription}" FontSize="Body" TextColor="Black"/>
             <HorizontalStackLayout Spacing="5" FlowDirection="LeftToRight">
-                <Button x:Name="btnAdd" Text="اضافة" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
+                <Button x:Name="btnAdd" Text="{x:Static lang:AppResource.btnAdd}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
             Padding="0" CornerRadius="40" Clicked="btnAdd_Clicked"/>
-                <Button x:Name="btnCancel" Text="الغاء" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
+                <Button x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
             Padding="0" CornerRadius="40" Clicked="btnCancel_Clicked"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>

@@ -1,3 +1,4 @@
+using System.Globalization;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
@@ -17,6 +18,10 @@ public partial class AddCatPopup : Popup
             lblTitle.Text = " ⁄œÌ· «·⁄‰’—";
             GetItem();
         }
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            borderContainer.FlowDirection = FlowDirection.RightToLeft;
+        else
+            borderContainer.FlowDirection = FlowDirection.LeftToRight;
     }
 
     private void GetItem()

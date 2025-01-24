@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
              x:Class="ExpenseApp.ItemsView.ItemDetailsPage"
              Shell.TabBarIsVisible="False"
-             Title="تفاصيل الشهر">
+             Title="{x:Static lang:AppResource.lblDetails}">
              <!--xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"-->
     <VerticalStackLayout>
         <Label 
-            x:Name="lblMonth"
-            Text="Welcome"
-            FontSize="Title"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+              x:Name="lblMonth"
+              Text="Welcome"
+              FontSize="Title"
+              VerticalOptions="Center" 
+              HorizontalOptions="Center" />
         <Button x:Name="btnBack"
                 IsVisible="False"
-            Text="Click Me!"
-            Clicked="Button_Clicked"
-            HorizontalOptions="Center" />
+                Text="Click Me!"
+                Clicked="Button_Clicked"
+                HorizontalOptions="Center" />
 
         <!--<microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>-->
         
         <ScrollView>
-            <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" FlowDirection="RightToLeft" Margin="10">
+            <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" Margin="10">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
@@ -29,11 +30,11 @@
 
                 <CollectionView.Header>
                     <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,1">
-                        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="تفاصيل الشهر" 
+                        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{x:Static lang:AppResource.lblDetails}" 
                            HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Margin="10"/>
-                        <Label Grid.Column="0" Grid.Row="1" Text="المصروف" FontAttributes="Bold" Margin="9"/>
-                        <Label Grid.Column="1" Grid.Row="1" Text="الصنف" FontAttributes="Bold" Margin="9"/>
-                        <Label Grid.Column="2" Grid.Row="1" Text="المبلغ" FontAttributes="Bold" Margin="9"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{x:Static lang:AppResource.lblItem}" FontAttributes="Bold" Margin="9"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static lang:AppResource.lblCatigory}" FontAttributes="Bold" Margin="9"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="{x:Static lang:AppResource.lblPrix}" FontAttributes="Bold" Margin="9"/>
                         <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
                     </Grid>
                 </CollectionView.Header>

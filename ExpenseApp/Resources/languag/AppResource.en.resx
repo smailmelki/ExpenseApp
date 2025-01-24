@@ -222,4 +222,46 @@
   <data name="lblShellSetting" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="lblAddItem" xml:space="preserve">
+    <value>Add New Item</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnEditicon" xml:space="preserve">
+    <value>Edit Icon</value>
+  </data>
+  <data name="btnEditColor" xml:space="preserve">
+    <value>Edit Color</value>
+  </data>
+  <data name="lblExpenseType" xml:space="preserve">
+    <value>ExpenseType</value>
+  </data>
+  <data name="lblAmountSpent" xml:space="preserve">
+    <value>Amount Spent</value>
+  </data>
+  <data name="lblNote" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Description used for easy search in your axpenses</value>
+  </data>
+  <data name="lblNoItems" xml:space="preserve">
+    <value>NoItems</value>
+  </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>Monthly Expenses</value>
+  </data>
+  <data name="lblItem" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="lblCatigory" xml:space="preserve">
+    <value>Catigory</value>
+  </data>
+  <data name="lblPrix" xml:space="preserve">
+    <value>Prix</value>
+  </data>
 </root>

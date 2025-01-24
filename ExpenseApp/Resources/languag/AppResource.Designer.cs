@@ -97,6 +97,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string btnAdd {
+            get {
+                return ResourceManager.GetString("btnAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backup Data.
         /// </summary>
         internal static string btnBackup {
@@ -106,11 +115,38 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string btnCancel {
+            get {
+                return ResourceManager.GetString("btnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show Details.
         /// </summary>
         internal static string btnDetails {
             get {
                 return ResourceManager.GetString("btnDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Color.
+        /// </summary>
+        internal static string btnEditColor {
+            get {
+                return ResourceManager.GetString("btnEditColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Icon.
+        /// </summary>
+        internal static string btnEditicon {
+            get {
+                return ResourceManager.GetString("btnEditicon", resourceCulture);
             }
         }
         
@@ -178,6 +214,24 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Item.
+        /// </summary>
+        internal static string lblAddItem {
+            get {
+                return ResourceManager.GetString("lblAddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount Spent.
+        /// </summary>
+        internal static string lblAmountSpent {
+            get {
+                return ResourceManager.GetString("lblAmountSpent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backup and restore your data.
         /// </summary>
         internal static string lblBackup {
@@ -192,6 +246,42 @@ namespace ExpenseApp.Resources.languag {
         internal static string lblBalance {
             get {
                 return ResourceManager.GetString("lblBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catigory.
+        /// </summary>
+        internal static string lblCatigory {
+            get {
+                return ResourceManager.GetString("lblCatigory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string lblDescription {
+            get {
+                return ResourceManager.GetString("lblDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DetailsMonthly.
+        /// </summary>
+        internal static string lblDetails {
+            get {
+                return ResourceManager.GetString("lblDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expense Type.
+        /// </summary>
+        internal static string lblExpenseType {
+            get {
+                return ResourceManager.GetString("lblExpenseType", resourceCulture);
             }
         }
         
@@ -241,6 +331,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item.
+        /// </summary>
+        internal static string lblItem {
+            get {
+                return ResourceManager.GetString("lblItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Name and avatar.
         /// </summary>
         internal static string lblName {
@@ -250,11 +349,38 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NoI tems.
+        /// </summary>
+        internal static string lblNoItems {
+            get {
+                return ResourceManager.GetString("lblNoItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string lblNote {
+            get {
+                return ResourceManager.GetString("lblNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send a reminder notification to log expenses svery.
         /// </summary>
         internal static string lblNoyify {
             get {
                 return ResourceManager.GetString("lblNoyify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prix.
+        /// </summary>
+        internal static string lblPrix {
+            get {
+                return ResourceManager.GetString("lblPrix", resourceCulture);
             }
         }
         

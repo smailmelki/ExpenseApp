@@ -222,4 +222,46 @@
   <data name="lblShellSetting" xml:space="preserve">
     <value>الاعدادات</value>
   </data>
+  <data name="lblAddItem" xml:space="preserve">
+    <value>اضافة عنصر جديد</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>اضافة</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>الغاء</value>
+  </data>
+  <data name="btnEditicon" xml:space="preserve">
+    <value>تعديل الايقونة</value>
+  </data>
+  <data name="btnEditColor" xml:space="preserve">
+    <value>تعديل اللون</value>
+  </data>
+  <data name="lblExpenseType" xml:space="preserve">
+    <value>نوع المصروف</value>
+  </data>
+  <data name="lblAmountSpent" xml:space="preserve">
+    <value>المبلغ المصروف</value>
+  </data>
+  <data name="lblNote" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>يستخدم هذا الوصف لتسهيل البحث في مصروفاتك</value>
+  </data>
+  <data name="lblNoItems" xml:space="preserve">
+    <value>لا يوجد عناصر للمصروفات</value>
+  </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>تفاصيل الشهر</value>
+  </data>
+  <data name="lblItem" xml:space="preserve">
+    <value>المصروف</value>
+  </data>
+  <data name="lblCatigory" xml:space="preserve">
+    <value>الصنف</value>
+  </data>
+  <data name="lblPrix" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
 </root>

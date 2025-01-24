@@ -1,3 +1,4 @@
+using System.Globalization;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Models;
@@ -13,6 +14,10 @@ public partial class AddItemPopup
 		InitializeComponent();
         PkrCat.ItemsSource = db.TreeItems.ToList();
         detailItem = new DetailItem();
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            borderContainer.FlowDirection = FlowDirection.RightToLeft;
+        else
+            borderContainer.FlowDirection = FlowDirection.LeftToRight;
     }
     public AddItemPopup(DetailItem detail)
     {

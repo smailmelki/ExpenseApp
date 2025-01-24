@@ -1,3 +1,4 @@
+using System.Globalization;
 using ExpenseApp.Pages;
 
 
@@ -18,6 +19,10 @@ public partial class ItemDetailsPage : ContentPage
         btnBack.IsVisible = true;
 #endif      
         chartVoid();
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            CollectionDetails.FlowDirection = FlowDirection.RightToLeft;
+        else
+            CollectionDetails.FlowDirection = FlowDirection.LeftToRight;
     }
 
 
