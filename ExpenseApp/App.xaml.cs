@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using ExpenseApp.Classes;
 
 namespace ExpenseApp
 {
@@ -8,9 +9,7 @@ namespace ExpenseApp
         {
             InitializeComponent();
             // تعيين اللغة الافتراضية (مثلاً العربية)
-            var culture = new CultureInfo("ar");
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
+            CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(Tools.Long);
             MainPage = new AppShell();
         }
 

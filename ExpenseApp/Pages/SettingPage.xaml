@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpenseApp.Pages.SettingPage"
+             xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
+             x:Class="ExpenseApp.Pages.SettingPage"           
              FlowDirection="RightToLeft"
-             Title="اعدادات التطبيق">
+             Title="{x:Static lang:AppResource.SettingTitle}">
     <ScrollView>
 
         <VerticalStackLayout>
@@ -12,7 +13,7 @@
                     Padding="15"
                     Margin="10">                
                 <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
-                    <Label Grid.Column="0" Grid.Row="0" Text="اللغة" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="0" Text="{x:Static lang:AppResource.Languag}" VerticalTextAlignment="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
                         <Border >
                             <Border.StrokeShape>
@@ -29,11 +30,11 @@
                                     Padding="0" BackgroundColor="Transparent" Clicked="btnEn_Clicked"/>
                         </Border>
                             </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="الوضع داكن/فاتح"/>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="{x:Static lang:AppResource.Mode}"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
-                        <Label Text="فاتح" VerticalTextAlignment="Center"/>
+                        <Label Text="{x:Static lang:AppResource.Light}" VerticalTextAlignment="Center"/>
                         <Switch x:Name="SwMode" Toggled="SwitchMode_Toggled"/>
-                        <Label Text="داكن" VerticalTextAlignment="Center"/>
+                        <Label Text="{x:Static lang:AppResource.Dark}" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
@@ -41,24 +42,24 @@
                      Padding="15"
                      Margin="10">
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="تعديل الاسم والصورة الرمزية" HorizontalOptions="Center"/>
-                    <Entry x:Name="txtName" Placeholder="الاسم" HorizontalTextAlignment="Center"/>
-                    <Button x:Name="btnName" Text="حفظ" Clicked="btnName_Clicked" WidthRequest="100" CornerRadius="40"/>
+                    <Label Text="{x:Static lang:AppResource.lblName}" HorizontalOptions="Center"/>
+                    <Entry x:Name="txtName" Placeholder="{x:Static lang:AppResource.Name}" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="btnName" Text="{x:Static lang:AppResource.Save}" Clicked="btnName_Clicked" WidthRequest="100" CornerRadius="40"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
                 <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" RowSpacing="5">
-                    <Label Grid.Column="0" Grid.Row="0" Text="رصيد المحفضة" VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="0" Text="{x:Static lang:AppResource.Balance}" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
                         <Entry x:Name="txtAmount" Placeholder="0.00" Keyboard="Numeric" 
                                WidthRequest="120" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center"/>
                         <Label x:Name="lblCaruncy2" Text="دج" 
                                FontSize="16" VerticalOptions="CenterAndExpand"/>
                     </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="رصيد المحفظة : الراتب او الرصيد المخصص للإنفاق الشهري"/>
-                    <Label Grid.Column="0" Grid.Row="2" Text="حدد العملة :" VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static lang:AppResource.lblBalance}"/>
+                    <Label Grid.Column="0" Grid.Row="2" Text="{x:Static lang:AppResource.Currency}" VerticalOptions="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
                         <Picker
                                 x:Name="CurrencyPicker"
@@ -77,42 +78,42 @@
                                 VerticalOptions="CenterAndExpand" />
                     </HorizontalStackLayout>
                     <Button x:Name="btnAmount" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                            Text="حفظ التعديلات" WidthRequest="130" Clicked="btnAmount_ClickedAsync"/>
+                            Text="{x:Static lang:AppResource.Save}" WidthRequest="130" Clicked="btnAmount_ClickedAsync"/>
                 </Grid>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Button x:Name="btnItems" Text="تعديل عناصر المصروفات" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="40" HeightRequest="40" FontSize="12" Padding="0"/>
+                <Button x:Name="btnItems" Text="{x:Static lang:AppResource.Edit}" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="40" HeightRequest="40" FontSize="12" Padding="0"/>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
                 <VerticalStackLayout Spacing="10">
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="80">
-                        <Label Text="تلقي الاشعارات ؟" VerticalTextAlignment="Center" />
+                        <Label Text="{x:Static lang:AppResource.RecNotify}" VerticalTextAlignment="Center" />
                         <Switch x:Name="SwNotify" Toggled="SwNotify_Toggled"/>
                     </HorizontalStackLayout>
-                    <Label Text="ارسال اشعار للتذكير بتسجيل المصروفات كل:" FontSize="Body"/>
+                    <Label Text="{x:Static lang:AppResource.lblNoyify}" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                        <Button x:Name="btn3" WidthRequest="90" Text="3 ساعات" BackgroundColor="Gray" BorderColor="DarkGray" 
+                        <Button x:Name="btn3" WidthRequest="90" Text="{x:Static lang:AppResource._3Hours}" BackgroundColor="Gray" BorderColor="DarkGray" 
                                 BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
-                        <Button x:Name="btn6" WidthRequest="90" Text="6 ساعات" BackgroundColor="Gray" 
+                        <Button x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
                                 BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
-                        <Button x:Name="btn12" WidthRequest="90" Text="12 ساعة" BackgroundColor="Gray" 
+                        <Button x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
                                 BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
                     </HorizontalStackLayout>
-                    <Button x:Name="btnNotify" Text="حفظ اعدادات الاشعارات" Clicked="btnNotify_ClickedAsync"/>
+                    <Button x:Name="btnNotify" Text="{x:Static lang:AppResource.SaveNotify}" Clicked="btnNotify_ClickedAsync"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
                 <VerticalStackLayout>
-                <Label Text="نسخ احتياطي واستعادة بياناتك " Padding="0,0,0,10"/>
+                    <Label Text="{x:Static lang:AppResource.lblBackup} " Padding="0,0,0,10"/>
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                        <Button x:Name="btnBackUp" Text="نسخ احتياطي للبيانات" Clicked="btnBackUp_Clicked" CornerRadius="20"/>
-                        <Button x:Name="btnRestor" Text="استعادة وتحميل البيانات" Clicked="btnRestor_Clicked" CornerRadius="20"/>
+                        <Button x:Name="btnBackUp" Text="{x:Static lang:AppResource.btnBackup}" Clicked="btnBackUp_Clicked" CornerRadius="20"/>
+                        <Button x:Name="btnRestor" Text="{x:Static lang:AppResource.btnRestor}" Clicked="btnRestor_Clicked" CornerRadius="20"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
                 

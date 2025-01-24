@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
              x:Class="ExpenseApp.Pages.HomePage"
-             Title="الصفحة الرئيسية">
+             Title="{x:Static lang:AppResource.homeTitle}">
     <AbsoluteLayout>
         <Grid AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
               AbsoluteLayout.LayoutFlags="All"
@@ -12,28 +13,28 @@
               ColumnSpacing="10"
               RowSpacing="10">
             <VerticalStackLayout Grid.Column="0" Grid.Row="0">
-                <Label Text="مرحبا"/>
+                <Label Text="{x:Static lang:AppResource.lblHomeHello}"/>
                 <Label x:Name="lblname" Text="Smail" FontSize="Title"/>
                 <Label Text="{Binding CurrentDate}" FontSize="Title" Padding="0,10"/>
-                <Label Text="هيا, سجل مصروفاتك ولا تنس التسجيل اليومي!" FontSize="16"/>
+                <Label Text="{x:Static lang:AppResource.lblHomeWelcome}" FontSize="16"/>
             </VerticalStackLayout>
             <Border Grid.Column="0" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="مصروفات اليوم" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label Text="{x:Static lang:AppResource.lblExpToday}" FontSize="Large" HorizontalOptions="Center"/>
                     <Label x:Name="AmountDay" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             <Border Grid.Column="1" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="مصروفات الشهر" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label Text="{x:Static lang:AppResource.lblExpMonth}" FontSize="Large" HorizontalOptions="Center"/>
                     <Label x:Name="AmountMonth" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Label Grid.Column="0" Grid.Row="2" Text="المصروفات الأخيرة"
+            <Label Grid.Column="0" Grid.Row="2" Text="{x:Static lang:AppResource.lblExpRecent}"
                    VerticalTextAlignment="End" FontSize="Large"/>
             <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
                             x:Name="itemCollection"
-                            EmptyView="لم تنفق أي مال اليوم ؟ لا تنس أن تسجل مصروفاتك">
+                            EmptyView="{x:Static lang:AppResource.EmptyCollection}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="3*,2*" RowDefinitions="*,*" Padding="10,5">

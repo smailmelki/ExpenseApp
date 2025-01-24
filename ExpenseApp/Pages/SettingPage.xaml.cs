@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using System.Globalization;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
@@ -207,6 +208,7 @@ public partial class SettingPage : ContentPage
         btnEn.BackgroundColor = Colors.Transparent;
         Tools.Long = "ar";
         Tools.SaveLong();
+        ChangeLanguage("ar");
     }
 
     private void btnEn_Clicked(object sender, EventArgs e)
@@ -215,7 +217,19 @@ public partial class SettingPage : ContentPage
         btnAr.BackgroundColor = Colors.Transparent;
         Tools.Long = "en";
         Tools.SaveLong();
+        ChangeLanguage("en");
     }
+
+    public void ChangeLanguage(string languageCode)
+    {
+        var culture = new CultureInfo(languageCode);
+        Thread.CurrentThread.CurrentCulture = culture;
+        Thread.CurrentThread.CurrentUICulture = culture;
+
+        // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
+        App.Current.MainPage = new AppShell();
+    }
+
 
     private void SwNotify_Toggled(object sender, ToggledEventArgs e)
     {
