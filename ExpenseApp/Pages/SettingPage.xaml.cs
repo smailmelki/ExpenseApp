@@ -21,7 +21,11 @@ public partial class SettingPage : ContentPage
         _notificationService = notificationService;
         FillCurrencyPicker();
         GetDefault();
-	}
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            FlowDirection = FlowDirection.RightToLeft;
+        else
+            FlowDirection = FlowDirection.LeftToRight;
+    }
 
     private void FillCurrencyPicker()
     {
@@ -174,6 +178,8 @@ public partial class SettingPage : ContentPage
                 if (RestoreDone)
                 {
                     await Toast.Make("تمت استعادة قاعدة البيانات بنجاح.").Show();
+                    // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
+                    App.Current.MainPage = new AppShell();
                 }
                 else
                 {

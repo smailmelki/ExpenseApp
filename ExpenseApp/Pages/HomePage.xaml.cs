@@ -24,6 +24,15 @@ public partial class HomePage : ContentPage
         db = new DBContext();
         lblname.Text = Tools.Name;
         GetData();
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+        {
+            FlowDirection = FlowDirection.RightToLeft;
+        }
+        else
+        {
+            FlowDirection = FlowDirection.LeftToRight;
+        }
+
     }
 
     void GetData()

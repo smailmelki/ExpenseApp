@@ -16,6 +16,10 @@ public partial class StatePage : ContentPage
 		InitializeComponent();
         FillPicker();
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            FlowDirection = FlowDirection.RightToLeft;
+        else
+            FlowDirection = FlowDirection.LeftToRight;
     }
 
     private void FillPicker()

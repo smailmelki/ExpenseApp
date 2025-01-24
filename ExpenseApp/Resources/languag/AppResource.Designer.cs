@@ -259,6 +259,33 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string lblShellHome {
+            get {
+                return ResourceManager.GetString("lblShellHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string lblShellSetting {
+            get {
+                return ResourceManager.GetString("lblShellSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statestics.
+        /// </summary>
+        internal static string lblShellStatestic {
+            get {
+                return ResourceManager.GetString("lblShellStatestic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total .
         /// </summary>
         internal static string lblStatisTotal {

@@ -213,4 +213,13 @@
   <data name="btnDetails" xml:space="preserve">
     <value>Show Details</value>
   </data>
+  <data name="lblShellStatestic" xml:space="preserve">
+    <value>Statestics</value>
+  </data>
+  <data name="lblShellHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="lblShellSetting" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

@@ -6,15 +6,15 @@
              x:Class="ExpenseApp.Pages.StatePage"
              Title="{x:Static lang:AppResource.statisticTitle}">
     <VerticalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center" FlowDirection="RightToLeft">
+        <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="{x:Static lang:AppResource.lblStatisYearly}" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center" />
             <Picker x:Name="pkrYear" FontSize="Title" SelectedIndexChanged="pkrYear_SelectedIndexChanged"/>
         </HorizontalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center" FlowDirection="RightToLeft">
+        <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="{x:Static lang:AppResource.lblStatisTotal}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Label x:Name="lblYear" Text="0.00" FontSize="Medium" HorizontalOptions="Center" />
         </HorizontalStackLayout>
-        <CollectionView x:Name="CollectionItemView" Margin="15" EmptyView="No items to display" FlowDirection="RightToLeft">
+        <CollectionView x:Name="CollectionItemView" Margin="15" EmptyView="No items to display">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <toolkit:Expander>

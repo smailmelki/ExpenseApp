@@ -213,4 +213,13 @@
   <data name="btnDetails" xml:space="preserve">
     <value> عرض التفاصيل </value>
   </data>
+  <data name="lblShellStatestic" xml:space="preserve">
+    <value>الاحصائيات</value>
+  </data>
+  <data name="lblShellHome" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="lblShellSetting" xml:space="preserve">
+    <value>الاعدادات</value>
+  </data>
 </root>

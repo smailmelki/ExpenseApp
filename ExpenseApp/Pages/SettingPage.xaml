@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
              x:Class="ExpenseApp.Pages.SettingPage"           
-             FlowDirection="RightToLeft"
              Title="{x:Static lang:AppResource.SettingTitle}">
     <ScrollView>
 
@@ -17,14 +16,14 @@
                     <HorizontalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
                         <Border >
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="0,20,0,20" />
+                                <RoundRectangle CornerRadius="20,20,20,20" />
                             </Border.StrokeShape>
                             <Button x:Name="btnAr" Text="عربي" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
                                     Padding="0" BackgroundColor="Orange" Clicked="btnAr_Clicked"/>
                         </Border>
                         <Border >
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20,0,20,0" />
+                                <RoundRectangle CornerRadius="20,20,20,20" />
                             </Border.StrokeShape>
                             <Button x:Name="btnEn" Text="english" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
                                     Padding="0" BackgroundColor="Transparent" Clicked="btnEn_Clicked"/>
