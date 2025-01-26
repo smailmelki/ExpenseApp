@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
+using ExpenseApp.Resources.languag;
 using Plugin.LocalNotification;
 using System.Globalization;
 
@@ -9,7 +10,7 @@ namespace ExpenseApp.Pages;
 
 public partial class HomePage : ContentPage
 {
-    DBContext db ;
+    DBContext db;
     private readonly INotificationService _notificationService;
     public string CurrentDate
     {
@@ -17,8 +18,8 @@ public partial class HomePage : ContentPage
     }
     List<ExpensView> items = new List<ExpensView>();
     public HomePage(INotificationService notificationService)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _notificationService = notificationService;
         BindingContext = this;
         db = new DBContext();
@@ -69,71 +70,80 @@ public partial class HomePage : ContentPage
             GetData();
         }
     }
-
-
-/* Unmerged change from project 'ExpenseApp (net9.0-android)'
-Before:
-    private void OnItemLongPressed(object sender, TappedEventArgs e)
-    {
-After:
-    private async Task OnItemLongPressedAsync(object sender, TappedEventArgs e)
-    {
-*/
     private async void OnItemLongPressedAsync(object sender, TappedEventArgs e)
     {
         // «·Õ’Ê· ⁄·Ï «·⁄‰’— «·„Õœœ „‰ «·”Ì«ﬁ
         if (sender is Grid grid && grid.BindingContext is ExpensView selectedItem)
         {
-            string action = await DisplayActionSheet(
-                "«Œ — «·≈Ã—«¡",
-                "≈·€«¡",
-                null,
-                "Õ–›",
-                " ⁄œÌ·"
-            );
-
-            switch (action)
+            try
             {
-                case "Õ–›":
-                    //  ‰›Ì– ⁄„·Ì… «·Õ–›
-                    if (await DisplayAlert("Õ–›", $"Â·  —Ìœ Õ–› {selectedItem.Title}", "„Ê«›ﬁ", "«·€«¡"))
-                    {
-                        var item1 = db.DetailItems.Find(selectedItem.ID);
-                        if (item1 != null)
-                        {
-                            db.DetailItems.Remove(item1);
-                            db.SaveChanges();
-                            GetData();
-                        }
-                    }
-                    break;
-                case " ⁄œÌ·":
-                    //  ‰›Ì– ⁄„·Ì… «· ⁄œÌ·
-                    var item = db.DetailItems.Find(selectedItem.ID);
-                    var popup = new AddItemPopup(item);
-                    var result = await this.ShowPopupAsync(popup);
-                    if (result is DetailItem detail && detail != null)
-                    {
-                        //db = new DBContext();
-                        db.DetailItems.Update(detail);
-                        db.SaveChanges();
-                        GetData();
-                    }
+                string action = await DisplayActionSheet(
+                    AppResource.lblAction,
+                    AppResource.btnCancel,
+                    null,
+                    AppResource.lblDelete,
+                    AppResource.lblEdit
+                );
 
-                    break;
-                default:
-                    // ≈·€«¡
-                    break;
+                switch (action)
+                {
+                    case var a when a == AppResource.lblDelete:
+                        //  √ﬂÌœ «·Õ–›
+                        bool confirmDelete = await DisplayAlert(
+                            AppResource.lblDelete,
+                            $"{AppResource.lblDeleteMsg} {selectedItem.Title}?",
+                            AppResource.lblYes,
+                            AppResource.lblNo
+                        );
+
+                        if (confirmDelete)
+                        {
+                            var itemToDelete = db.DetailItems.Find(selectedItem.ID);
+                            if (itemToDelete != null)
+                            {
+                                db.DetailItems.Remove(itemToDelete);
+                                db.SaveChanges();
+                                //await DisplayAlert(AppResource.lblSuccess, AppResource.lblDeleteSuccess, AppResource.btnOk);
+                                GetData();
+                            }
+                        }
+                        break;
+
+                    case var b when b == AppResource.lblEdit:
+                        //  ‰›Ì– ⁄„·Ì… «· ⁄œÌ·
+                        var itemToEdit = db.DetailItems.Find(selectedItem.ID);
+                        if (itemToEdit != null)
+                        {
+                            var popup = new AddItemPopup(itemToEdit);
+                            var result = await this.ShowPopupAsync(popup);
+                            if (result is DetailItem updatedItem && updatedItem != null)
+                            {
+                                db.DetailItems.Update(updatedItem);
+                                db.SaveChanges();
+                                //await DisplayAlert(AppResource.lblSuccess, AppResource.lblEditSuccess, AppResource.btnOk);
+                                GetData();
+                            }
+                        }
+                        break;
+
+                    default:
+                        // ·« Ì „  ‰›Ì– √Ì ≈Ã—«¡
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                //await DisplayAlert(AppResource.lblError, ex.Message, AppResource.btnOk);
             }
         }
     }
-}
 
-public class ExpensView
+}
+    public class ExpensView
 {
     public int ID { get; set; }
     public int ParentID { get; set; } // «·„› «Õ «·Œ«—ÃÌ «·„— »ÿ »‹ TreeItem
     public string Title { get; set; } = "";
     public string? Date { get; set; }
-    public string Amount { get; set; }
+    public string Amount { get; set; } = "0";
 }

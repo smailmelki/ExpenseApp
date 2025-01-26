@@ -214,6 +214,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select action.
+        /// </summary>
+        internal static string lblAction {
+            get {
+                return ResourceManager.GetString("lblAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Item.
         /// </summary>
         internal static string lblAddItem {
@@ -291,6 +300,15 @@ namespace ExpenseApp.Resources.languag {
         internal static string lblDetails {
             get {
                 return ResourceManager.GetString("lblDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string lblEdit {
+            get {
+                return ResourceManager.GetString("lblEdit", resourceCulture);
             }
         }
         

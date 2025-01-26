@@ -276,4 +276,10 @@
   <data name="lblDelete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="lblAction" xml:space="preserve">
+    <value>Select action</value>
+  </data>
 </root>

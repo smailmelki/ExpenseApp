@@ -276,4 +276,10 @@
   <data name="lblDelete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="lblAction" xml:space="preserve">
+    <value>اختر الإجراء</value>
+  </data>
 </root>
