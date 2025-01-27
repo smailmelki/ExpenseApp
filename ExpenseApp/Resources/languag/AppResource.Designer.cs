@@ -160,6 +160,60 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Algerian Dinar.
+        /// </summary>
+        internal static string Cur_DZD {
+            get {
+                return ResourceManager.GetString("Cur_DZD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EURO.
+        /// </summary>
+        internal static string Cur_euro {
+            get {
+                return ResourceManager.GetString("Cur_euro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GBP.
+        /// </summary>
+        internal static string Cur_GBP {
+            get {
+                return ResourceManager.GetString("Cur_GBP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JPY.
+        /// </summary>
+        internal static string Cur_JPY {
+            get {
+                return ResourceManager.GetString("Cur_JPY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAR.
+        /// </summary>
+        internal static string Cur_SAR {
+            get {
+                return ResourceManager.GetString("Cur_SAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USD.
+        /// </summary>
+        internal static string Cur_USD {
+            get {
+                return ResourceManager.GetString("Cur_USD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Currency.
         /// </summary>
         internal static string Currency {
@@ -430,6 +484,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to reminder.
+        /// </summary>
+        internal static string lblreminder {
+            get {
+                return ResourceManager.GetString("lblreminder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         internal static string lblShellHome {
@@ -502,6 +565,105 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Errur.
+        /// </summary>
+        internal static string msg_BackUp1 {
+            get {
+                return ResourceManager.GetString("msg_BackUp1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BackUp Done.
+        /// </summary>
+        internal static string msg_BackUp2 {
+            get {
+                return ResourceManager.GetString("msg_BackUp2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BackUp Error.
+        /// </summary>
+        internal static string Msg_BackUp3 {
+            get {
+                return ResourceManager.GetString("Msg_BackUp3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notify Time.
+        /// </summary>
+        internal static string msg_NotifyTime {
+            get {
+                return ResourceManager.GetString("msg_NotifyTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DataBase Not Found.
+        /// </summary>
+        internal static string msg_Restor1 {
+            get {
+                return ResourceManager.GetString("msg_Restor1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore Done.
+        /// </summary>
+        internal static string msg_Restor2 {
+            get {
+                return ResourceManager.GetString("msg_Restor2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Shema.
+        /// </summary>
+        internal static string msg_Restor4 {
+            get {
+                return ResourceManager.GetString("msg_Restor4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Error .
+        /// </summary>
+        internal static string msg_Restor5 {
+            get {
+                return ResourceManager.GetString("msg_Restor5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore Error.
+        /// </summary>
+        internal static string msg_Restore3 {
+            get {
+                return ResourceManager.GetString("msg_Restore3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saved.
+        /// </summary>
+        internal static string msg_Saved {
+            get {
+                return ResourceManager.GetString("msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to reminder.
+        /// </summary>
+        internal static string msgreminder {
+            get {
+                return ResourceManager.GetString("msgreminder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Name {
@@ -552,6 +714,15 @@ namespace ExpenseApp.Resources.languag {
         internal static string statisticTitle {
             get {
                 return ResourceManager.GetString("statisticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DZD.
+        /// </summary>
+        internal static string Sym_DZD {
+            get {
+                return ResourceManager.GetString("Sym_DZD", resourceCulture);
             }
         }
     }

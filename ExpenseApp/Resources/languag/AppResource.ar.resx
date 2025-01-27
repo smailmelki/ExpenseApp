@@ -282,4 +282,61 @@
   <data name="lblAction" xml:space="preserve">
     <value>اختر الإجراء</value>
   </data>
+  <data name="lblreminder" xml:space="preserve">
+    <value>تذكير</value>
+  </data>
+  <data name="msgreminder" xml:space="preserve">
+    <value>لا تنس تسجبل مصروفات اليوم</value>
+  </data>
+  <data name="Cur_DZD" xml:space="preserve">
+    <value>دينار جزائري</value>
+  </data>
+  <data name="Sym_DZD" xml:space="preserve">
+    <value>دج</value>
+  </data>
+  <data name="Cur_SAR" xml:space="preserve">
+    <value>الريال السعودي</value>
+  </data>
+  <data name="Cur_USD" xml:space="preserve">
+    <value>دولار أمريكي</value>
+  </data>
+  <data name="Cur_euro" xml:space="preserve">
+    <value>اليورو</value>
+  </data>
+  <data name="Cur_GBP" xml:space="preserve">
+    <value>الجنيه الإسترليني</value>
+  </data>
+  <data name="Cur_JPY" xml:space="preserve">
+    <value>الين الياباني</value>
+  </data>
+  <data name="msg_Saved" xml:space="preserve">
+    <value>تم الحفظ</value>
+  </data>
+  <data name="msg_NotifyTime" xml:space="preserve">
+    <value>يجب عليك اختيار وقت التنبيه</value>
+  </data>
+  <data name="msg_BackUp1" xml:space="preserve">
+    <value>لم يتم اختيار مكان لحفظ نسخة من قاعدة البيانات</value>
+  </data>
+  <data name="msg_BackUp2" xml:space="preserve">
+    <value>تم انشاء نسخة من قاعدة البيانات</value>
+  </data>
+  <data name="Msg_BackUp3" xml:space="preserve">
+    <value>خطأ في انشاء نسخة من قاعدة البيانات</value>
+  </data>
+  <data name="msg_Restor1" xml:space="preserve">
+    <value>لم يتم العثور على قاعدة البيانات الاحتياطية</value>
+  </data>
+  <data name="msg_Restor2" xml:space="preserve">
+    <value>تمت استعادة قاعدة البيانات بنجاح</value>
+  </data>
+  <data name="msg_Restore3" xml:space="preserve">
+    <value>فشلت عملية استعادة قاعدة البيانات</value>
+  </data>
+  <data name="msg_Restor4" xml:space="preserve">
+    <value>بنية قاعدة البيانات مختلفة</value>
+  </data>
+  <data name="msg_Restor5" xml:space="preserve">
+    <value>حدث خطأ أثناء استعادة قاعدة البيانات</value>
+  </data>
 </root>

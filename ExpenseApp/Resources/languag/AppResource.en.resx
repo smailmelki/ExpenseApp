@@ -282,4 +282,61 @@
   <data name="lblAction" xml:space="preserve">
     <value>Select action</value>
   </data>
+  <data name="lblreminder" xml:space="preserve">
+    <value>reminder</value>
+  </data>
+  <data name="msgreminder" xml:space="preserve">
+    <value>Don't forget to record today's expenses.</value>
+  </data>
+  <data name="Cur_DZD" xml:space="preserve">
+    <value>Algerian Dinar</value>
+  </data>
+  <data name="Sym_DZD" xml:space="preserve">
+    <value>DZD</value>
+  </data>
+  <data name="Cur_SAR" xml:space="preserve">
+    <value>Saudi Riyal</value>
+  </data>
+  <data name="Cur_USD" xml:space="preserve">
+    <value>USD</value>
+  </data>
+  <data name="Cur_euro" xml:space="preserve">
+    <value>EURO</value>
+  </data>
+  <data name="Cur_GBP" xml:space="preserve">
+    <value>sterling</value>
+  </data>
+  <data name="Cur_JPY" xml:space="preserve">
+    <value>Japanese Yen</value>
+  </data>
+  <data name="msg_Saved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="msg_NotifyTime" xml:space="preserve">
+    <value>You must choose the alert time.</value>
+  </data>
+  <data name="msg_BackUp1" xml:space="preserve">
+    <value>No location has been selected to save a copy of the database.</value>
+  </data>
+  <data name="msg_BackUp2" xml:space="preserve">
+    <value>A copy of the database has been created.</value>
+  </data>
+  <data name="Msg_BackUp3" xml:space="preserve">
+    <value>Error creating a copy of the database</value>
+  </data>
+  <data name="msg_Restor1" xml:space="preserve">
+    <value>Backup database not found</value>
+  </data>
+  <data name="msg_Restor2" xml:space="preserve">
+    <value>The database was restored successfully.</value>
+  </data>
+  <data name="msg_Restore3" xml:space="preserve">
+    <value>Database restore failed.</value>
+  </data>
+  <data name="msg_Restor4" xml:space="preserve">
+    <value>The database structure is different.</value>
+  </data>
+  <data name="msg_Restor5" xml:space="preserve">
+    <value>An error occurred while restoring the database.</value>
+  </data>
 </root>

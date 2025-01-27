@@ -4,6 +4,7 @@ using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
+using ExpenseApp.Resources.languag;
 using Microsoft.EntityFrameworkCore;
 using Plugin.LocalNotification;
 
@@ -32,12 +33,12 @@ public partial class SettingPage : ContentPage
         // قائمة العملات مع رموزها
         var currencies = new List<Currency>
         {
-            new Currency { Name = "الدينار الجزائري", Symbol = "دج", Culture = "ar-DZ" },
-            new Currency { Name = "الريال السعودي", Symbol = "﷼", Culture = "ar-SA" },
-            new Currency { Name = "الدولار الأمريكي", Symbol = "$", Culture = "en-US" },
-            new Currency { Name = "اليورو", Symbol = "€", Culture = "fr-FR" },
-            new Currency { Name = "الجنيه الإسترليني", Symbol = "£", Culture = "en-GB" },
-            new Currency { Name = "الين الياباني", Symbol = "¥", Culture = "ja-JP" }
+            new Currency { Name = AppResource.Cur_DZD, Symbol = AppResource.Sym_DZD, Culture = "ar-DZ" },
+            new Currency { Name = AppResource.Cur_SAR, Symbol = "﷼", Culture = "ar-SA" },
+            new Currency { Name = AppResource.Cur_USD, Symbol = "$", Culture = "en-US" },
+            new Currency { Name = AppResource.Cur_euro, Symbol = "€", Culture = "fr-FR" },
+            new Currency { Name = AppResource.Cur_GBP, Symbol = "£", Culture = "en-GB" },
+            new Currency { Name = AppResource.Cur_JPY, Symbol = "¥", Culture = "ja-JP" }
         };
 
 
@@ -98,7 +99,7 @@ public partial class SettingPage : ContentPage
     {
         Tools.Name = txtName.Text;
         Tools.SaveName();
-        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
+        await Toast.Make(AppResource.msg_Saved, ToastDuration.Short, 14).Show();
     }
 
     private async void btnAmount_ClickedAsync(object sender, EventArgs e)
@@ -113,7 +114,7 @@ public partial class SettingPage : ContentPage
             }
         }
         Tools.SaveAmount();
-        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
+        await Toast.Make(AppResource.msg_Saved, ToastDuration.Short, 14).Show();
     }
 
     /// <summary>
@@ -127,7 +128,7 @@ public partial class SettingPage : ContentPage
         string? backupFolder = await SqliteBackupManager.PickBackupFolderAsync();
         if (string.IsNullOrEmpty(backupFolder))
         {
-            await Toast.Make("لم يتم اختيار مكان لحفظ نسخة من قاعدة البيانات ...").Show();
+            await Toast.Make(AppResource.msg_BackUp1).Show();
             return;
         }
         string backupPath = Path.Combine(backupFolder, GenerateBackupFileName());
@@ -138,11 +139,11 @@ public partial class SettingPage : ContentPage
 
             if (backupDone)
             {
-                await Toast.Make("تم انشاء نسخة من قاعدة البيانات").Show();
+                await Toast.Make(AppResource.msg_BackUp2).Show();
             }
             else
             {
-                await Toast.Make("خطأ في انشاء نسخة من قاعدة البيانات.").Show();
+                await Toast.Make(AppResource.Msg_BackUp3).Show();
             }
         }
     }
@@ -163,7 +164,7 @@ public partial class SettingPage : ContentPage
 
         if (string.IsNullOrEmpty(backupPath))
         {
-            await Toast.Make("لم يتم العثور على قاعدة البيانات الاحتياطية.").Show();
+            await Toast.Make(AppResource.msg_Restor1).Show();
             return;
         }
 
@@ -177,25 +178,25 @@ public partial class SettingPage : ContentPage
                 bool RestoreDone = await SqliteBackupManager.BackupDatabaseAsync(backupPath, DatabasePath);
                 if (RestoreDone)
                 {
-                    await Toast.Make("تمت استعادة قاعدة البيانات بنجاح.").Show();
+                    await Toast.Make(AppResource.msg_Restor2).Show();
                     // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
                     App.Current.MainPage = new AppShell();
                 }
                 else
                 {
-                    await Toast.Make("فشلت عملية استعادة قاعدة البيانات.").Show();
+                    await Toast.Make(AppResource.msg_Restore3).Show();
                 }
             }   
             else
             {
-                await Toast.Make("بنية قاعدة البيانات مختلفة.").Show();
+                await Toast.Make(AppResource.msg_Restor4).Show();
             }
             ///////////////////////////////
 
         }
         catch (Exception ex)
         {
-            await Toast.Make("حدث خطأ أثناء استعادة قاعدة البيانات").Show();
+            await Toast.Make(AppResource.msg_Restor5).Show();
         }
     }
 
@@ -265,7 +266,7 @@ public partial class SettingPage : ContentPage
         // التحقق من اختيار وقت التنبيه إذا كان التبديل مفعلاً
         if (SwNotify.IsToggled && NotifyTime == null)
         {
-            await Toast.Make("يجب عليك اختيار وقت التنبيه ...", ToastDuration.Short, 14).Show();
+            await Toast.Make(AppResource.msg_NotifyTime, ToastDuration.Short, 14).Show();
             return;
         }
 
@@ -281,9 +282,9 @@ public partial class SettingPage : ContentPage
         if (SwNotify.IsToggled)
         {
             // تحديد عدد الساعات بناءً على اختيار المستخدم
-            int Hours = NotifyTime == btn3.Text ? 3 :
-                    NotifyTime == btn6.Text ? 6 :
-                    NotifyTime == btn12.Text ? 12 : 0;
+            double Hours = NotifyTime == btn3.Text ? 3 :
+                        NotifyTime == btn6.Text ? 6 :
+                        NotifyTime == btn12.Text ? 12 : 0;
 
             if (Hours > 0)
             {
@@ -294,7 +295,7 @@ public partial class SettingPage : ContentPage
 #endif
 
         // عرض رسالة تأكيد الحفظ
-        await Toast.Make("تم الحفظ", ToastDuration.Short, 14).Show();
+        await Toast.Make(AppResource.msg_Saved, ToastDuration.Short, 14).Show();
     }
 
     #region Notify
@@ -316,7 +317,7 @@ public partial class SettingPage : ContentPage
         var request = new NotificationRequest
         {
             NotificationId = 100 + _tapCount,
-            Title = "Test",
+            Title = AppResource.lblreminder,
             Subtitle = $"Tap Count: {_tapCount}",
             Description = $"Tap Count: {_tapCount}",
             BadgeNumber = _tapCount,
@@ -344,22 +345,22 @@ public partial class SettingPage : ContentPage
         }
     }
 
-    private async void ScheduleNotificationEveryHours(int hours)
+    private async void ScheduleNotificationEveryHours(double hoursN)
     {
         // إنشاء معرف فريد للإشعار
         var notificationId = (int)DateTime.Now.Ticks;
-
         // إعداد الإشعار
         var notification = new NotificationRequest
         {
             NotificationId = notificationId,
-            Title = "تذكير",
-            Description = "لا تنس تسجبل مصروفات اليوم",
+            CategoryType = NotificationCategoryType.Alarm,
+            Title = AppResource.lblreminder,
+            Description = AppResource.msgreminder,
             Schedule = new NotificationRequestSchedule
             {
                 NotifyTime = DateTime.Now.AddSeconds(3), // وقت بدء الإشعار
                 RepeatType = NotificationRepeat.TimeInterval,
-                NotifyRepeatInterval = TimeSpan.FromHours(hours) // تكرار الإشعار كل عدد الساعات المحددة
+                NotifyRepeatInterval = TimeSpan.FromHours(hoursN) // تكرار الإشعار كل عدد الساعات المحددة
             }
         };
 

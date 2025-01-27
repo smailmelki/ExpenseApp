@@ -282,4 +282,61 @@
   <data name="lblAction" xml:space="preserve">
     <value>Select action</value>
   </data>
+  <data name="lblreminder" xml:space="preserve">
+    <value>reminder</value>
+  </data>
+  <data name="msgreminder" xml:space="preserve">
+    <value>reminder</value>
+  </data>
+  <data name="Cur_DZD" xml:space="preserve">
+    <value>Algerian Dinar</value>
+  </data>
+  <data name="Sym_DZD" xml:space="preserve">
+    <value>DZD</value>
+  </data>
+  <data name="Cur_SAR" xml:space="preserve">
+    <value>SAR</value>
+  </data>
+  <data name="Cur_USD" xml:space="preserve">
+    <value>USD</value>
+  </data>
+  <data name="Cur_euro" xml:space="preserve">
+    <value>EURO</value>
+  </data>
+  <data name="Cur_GBP" xml:space="preserve">
+    <value>GBP</value>
+  </data>
+  <data name="Cur_JPY" xml:space="preserve">
+    <value>JPY</value>
+  </data>
+  <data name="msg_Saved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="msg_NotifyTime" xml:space="preserve">
+    <value>Notify Time</value>
+  </data>
+  <data name="msg_BackUp1" xml:space="preserve">
+    <value>Errur</value>
+  </data>
+  <data name="msg_BackUp2" xml:space="preserve">
+    <value>BackUp Done</value>
+  </data>
+  <data name="Msg_BackUp3" xml:space="preserve">
+    <value>BackUp Error</value>
+  </data>
+  <data name="msg_Restor1" xml:space="preserve">
+    <value>DataBase Not Found</value>
+  </data>
+  <data name="msg_Restor2" xml:space="preserve">
+    <value>Restore Done</value>
+  </data>
+  <data name="msg_Restore3" xml:space="preserve">
+    <value>Restore Error</value>
+  </data>
+  <data name="msg_Restor4" xml:space="preserve">
+    <value>Error Shema</value>
+  </data>
+  <data name="msg_Restor5" xml:space="preserve">
+    <value>Other Error </value>
+  </data>
 </root>
