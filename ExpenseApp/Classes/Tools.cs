@@ -6,8 +6,8 @@
         public static string Mode { get; set; } = "Light";
         public static string Name { get; set; } = "ExpenseApp";
         public static string Amount { get; set; } = "0";
-        public static string Caruncy { get; set; } = "دج";
-        public static string MyCultureInfo { get; set; } = "ar-SA";
+        public static string currency { get; set; } = "د.ج";
+        public static string MyCultureInfo { get; set; } = "ar-DZ";
         public static bool Notify { get; set; } = false;
         public static string NotifyTime { get; set; } = "3";
         public static void SaveLong()
@@ -26,7 +26,7 @@
         public static void SaveAmount()
         {
             Preferences.Default.Set<string>("Amount", Amount);
-            Preferences.Default.Set<string>("Caruncy", Caruncy);
+            Preferences.Default.Set<string>("Caruncy", currency);
             Preferences.Default.Set<string>("MyCultureInfo", MyCultureInfo);
         }
         public static void SaveNotify()
@@ -41,8 +41,8 @@
             Mode = Preferences.Default.Get<string>("Mode", "Light");
             Name = Preferences.Default.Get<string>("Name", "ExpenseApp");
             Amount = Preferences.Default.Get<string>("Amount", "0");
-            Caruncy = Preferences.Default.Get<string>("Caruncy", "دج");
-            MyCultureInfo = Preferences.Default.Get<string>("MyCultureInfo", "ar-SA");
+            currency = Preferences.Default.Get<string>("Caruncy", "دج");
+            MyCultureInfo = Preferences.Default.Get<string>("MyCultureInfo", "ar-DZ");
             Notify = Preferences.Default.Get<bool>("Notify", false);
             NotifyTime = Preferences.Default.Get<string>("NotifyTime", "3");
         }

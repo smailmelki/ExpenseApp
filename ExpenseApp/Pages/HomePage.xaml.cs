@@ -11,10 +11,11 @@ namespace ExpenseApp.Pages;
 public partial class HomePage : ContentPage
 {
     DBContext db;
+    CultureInfo culture = new CultureInfo(Tools.MyCultureInfo);
     private readonly INotificationService _notificationService;
     public string CurrentDate
     {
-        get => DateTime.Now.ToString("MMMM yyyy", new CultureInfo(Tools.MyCultureInfo));
+        get => DateTime.Now.ToString("MMMM yyyy", culture);
     }
     List<ExpensView> items = new List<ExpensView>();
     public HomePage(INotificationService notificationService)
@@ -24,6 +25,7 @@ public partial class HomePage : ContentPage
         BindingContext = this;
         db = new DBContext();
         lblname.Text = Tools.Name;
+        culture.NumberFormat.CurrencySymbol = Tools.currency;
         GetData();
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             FlowDirection = FlowDirection.RightToLeft;
@@ -40,23 +42,23 @@ public partial class HomePage : ContentPage
                      ID = d.ID,
                      ParentID = d.ParentID,
                      Title = t.Title + " (" + d.Note + ")",
-                     Date = d.Date.ToString("dd MMMM, HH:mm", new CultureInfo(Tools.MyCultureInfo)),
-                     Amount = d.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo)),
+                     Date = d.Date.ToString("dd MMMM, HH:mm", culture),
+                     Amount = d.Amount.ToString("C", culture),
                  }).ToList();
         itemCollection.ItemsSource = items;
         AmountDay.Text = items
             .Select(s =>
             {
                 // ãÍÇæáÉ ÊÍæíá ÇáäÕ Åáì double
-                if (double.TryParse(s.Amount, NumberStyles.Any, new CultureInfo(Tools.MyCultureInfo), out double amount))
+                if (double.TryParse(s.Amount, NumberStyles.Any, culture, out double amount))
                 {
                     return amount;
                 }
                 return 0; // ÅÐÇ ÝÔá ÇáÊÍæíá¡ íÊã ÅÑÌÇÚ 0
             })
             .Sum()
-            .ToString("C", new CultureInfo(Tools.MyCultureInfo));
-        AmountMonth.Text = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo));
+            .ToString("C", culture);
+        AmountMonth.Text = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount).ToString("C", culture);
     }
 
     private async void btnAddItem_Clicked(object sender, EventArgs e)
@@ -137,7 +139,6 @@ public partial class HomePage : ContentPage
             }
         }
     }
-
 }
     public class ExpensView
 {

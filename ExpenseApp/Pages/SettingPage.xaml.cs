@@ -47,22 +47,29 @@ public partial class SettingPage : ContentPage
     }
     private void GetDefault()
     {
-        btnAr.BackgroundColor = Tools.Long == "ar" ? Colors.Orange : Colors.Transparent;
-        btnEn.BackgroundColor = Tools.Long == "en" ? Colors.Orange : Colors.Transparent;
-        SwMode.IsToggled = Tools.Mode == "Dark";
-        Application.Current.UserAppTheme = Tools.Mode == "Dark" ? AppTheme.Dark : AppTheme.Light;
-        txtName.Text = Tools.Name;
-        txtAmount.Text = Tools.Amount;
-        CurrencyPicker.SelectedIndex = CurrencyPicker.ItemsSource.Cast<Currency>().ToList().FindIndex(c => c.Name == Tools.Caruncy);
-        SwNotify.IsToggled = Tools.Notify;
-        lblCaruncy2.Text = lblCaruncy.Text;
-        btn3.BackgroundColor = Tools.NotifyTime == btn3.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-        btn6.BackgroundColor = Tools.NotifyTime == btn6.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-        btn12.BackgroundColor = Tools.NotifyTime == btn12.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+        try
+        {
+            btnAr.BackgroundColor = Tools.Long == "ar" ? Colors.Orange : Colors.Transparent;
+            btnEn.BackgroundColor = Tools.Long == "en" ? Colors.Orange : Colors.Transparent;
+            SwMode.IsToggled = Tools.Mode == "Dark";
+            Application.Current.UserAppTheme = Tools.Mode == "Dark" ? AppTheme.Dark : AppTheme.Light;
+            txtName.Text = Tools.Name;
+            txtAmount.Text = Tools.Amount;
+            CurrencyPicker.SelectedIndex = CurrencyPicker.ItemsSource.Cast<Currency>().ToList().FindIndex(c => c.Culture == Tools.MyCultureInfo);
+            SwNotify.IsToggled = Tools.Notify;
+            lblCaruncy2.Text = Tools.currency;
+            btn3.BackgroundColor = Tools.NotifyTime == btn3.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn6.BackgroundColor = Tools.NotifyTime == btn6.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn12.BackgroundColor = Tools.NotifyTime == btn12.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
 
-        btn3.TextColor = Tools.NotifyTime == btn3.Text ? Colors.Black : Colors.White;
-        btn6.TextColor = Tools.NotifyTime == btn6.Text ? Colors.Black : Colors.White;
-        btn12.TextColor = Tools.NotifyTime == btn12.Text ? Colors.Black : Colors.White;
+            btn3.TextColor = Tools.NotifyTime == btn3.Text ? Colors.Black : Colors.White;
+            btn6.TextColor = Tools.NotifyTime == btn6.Text ? Colors.Black : Colors.White;
+            btn12.TextColor = Tools.NotifyTime == btn12.Text ? Colors.Black : Colors.White;
+        }
+        catch (Exception ex)
+        {
+        }
+       
     }
 
     // معالج حدث اختيار العملة
@@ -70,9 +77,7 @@ public partial class SettingPage : ContentPage
     {
         var selectedCurrency = (Currency)CurrencyPicker.SelectedItem;
         if (selectedCurrency != null)
-        {
             lblCaruncy.Text = selectedCurrency.Symbol;
-        }
     }
 
     private async void btnItems_Clicked(object sender, EventArgs e)
@@ -109,8 +114,8 @@ public partial class SettingPage : ContentPage
         {
             if (CurrencyPicker.SelectedItem is Currency currency)
             {
-                Tools.Caruncy = currency.Name;
-                Tools.MyCultureInfo = currency.Culture;
+                Tools.currency = currency.Symbol ?? "د.ج";
+                Tools.MyCultureInfo = currency.Culture ?? "ar-DZ";
             }
         }
         Tools.SaveAmount();

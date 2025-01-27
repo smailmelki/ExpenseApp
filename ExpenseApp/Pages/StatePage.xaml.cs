@@ -10,10 +10,11 @@ public partial class StatePage : ContentPage
 {
 	DBContext db = new DBContext();
     public ObservableCollection<TreeItem> Items { get; set; } = new ObservableCollection<TreeItem>();
-
+    CultureInfo culture = new CultureInfo(Tools.MyCultureInfo);
     public StatePage()
 	{
 		InitializeComponent();
+        culture.NumberFormat.CurrencySymbol = Tools.currency;
         FillPicker();
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
@@ -45,18 +46,18 @@ public partial class StatePage : ContentPage
                     select new MonthlySummary
                     {
                         MonthName = new DateTime(g.Key.Year, g.Key.Month, 1)
-                                   .ToString("MMMM", new CultureInfo(Tools.MyCultureInfo)),
+                                   .ToString("MMMM", culture),
                         YearName = g.Key.Year.ToString(),
-                        TotalAmount = g.Sum(item => item.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
+                        TotalAmount = g.Sum(item => item.Amount).ToString("C", culture),
                         IsExpanded = false,
                         SupDetails = (from groupItem in g
                                       join treeItem in treeItems on groupItem.ParentID equals treeItem.ID
                                       select new catTree
                                       {
                                           Title = treeItem.Title,
-                                          Amount = groupItem.Amount.ToString("C", new CultureInfo(Tools.MyCultureInfo)),
+                                          Amount = groupItem.Amount.ToString("C", culture),
                                           Note = groupItem.Note,
-                                          date = groupItem.Date.ToString("dd MMMM HH:mm" , new CultureInfo(Tools.MyCultureInfo))
+                                          date = groupItem.Date.ToString("dd MMMM HH:mm" , culture)
                                       }).ToList(),
                         Details = (from item in g
                                    join t in treeItems on item.ParentID equals t.ID
@@ -66,7 +67,7 @@ public partial class StatePage : ContentPage
                                        Title = g2.Key.Title,
                                        color = g2.Key.color,
                                        Cost = g2.Sum(s => s.Amount),
-                                       Amount = g2.Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo)),
+                                       Amount = g2.Sum(s => s.Amount).ToString("C", culture),
                                    }).ToList()
                     }).ToList();
 
@@ -78,7 +79,7 @@ public partial class StatePage : ContentPage
     {
         if (pkrYear.SelectedItem == null)
             return;
-        lblYear.Text = db.DetailItems.Where(b => b.Date.Year == Convert.ToInt32(pkrYear.SelectedItem)).Sum(s => s.Amount).ToString("C", new CultureInfo(Tools.MyCultureInfo));
+        lblYear.Text = db.DetailItems.Where(b => b.Date.Year == Convert.ToInt32(pkrYear.SelectedItem)).Sum(s => s.Amount).ToString("C", culture);
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
     }
 
