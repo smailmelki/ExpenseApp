@@ -339,4 +339,13 @@
   <data name="msg_Restor5" xml:space="preserve">
     <value>An error occurred while restoring the database.</value>
   </data>
+  <data name="lblDeleteSecces" xml:space="preserve">
+    <value>Deleted successfully</value>
+  </data>
+  <data name="lblDeleteBack" xml:space="preserve">
+    <value>The deletion has been undone.</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>retreat</value>
+  </data>
 </root>

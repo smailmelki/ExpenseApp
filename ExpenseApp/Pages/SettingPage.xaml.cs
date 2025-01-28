@@ -15,7 +15,6 @@ public partial class SettingPage : ContentPage
     string NotifyTime = string.Empty;
     int _tapCount;
     private readonly INotificationService _notificationService;
-
     public SettingPage(INotificationService notificationService)
 	{
 		InitializeComponent();

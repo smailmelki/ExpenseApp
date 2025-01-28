@@ -106,6 +106,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to retreat.
+        /// </summary>
+        internal static string btnBack {
+            get {
+                return ResourceManager.GetString("btnBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backup Data.
         /// </summary>
         internal static string btnBackup {
@@ -331,11 +340,29 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The deletion has been undone..
+        /// </summary>
+        internal static string lblDeleteBack {
+            get {
+                return ResourceManager.GetString("lblDeleteBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete message.
         /// </summary>
         internal static string lblDeleteMsg {
             get {
                 return ResourceManager.GetString("lblDeleteMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted successfully.
+        /// </summary>
+        internal static string lblDeleteSecces {
+            get {
+                return ResourceManager.GetString("lblDeleteSecces", resourceCulture);
             }
         }
         

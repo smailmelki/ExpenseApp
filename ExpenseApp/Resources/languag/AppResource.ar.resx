@@ -339,4 +339,13 @@
   <data name="msg_Restor5" xml:space="preserve">
     <value>حدث خطأ أثناء استعادة قاعدة البيانات</value>
   </data>
+  <data name="lblDeleteSecces" xml:space="preserve">
+    <value>تم الحذف بنجاح</value>
+  </data>
+  <data name="lblDeleteBack" xml:space="preserve">
+    <value>تم التراجع عن الحذف</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>تراجع</value>
+  </data>
 </root>

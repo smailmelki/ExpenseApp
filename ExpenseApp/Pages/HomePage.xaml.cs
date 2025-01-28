@@ -1,9 +1,12 @@
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Maui.Views;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
-using Plugin.LocalNotification;
+using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace ExpenseApp.Pages;
@@ -12,16 +15,14 @@ public partial class HomePage : ContentPage
 {
     DBContext db;
     CultureInfo culture = new CultureInfo(Tools.MyCultureInfo);
-    private readonly INotificationService _notificationService;
     public string CurrentDate
     {
         get => DateTime.Now.ToString("MMMM yyyy", culture);
     }
-    List<ExpensView> items = new List<ExpensView>();
-    public HomePage(INotificationService notificationService)
+    ObservableCollection<ExpensView> items = new ObservableCollection<ExpensView>();
+    public HomePage()
     {
         InitializeComponent();
-        _notificationService = notificationService;
         BindingContext = this;
         db = new DBContext();
         lblname.Text = Tools.Name;
@@ -44,7 +45,7 @@ public partial class HomePage : ContentPage
                      Title = t.Title + " (" + d.Note + ")",
                      Date = d.Date.ToString("dd MMMM, HH:mm", culture),
                      Amount = d.Amount.ToString("C", culture),
-                 }).ToList();
+                 }).ToObservableCollection();
         itemCollection.ItemsSource = items;
         AmountDay.Text = items
             .Select(s =>
@@ -103,10 +104,66 @@ public partial class HomePage : ContentPage
                             var itemToDelete = db.DetailItems.Find(selectedItem.ID);
                             if (itemToDelete != null)
                             {
-                                db.DetailItems.Remove(itemToDelete);
-                                db.SaveChanges();
-                                //await DisplayAlert(AppResource.lblSuccess, AppResource.lblDeleteSuccess, AppResource.btnOk);
-                                GetData();
+                                var selectedIndex = items.IndexOf(selectedItem); 
+                                // ≈“«·… «·⁄‰’— „ƒﬁ « „‰ Ê«ÃÂ… «·„” Œœ„
+                                items.Remove(selectedItem);
+                                // ≈⁄œ«œ „ €Ì— ·· —«Ã⁄
+                                bool backDelete = false;
+
+                                var snackbarOptions = new SnackbarOptions
+                                {
+                                    BackgroundColor = Colors.DarkGray,
+                                    TextColor = Colors.White,
+                                    ActionButtonTextColor = Colors.Yellow,
+                                    CornerRadius = new CornerRadius(10)
+                                };
+
+                                try
+                                {
+                                    // ≈‰‘«¡ ﬂ«∆‰ TaskCompletionSource ·≈œ«—… «·«‰ Ÿ«—
+                                    var tcs = new TaskCompletionSource<bool>();
+
+                                    // ≈‰‘«¡ Snackbar
+                                    var snackbar = Snackbar.Make(
+                                        AppResource.lblDeleteSecces,
+                                        action: () =>
+                                        {
+                                            backDelete = true; // «· —«Ã⁄ ⁄‰ «·Õ–›
+                                            tcs.TrySetResult(true); // ≈ﬂ„«· «·„Â„…
+                                        },
+                                        actionButtonText: AppResource.btnBack,
+                                        duration: TimeSpan.FromSeconds(5),
+                                        visualOptions: snackbarOptions
+                                    );
+
+                                    // ⁄—÷ Snackbar
+                                    await snackbar.Show();
+
+                                    // «·«‰ Ÿ«— Õ Ï «‰ Â«¡ Snackbar √Ê «·÷€ÿ ⁄·Ï " —«Ã⁄"
+                                    await Task.WhenAny(tcs.Task, Task.Delay(5000));
+
+                                    if (backDelete)
+                                    {
+                                        // «” —Ã«⁄ «·⁄‰’— ≈·Ï «·ﬁ«∆„…
+                                        items.Insert(selectedIndex, selectedItem); // ≈⁄«œ… «·⁄‰’—
+                                        await Toast.Make(
+                                             AppResource.lblDeleteBack,
+                                            duration: ToastDuration.Short,
+                                            textSize: 14
+                                        ).Show();
+                                    }
+                                    else
+                                    {
+                                        // «·Õ–› «·‰Â«∆Ì „‰ ﬁ«⁄œ… «·»Ì«‰« 
+                                        db.DetailItems.Remove(itemToDelete);
+                                        db.SaveChanges();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    // ⁄—÷ —”«·… «·Œÿ√
+                                    await DisplayAlert("Error", $"An error occurred during the deletion process\n {ex.Message}", "OK");
+                                }
                             }
                         }
                         break;
@@ -122,12 +179,10 @@ public partial class HomePage : ContentPage
                             {
                                 db.DetailItems.Update(updatedItem);
                                 db.SaveChanges();
-                                //await DisplayAlert(AppResource.lblSuccess, AppResource.lblEditSuccess, AppResource.btnOk);
                                 GetData();
                             }
                         }
                         break;
-
                     default:
                         // ·« Ì „  ‰›Ì– √Ì ≈Ã—«¡
                         break;
@@ -140,7 +195,7 @@ public partial class HomePage : ContentPage
         }
     }
 }
-    public class ExpensView
+public class ExpensView
 {
     public int ID { get; set; }
     public int ParentID { get; set; } // «·„› «Õ «·Œ«—ÃÌ «·„— »ÿ »‹ TreeItem
