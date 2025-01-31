@@ -20,7 +20,12 @@
                 HorizontalOptions="Center" />
 
         <!--<microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>-->
-        
+        <GraphicsView x:Name="graphicsView"
+                      Margin="20,0"
+              MinimumHeightRequest="100"
+              Drawable="{Binding GridDrawable}">
+        </GraphicsView>
+
         <ScrollView>
             <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" Margin="10">
 
