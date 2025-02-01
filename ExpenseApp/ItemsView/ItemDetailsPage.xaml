@@ -5,26 +5,22 @@
              x:Class="ExpenseApp.ItemsView.ItemDetailsPage"
              Shell.TabBarIsVisible="False"
              Title="{x:Static lang:AppResource.lblDetails}">
-             <!--xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"-->
     <VerticalStackLayout>
         <Label 
               x:Name="lblMonth"
               Text="Welcome"
               FontSize="Title"
               VerticalOptions="Center" 
-              HorizontalOptions="Center" />
-        <Button x:Name="btnBack"
-                IsVisible="False"
-                Text="Click Me!"
-                Clicked="Button_Clicked"
-                HorizontalOptions="Center" />
+              HorizontalOptions="Center"
+             Margin="5"/>
 
-        <!--<microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>-->
-        <GraphicsView x:Name="graphicsView"
+        <Border Padding="5" HeightRequest="200">
+            <GraphicsView x:Name="graphicsView"
                       Margin="20,0"
-              MinimumHeightRequest="150"
+              HeightRequest="180"
               Drawable="{Binding GridDrawable}">
-        </GraphicsView>
+            </GraphicsView>
+        </Border>
 
         <ScrollView>
             <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" Margin="10">
