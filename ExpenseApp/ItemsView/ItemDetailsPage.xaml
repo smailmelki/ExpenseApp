@@ -22,7 +22,7 @@
         <!--<microcharts:ChartView x:Name="chartView" HeightRequest="200" WidthRequest="300"/>-->
         <GraphicsView x:Name="graphicsView"
                       Margin="20,0"
-              MinimumHeightRequest="100"
+              MinimumHeightRequest="150"
               Drawable="{Binding GridDrawable}">
         </GraphicsView>
 

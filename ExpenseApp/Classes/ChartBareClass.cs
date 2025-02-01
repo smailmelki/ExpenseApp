@@ -17,8 +17,8 @@ namespace ExpenseApp.Classes
             float beamYEnd = height - 10;
 
             float p = width / data.Count;
-            //if (p > 50)
-            //    p = 50;
+            if (p > 50)
+                p = 50;
             float margin = (width - p * data.Count) / 2;
 
             float x = p / 2;
