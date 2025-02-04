@@ -3,9 +3,9 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                x:Class="ExpenseApp.ItemsView.AddCatPopup"
                xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
-               xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+               xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"                 
                Color="Transparent"
-               Size="270,250">
+               Size="270,210">
     <Border BackgroundColor="Gray" x:Name="borderContainer">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="20" />
@@ -17,12 +17,12 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="End"
                    Margin="10"/>
-            <Grid ColumnDefinitions="*,50" ColumnSpacing="10" FlowDirection="RightToLeft">
+            <Grid ColumnDefinitions="*,50" ColumnSpacing="10">
                 <Entry Grid.Column="0" x:Name="txtItemTitle" Placeholder="{x:Static lang:AppResource.Name}" TextColor="Black"/>
                 <BoxView Grid.Column="1" x:Name="boxColor"/>
             </Grid>
-            <Button x:Name="btnIcon" Text="{x:Static lang:AppResource.btnEditicon}" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-            <Button x:Name="btnColor" Text="{x:Static lang:AppResource.btnEditColor}" WidthRequest="110" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
+            <Button x:Name="btnColor" Text="{x:Static lang:AppResource.btnEditColor}" WidthRequest="110" 
+                    MinimumHeightRequest="30" HeightRequest="30" Padding="0" Clicked="btnColor_Clicked"/>
             <HorizontalStackLayout Spacing="5" Padding="10">
                 <Button x:Name="btnSave" Text="{x:Static lang:AppResource.btnAdd}" Clicked="btnSave_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
                 <Button x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" Clicked="btnCancel_Clicked" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>

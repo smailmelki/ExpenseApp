@@ -18,6 +18,10 @@ public partial class AddCatPopup : Popup
             lblTitle.Text = " ⁄œÌ· «·⁄‰’—";
             GetItem();
         }
+        else
+        {
+            boxColor.Color = GetRandomColor();
+        }
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             borderContainer.FlowDirection = FlowDirection.RightToLeft;
         else
@@ -31,15 +35,8 @@ public partial class AddCatPopup : Popup
         string? hexColor = treeItem.color; // «··Ê‰ »’Ì€… Hex
         if (string.IsNullOrEmpty(hexColor))
             hexColor = "#FFFFFF"; // «··Ê‰ «·√»Ì÷
-                                  // ≈“«·… ⁄·«„… # ≈–« ﬂ«‰  „ÊÃÊœ…
-        hexColor = hexColor.TrimStart('#');
-
         //  ÕÊÌ· «·ﬁÌ„ ≈·Ï √—ﬁ«„ Ê ÕÊÌ·Â« ≈·Ï ·Ê‰
-        boxColor.Color = Color.FromRgb(
-            Convert.ToInt32(hexColor.Substring(0, 2), 16), // «·√Õ„—
-            Convert.ToInt32(hexColor.Substring(2, 2), 16), // «·√Œ÷—
-            Convert.ToInt32(hexColor.Substring(4, 2), 16)  // «·√“—ﬁ
-            );
+        boxColor.Color = Color.FromArgb(hexColor);
     }
 
     private static readonly Random _random = new Random();
@@ -64,7 +61,7 @@ public partial class AddCatPopup : Popup
         else
         {
             treeItem.Title = txtItemTitle.Text;
-            treeItem.color = GetRandomColor().ToHex();
+            treeItem.color = boxColor.Color.ToHex();
             return true;
         }
     }
@@ -79,5 +76,16 @@ public partial class AddCatPopup : Popup
     private async void btnCancel_Clicked(object sender, EventArgs e)
     {
        await CloseAsync(null);
+    }
+
+    private async void btnColor_Clicked(object sender, EventArgs e)
+    {
+        var popup = new ColorsPopup();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+
+        if (result is Color selectedColor)
+        {
+            boxColor.Color = selectedColor;
+        }
     }
 }
