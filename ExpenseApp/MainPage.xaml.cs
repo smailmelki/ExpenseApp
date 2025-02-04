@@ -1,4 +1,5 @@
-﻿using ExpenseApp.Pages;
+﻿using ExpenseApp.Classes;
+using ExpenseApp.Pages;
 
 namespace ExpenseApp
 {
@@ -16,6 +17,8 @@ namespace ExpenseApp
         public MainPage()
         {
             InitializeComponent();
+            if (Application.Current != null)
+                Application.Current.UserAppTheme = Tools.Mode == "Dark" ? AppTheme.Dark : AppTheme.Light;
             Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
        

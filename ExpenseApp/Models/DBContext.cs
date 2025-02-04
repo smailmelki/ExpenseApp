@@ -64,11 +64,11 @@ namespace ExpenseApp.Models
                       .HasMaxLength(100)
                       .HasColumnName("iconPath");
                 entity.HasData(
-                    new TreeItem { ID = 1, Title = "طعام" ,color = "#FF0000" },   // أحمر
-                    new TreeItem { ID = 2, Title = "مواصلات", color = "#FFA500" }, // برتقالي
-                    new TreeItem { ID = 3, Title = "صحة", color = "#FFFF00" },    // أصفر
-                    new TreeItem { ID = 4, Title = "رفاهية", color = "#008000" }, // أخضر
-                    new TreeItem { ID = 5, Title = "فواتير", color = "#0000FF" }  // أزرق
+                    new TreeItem { ID = 1, Title = "طعام" ,color = "#00FFFF" },   // Aqua
+                    new TreeItem { ID = 2, Title = "مواصلات", color = "#FFE4C4" }, // Bisque
+                    new TreeItem { ID = 3, Title = "صحة", color = "#0000FF" },    // Blue
+                    new TreeItem { ID = 4, Title = "رفاهية", color = "#8A2BE2" }, // BlueViolet
+                    new TreeItem { ID = 5, Title = "فواتير", color = "#A52A2A" }  // Brown
                 );
             });
         }

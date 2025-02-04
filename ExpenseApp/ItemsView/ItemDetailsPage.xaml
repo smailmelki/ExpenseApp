@@ -5,8 +5,9 @@
              x:Class="ExpenseApp.ItemsView.ItemDetailsPage"
              Shell.TabBarIsVisible="False"
              Title="{x:Static lang:AppResource.lblDetails}">
-    <VerticalStackLayout>
-        <Label 
+    <Grid RowDefinitions="50,180,*">
+
+        <Label Grid.Row="0"
               x:Name="lblMonth"
               Text="Welcome"
               FontSize="Title"
@@ -14,54 +15,53 @@
               HorizontalOptions="Center"
              Margin="5"/>
 
-        <Border Padding="5" HeightRequest="200">
+        <Border Grid.Row="1" Padding="5" HeightRequest="200">
             <GraphicsView x:Name="graphicsView"
-                      Margin="20,0"
-              HeightRequest="180"
-              Drawable="{Binding GridDrawable}">
+                          Margin="20,0"
+                          HeightRequest="180"
+                          Drawable="{Binding GridDrawable}">
             </GraphicsView>
         </Border>
 
-        <ScrollView>
-            <CollectionView x:Name="CollectionDetails" EmptyView="No items to display" Margin="10">
+        <CollectionView Grid.Row="2" x:Name="CollectionDetails" EmptyView="No items to display" Margin="10">
 
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.Header>
-                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,1">
-                        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{x:Static lang:AppResource.lblDetails}" 
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,1">
+                    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{x:Static lang:AppResource.lblDetails}" 
                            HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Margin="10"/>
-                        <Label Grid.Column="0" Grid.Row="1" Text="{x:Static lang:AppResource.lblItem}" FontAttributes="Bold" Margin="9"/>
-                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static lang:AppResource.lblCatigory}" FontAttributes="Bold" Margin="9"/>
-                        <Label Grid.Column="2" Grid.Row="1" Text="{x:Static lang:AppResource.lblPrix}" FontAttributes="Bold" Margin="9"/>
-                        <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
-                    </Grid>
-                </CollectionView.Header>
+                    <Label Grid.Column="0" Grid.Row="1" Text="{x:Static lang:AppResource.lblPrix}" FontAttributes="Bold" Margin="9"/>
+                    <Label Grid.Column="1" Grid.Row="1" Text="{x:Static lang:AppResource.lblCatigory}" FontAttributes="Bold" Margin="9"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="{x:Static lang:AppResource.lblItem}" FontAttributes="Bold" Margin="9"/>
+                    <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="0"/>
+                </Grid>
+            </CollectionView.Header>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <ContentView Margin="1" Padding="1">
-                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1">
-                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill" FontSize="Subtitle" FontAttributes="Bold"/>
-                                <Label Grid.Column="0" Grid.Row="1" Text="{Binding date , StringFormat='{0:dd MMMM HH:mm}'}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
-                                <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
-                                <Label Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
-                                <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
-                            </Grid>
-                        </ContentView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
+            </CollectionView.ItemsLayout>
 
-                <CollectionView.Footer>
-                    <Grid ColumnDefinitions="*" RowDefinitions="40,1">
-                        <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="{x:Static lang:AppResource.lblStatisTotal}" Margin="5"
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Margin="1" Padding="1">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1" Margin="0" FlowDirection="MatchParent">
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Grid.Column="0" Grid.Row="1" Text="{Binding date , StringFormat='{0:dd MMMM HH:mm}'}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Amount}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+                        </Grid>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.Footer>
+                <Grid ColumnDefinitions="*" RowDefinitions="40,1">
+                    <Label Grid.Column="0" Grid.Row="0" x:Name="lblTotal" Text="{x:Static lang:AppResource.lblStatisTotal}" Margin="5"
                                HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
-                        <BoxView Grid.Column="0" Grid.Row="1" WidthRequest="100"/>
-                    </Grid>
-                </CollectionView.Footer>
-            </CollectionView>
-        </ScrollView>
-    </VerticalStackLayout>
+                    <BoxView Grid.Column="0" Grid.Row="1" WidthRequest="100"/>
+                </Grid>
+            </CollectionView.Footer>
+        </CollectionView>
+
+    </Grid>
 </ContentPage>
