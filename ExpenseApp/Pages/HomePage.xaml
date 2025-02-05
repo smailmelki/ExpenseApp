@@ -54,7 +54,6 @@
             </CollectionView>
         </Grid>
 
-        <!-- الزر يظهر أسفل الشبكة -->
         <!-- الزر يظهر في الزاوية السفلية بشكل دائري -->
         <Button AbsoluteLayout.LayoutBounds="0, 1"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
