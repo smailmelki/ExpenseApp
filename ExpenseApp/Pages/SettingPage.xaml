@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
+             xmlns:myTools="clr-namespace:ExpenseApp.ParsonalTools"
              x:Class="ExpenseApp.Pages.SettingPage"           
              Title="{x:Static lang:AppResource.SettingTitle}">
     <ScrollView>
@@ -95,12 +96,12 @@
                     </HorizontalStackLayout>
                     <Label Text="{x:Static lang:AppResource.lblNoyify}" FontSize="Body"/>
                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                        <Button x:Name="btn3" WidthRequest="90" Text="{x:Static lang:AppResource._3Hours}" BackgroundColor="Gray" BorderColor="DarkGray" 
-                                BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
-                        <Button x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
-                        <Button x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False"/>
+                        <myTools:MyButton x:Name="btn3" WidthRequest="90" Text="{x:Static lang:AppResource._3Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="3"/>
+                        <myTools:MyButton x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6"/>
+                        <myTools:MyButton x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6"/>
                     </HorizontalStackLayout>
                     <Button x:Name="btnNotify" Text="{x:Static lang:AppResource.SaveNotify}" Clicked="btnNotify_ClickedAsync"/>
                 </VerticalStackLayout>

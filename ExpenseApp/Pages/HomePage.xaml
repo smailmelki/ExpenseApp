@@ -23,7 +23,7 @@
                     <Label x:Name="AmountDay" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
+            <Border Grid.Column="1" Grid.Row="1" x:Name="brdrMonth" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="{x:Static lang:AppResource.lblExpMonth}" FontSize="18" HorizontalOptions="Center"/>
                     <Label x:Name="AmountMonth" FontSize="20" HorizontalOptions="Center"/>

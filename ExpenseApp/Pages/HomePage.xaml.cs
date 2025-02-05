@@ -63,6 +63,7 @@ public partial class HomePage : ContentPage
         AmountDay.Text = SumDay.ToString("C", culture);
         SumMonth = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount);
         AmountMonth.Text = SumMonth.ToString("C", culture);
+        brdrMonth.BackgroundColor = (SumMonth > double.Parse(Tools.Amount)) ? Colors.OrangeRed : Colors.Transparent;
     }
 
     private async void btnAddItem_Clicked(object sender, EventArgs e)

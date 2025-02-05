@@ -4,6 +4,7 @@ using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
+using ExpenseApp.ParsonalTools;
 using ExpenseApp.Resources.languag;
 using Microsoft.EntityFrameworkCore;
 using Plugin.LocalNotification;
@@ -40,7 +41,6 @@ public partial class SettingPage : ContentPage
             new Currency { Name = AppResource.Cur_JPY, Symbol = "¥", Culture = "ja-JP" }
         };
 
-
         // ربط القائمة بـ Picker
         CurrencyPicker.ItemsSource = currencies;
     }
@@ -57,19 +57,18 @@ public partial class SettingPage : ContentPage
             SwNotify.IsToggled = Tools.Notify;
             lblCaruncy2.Text = Tools.currency;
 
-            btn3.TextColor = Tools.NotifyTime == btn3.Text ? Colors.Black : Colors.White;
-            btn6.TextColor = Tools.NotifyTime == btn6.Text ? Colors.Black : Colors.White;
-            btn12.TextColor = Tools.NotifyTime == btn12.Text ? Colors.Black : Colors.White;
+            btn3.TextColor = Tools.NotifyTime == btn3.tag ? Colors.Black : Colors.White;
+            btn6.TextColor = Tools.NotifyTime == btn6.tag ? Colors.Black : Colors.White;
+            btn12.TextColor = Tools.NotifyTime == btn12.tag ? Colors.Black : Colors.White;
 
-            btn3.BackgroundColor = Tools.NotifyTime == btn3.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-            btn6.BackgroundColor = Tools.NotifyTime == btn6.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-            btn12.BackgroundColor = Tools.NotifyTime == btn12.Text ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn3.BackgroundColor = Tools.NotifyTime == btn3.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn6.BackgroundColor = Tools.NotifyTime == btn6.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn12.BackgroundColor = Tools.NotifyTime == btn12.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
 
         }
-        catch (Exception ex)
+        catch 
         {
-        }
-       
+        }       
     }
 
     // معالج حدث اختيار العملة
@@ -90,23 +89,33 @@ public partial class SettingPage : ContentPage
         if (e.Value)
         {
             Tools.Mode = "Dark";
-            Application.Current.UserAppTheme = AppTheme.Dark;
+            if (Application.Current != null)
+                Application.Current.UserAppTheme = AppTheme.Dark;
         }
         else
         {
             Tools.Mode = "Light";
-            Application.Current.UserAppTheme = AppTheme.Light;
+            if (Application.Current != null)
+                Application.Current.UserAppTheme = AppTheme.Light;
         }
         Tools.SaveMode();
     }
-
+    /// <summary>
+    /// حفظ اسم المستخدم
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void btnName_Clicked(object sender, EventArgs e)
     {
         Tools.Name = txtName.Text;
         Tools.SaveName();
         await Toast.Make(AppResource.msg_Saved, ToastDuration.Short, 14).Show();
     }
-
+    /// <summary>
+    /// حفظ العملة ورصيد المحفضة
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void btnAmount_ClickedAsync(object sender, EventArgs e)
     {
         Tools.Amount = txtAmount.Text;
@@ -143,13 +152,9 @@ public partial class SettingPage : ContentPage
             bool backupDone = await SqliteBackupManager.BackupDatabaseAsync(databasePath, backupPath);
 
             if (backupDone)
-            {
                 await Toast.Make(AppResource.msg_BackUp2).Show();
-            }
             else
-            {
                 await Toast.Make(AppResource.Msg_BackUp3).Show();
-            }
         }
     }
     /// <summary>
@@ -175,8 +180,6 @@ public partial class SettingPage : ContentPage
 
         try
         {
-            ///////////////////////////////
-
             if (SchemaComparer.CompareSchemas(backupPath, DatabasePath))
             {
                 // استعادة قاعدة البيانات
@@ -196,10 +199,8 @@ public partial class SettingPage : ContentPage
             {
                 await Toast.Make(AppResource.msg_Restor4).Show();
             }
-            ///////////////////////////////
-
         }
-        catch (Exception ex)
+        catch
         {
             await Toast.Make(AppResource.msg_Restor5).Show();
         }
@@ -214,6 +215,11 @@ public partial class SettingPage : ContentPage
         return $"backup_Exp_{DateTime.Now:yyyyMMdd_HHmmss}.db";
     }
 
+    /// <summary>
+    /// التحويل الى اللغة العربية
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void btnAr_Clicked(object sender, EventArgs e)
     {
         btnAr.BackgroundColor = Colors.Orange;
@@ -223,6 +229,11 @@ public partial class SettingPage : ContentPage
         ChangeLanguage("ar");
     }
 
+    /// <summary>
+    /// التحويل الى اللغة الانجليزية
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void btnEn_Clicked(object sender, EventArgs e)
     {
         btnEn.BackgroundColor = Colors.Orange;
@@ -232,22 +243,33 @@ public partial class SettingPage : ContentPage
         ChangeLanguage("en");
     }
 
+    /// <summary>
+    /// اعادة تحميل الصفحة الرئيسية
+    /// </summary>
+    /// <param name="languageCode"></param>
     public void ChangeLanguage(string languageCode)
     {
         var culture = new CultureInfo(languageCode);
         Thread.CurrentThread.CurrentCulture = culture;
         Thread.CurrentThread.CurrentUICulture = culture;
-
         // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
         App.Current.MainPage = new AppShell();
     }
 
-
+    /// <summary>
+    /// تفعيل الاشعارات
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void SwNotify_Toggled(object sender, ToggledEventArgs e)
     {
         btn3.IsEnabled = btn6.IsEnabled = btn12.IsEnabled = SwNotify.IsToggled;
     }
-
+    /// <summary>
+    /// تحديد وقت الاشعارات
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_Clicked(object sender, EventArgs e)
     {
         btn3.BackgroundColor =
@@ -260,12 +282,19 @@ public partial class SettingPage : ContentPage
         btn12.TextColor =
         Colors.White;
 
-        var btn = sender as Button;
-        btn.BackgroundColor = Color.FromArgb("#FFFFFF");
-        btn.TextColor = Colors.Black;
-        NotifyTime = btn.Text;
+        var btn = sender as MyButton;
+        if (btn != null)
+        {
+            btn.BackgroundColor = Color.FromArgb("#FFFFFF");
+            btn.TextColor = Colors.Black;
+            NotifyTime = btn.tag;
+        }
     }
-
+    /// <summary>
+    /// حغظ اعدادات الاشعار
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void btnNotify_ClickedAsync(object sender, EventArgs e)
     {
         // التحقق من اختيار وقت التنبيه إذا كان التبديل مفعلاً
@@ -286,11 +315,10 @@ public partial class SettingPage : ContentPage
 
         if (SwNotify.IsToggled)
         {
+            double Hours;
             // تحديد عدد الساعات بناءً على اختيار المستخدم
-            double Hours = NotifyTime == btn3.Text ? 3 :
-                        NotifyTime == btn6.Text ? 6 :
-                        NotifyTime == btn12.Text ? 12 : 0;
-
+            if (double.TryParse(NotifyTime, out Hours))
+                Hours = double.Parse(NotifyTime);
             if (Hours > 0)
             {
                 // جدولة الإشعار بناءً على الوقت المختار
