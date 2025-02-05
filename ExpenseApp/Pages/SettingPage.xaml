@@ -101,7 +101,7 @@
                         <myTools:MyButton x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
                                 BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6"/>
                         <myTools:MyButton x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6"/>
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="12"/>
                     </HorizontalStackLayout>
                     <Button x:Name="btnNotify" Text="{x:Static lang:AppResource.SaveNotify}" Clicked="btnNotify_ClickedAsync"/>
                 </VerticalStackLayout>

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Classes;
@@ -61,14 +62,15 @@ public partial class SettingPage : ContentPage
             btn6.TextColor = Tools.NotifyTime == btn6.tag ? Colors.Black : Colors.White;
             btn12.TextColor = Tools.NotifyTime == btn12.tag ? Colors.Black : Colors.White;
 
-            btn3.BackgroundColor = Tools.NotifyTime == btn3.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-            btn6.BackgroundColor = Tools.NotifyTime == btn6.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
-            btn12.BackgroundColor = Tools.NotifyTime == btn12.tag ? Color.FromArgb("#FFFFFF") : Colors.Gray;
+            btn3.BackgroundColor = Tools.NotifyTime == btn3.tag ? Colors.White : Colors.Gray;
+            btn6.BackgroundColor = Tools.NotifyTime == btn6.tag ? Colors.White : Colors.Gray;
+            btn12.BackgroundColor = Tools.NotifyTime == btn12.tag ? Colors.White : Colors.Gray;
 
         }
-        catch 
+        catch (Exception ex)
         {
-        }       
+            Debug.WriteLine("حدث استثناء: " + ex.Message);
+        }
     }
 
     // معالج حدث اختيار العملة

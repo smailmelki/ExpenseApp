@@ -6,6 +6,7 @@ using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
+using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
@@ -63,7 +64,9 @@ public partial class HomePage : ContentPage
         AmountDay.Text = SumDay.ToString("C", culture);
         SumMonth = db.DetailItems.Where(b => b.Date.Year == DateTime.Now.Year && b.Date.Month == DateTime.Now.Month).Sum(s => s.Amount);
         AmountMonth.Text = SumMonth.ToString("C", culture);
-        brdrMonth.BackgroundColor = (SumMonth > double.Parse(Tools.Amount)) ? Colors.OrangeRed : Colors.Transparent;
+        //brdrMonth.BackgroundColor = (SumMonth > double.Parse(Tools.Amount)) ? Colors.OrangeRed : Colors.Transparent;
+        brdrMonth.Stroke = (SumMonth > double.Parse(Tools.Amount)) ? Colors.OrangeRed : Colors.Gray;
+        //brdrMonth.StrokeThickness = 1;  //  ⁄ÌÌ‰ ”„ﬂ «·ÕœÊœ ≈·Ï 2
     }
 
     private async void btnAddItem_Clicked(object sender, EventArgs e)
@@ -170,6 +173,7 @@ public partial class HomePage : ContentPage
                                     // «·Õ–› «·‰Â«∆Ì „‰ ﬁ«⁄œ… «·»Ì«‰« 
                                     db.DetailItems.Remove(itemToDelete);
                                     db.SaveChanges();
+                                    GetData();
                                 }
                                 //«·€«¡  Ã„Ìœ «·Ê«ÃÂ…
                                 itemCollection.IsEnabled = true;

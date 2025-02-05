@@ -17,13 +17,15 @@
                 <Label Text="{Binding CurrentDate}" FontSize="Title" Padding="0,10"/>
                 <Label Text="{x:Static lang:AppResource.lblHomeWelcome}" FontSize="16"/>
             </VerticalStackLayout>
-            <Border Grid.Column="0" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
+            <Border Grid.Column="0" Grid.Row="1" Padding="10" StrokeShape="RoundRectangle 10,10,10,10"
+                    Stroke="Gray">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="{x:Static lang:AppResource.lblExpToday}" FontSize="18" HorizontalOptions="Center"/>
                     <Label x:Name="AmountDay" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1" x:Name="brdrMonth" Padding="10" StrokeShape="RoundRectangle 10,10,10,10">
+            <Border Grid.Column="1" Grid.Row="1" x:Name="brdrMonth" Padding="10" StrokeShape="RoundRectangle 10,10,10,10"
+                    Stroke="Gray">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="{x:Static lang:AppResource.lblExpMonth}" FontSize="18" HorizontalOptions="Center"/>
                     <Label x:Name="AmountMonth" FontSize="20" HorizontalOptions="Center"/>
