@@ -9,7 +9,7 @@ namespace ExpenseApp
         {
             InitializeComponent();
             // تعيين اللغة الافتراضية (مثلاً العربية)
-            CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(Tools.Long);
+            CultureInfo.CurrentUICulture = CultureManeger.GetCultureInfo(Tools.Long);
             MainPage = new AppShell();
         }
 

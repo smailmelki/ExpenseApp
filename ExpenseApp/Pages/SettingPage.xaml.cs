@@ -21,29 +21,12 @@ public partial class SettingPage : ContentPage
 	{
 		InitializeComponent();
         _notificationService = notificationService;
-        FillCurrencyPicker();
+        CurrencyPicker.ItemsSource = CultureManeger.currencies;
         GetDefault();
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             FlowDirection = FlowDirection.RightToLeft;
         else
             FlowDirection = FlowDirection.LeftToRight;
-    }
-
-    private void FillCurrencyPicker()
-    {
-        // قائمة العملات مع رموزها
-        var currencies = new List<Currency>
-        {
-            new Currency { Name = AppResource.Cur_DZD, Symbol = AppResource.Sym_DZD, Culture = "ar-DZ" },
-            new Currency { Name = AppResource.Cur_SAR, Symbol = "﷼", Culture = "ar-SA" },
-            new Currency { Name = AppResource.Cur_USD, Symbol = "$", Culture = "en-US" },
-            new Currency { Name = AppResource.Cur_euro, Symbol = "€", Culture = "fr-FR" },
-            new Currency { Name = AppResource.Cur_GBP, Symbol = "£", Culture = "en-GB" },
-            new Currency { Name = AppResource.Cur_JPY, Symbol = "¥", Culture = "ja-JP" }
-        };
-
-        // ربط القائمة بـ Picker
-        CurrencyPicker.ItemsSource = currencies;
     }
     private void GetDefault()
     {
@@ -228,7 +211,7 @@ public partial class SettingPage : ContentPage
         btnEn.BackgroundColor = Colors.Transparent;
         Tools.Long = "ar";
         Tools.SaveLong();
-        ChangeLanguage("ar");
+        CultureManeger.ChangeLanguage(Tools.Long);
     }
 
     /// <summary>
@@ -242,21 +225,8 @@ public partial class SettingPage : ContentPage
         btnAr.BackgroundColor = Colors.Transparent;
         Tools.Long = "en";
         Tools.SaveLong();
-        ChangeLanguage("en");
-    }
-
-    /// <summary>
-    /// اعادة تحميل الصفحة الرئيسية
-    /// </summary>
-    /// <param name="languageCode"></param>
-    public void ChangeLanguage(string languageCode)
-    {
-        var culture = new CultureInfo(languageCode);
-        Thread.CurrentThread.CurrentCulture = culture;
-        Thread.CurrentThread.CurrentUICulture = culture;
-        // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
-        App.Current.MainPage = new AppShell();
-    }
+        CultureManeger.ChangeLanguage(Tools.Long);
+    }   
 
     /// <summary>
     /// تفعيل الاشعارات
@@ -422,11 +392,4 @@ public partial class SettingPage : ContentPage
 
 
     #endregion
-}
-// كائن لتمثيل العملة
-public class Currency
-{
-    public string? Name { get; set; }
-    public string? Symbol { get; set; }
-    public string? Culture { get; set; }
 }
