@@ -14,6 +14,7 @@ namespace ExpenseApp.Pages;
 
 public partial class SettingPage : ContentPage
 {
+    CultureManeger cultureManeger = new CultureManeger();
     string NotifyTime = string.Empty;
     int _tapCount;
     private readonly INotificationService _notificationService;
@@ -21,7 +22,7 @@ public partial class SettingPage : ContentPage
 	{
 		InitializeComponent();
         _notificationService = notificationService;
-        CurrencyPicker.ItemsSource = CultureManeger.currencies;
+        CurrencyPicker.ItemsSource = cultureManeger.currencies;
         GetDefault();
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             FlowDirection = FlowDirection.RightToLeft;

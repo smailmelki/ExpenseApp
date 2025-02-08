@@ -15,7 +15,7 @@ namespace ExpenseApp.Pages;
 public partial class HomePage : ContentPage
 {
     DBContext db;
-    CultureInfo culture = new CultureInfo(Tools.MyCultureInfo);
+    CultureInfo culture = CultureManeger.GetCultureInfo(Tools.MyCultureInfo);
     double SumMonth;
     double SumDay;
     public string CurrentDate
@@ -29,7 +29,6 @@ public partial class HomePage : ContentPage
         BindingContext = this;
         db = new DBContext();
         lblname.Text = Tools.Name;
-        culture.NumberFormat.CurrencySymbol = Tools.currency;
         GetData();
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             FlowDirection = FlowDirection.RightToLeft;

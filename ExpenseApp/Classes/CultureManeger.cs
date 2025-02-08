@@ -3,10 +3,10 @@ using System.Globalization;
 
 namespace ExpenseApp.Classes
 {
-    public static class CultureManeger
+    public class CultureManeger
     {
         // قائمة العملات مع رموزها
-        public static List<Currency> currencies = new List<Currency>
+        public List<Currency> currencies = new List<Currency>
         {
             new Currency { Name = AppResource.Cur_DZD, Symbol = AppResource.Sym_DZD, Culture = "ar-DZ" },
             new Currency { Name = AppResource.Cur_SAR, Symbol = "﷼", Culture = "ar-SA" },
@@ -21,7 +21,7 @@ namespace ExpenseApp.Classes
         /// <param name="languageCode"></param>
         public static void ChangeLanguage(string languageCode)
         {
-            var culture = new CultureInfo(languageCode);
+            var culture = GetCultureInfo(languageCode);
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
             // إعادة إنشاء الصفحة الرئيسية لتطبيق التغييرات
@@ -30,7 +30,9 @@ namespace ExpenseApp.Classes
 
         public static CultureInfo GetCultureInfo(string culture)
         {
-            return CultureInfo.GetCultureInfo(culture);
+            CultureInfo cultureInfo = new CultureInfo(culture);
+            cultureInfo.NumberFormat.CurrencySymbol = Tools.currency;
+            return cultureInfo;
             //return new CultureInfo(culture);
         }
     }

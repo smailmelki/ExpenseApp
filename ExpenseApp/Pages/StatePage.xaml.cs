@@ -10,11 +10,10 @@ public partial class StatePage : ContentPage
 {
 	DBContext db = new DBContext();
     public ObservableCollection<TreeItem> Items { get; set; } = new ObservableCollection<TreeItem>();
-    CultureInfo culture = new CultureInfo(Tools.MyCultureInfo);
+    CultureInfo culture = CultureManeger.GetCultureInfo(Tools.MyCultureInfo);
     public StatePage()
 	{
 		InitializeComponent();
-        culture.NumberFormat.CurrencySymbol = Tools.currency;
         FillPicker();
         FillData(Convert.ToInt32(pkrYear.SelectedItem));
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
