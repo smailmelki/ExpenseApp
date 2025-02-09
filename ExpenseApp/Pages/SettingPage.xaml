@@ -121,7 +121,10 @@
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Label Text="** Developed by Smail Melki **" HorizontalOptions="Center"/>
+                <VerticalStackLayout>                    
+                    <Label Text="** Developed by Smail Melki **" HorizontalOptions="Center"/>
+                    <Label Text="** version 1.2.2 **" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>
     </ScrollView>
