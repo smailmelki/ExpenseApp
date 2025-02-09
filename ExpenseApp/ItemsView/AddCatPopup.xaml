@@ -18,7 +18,7 @@
                    HorizontalOptions="End"
                    Margin="10"/>
             <Grid ColumnDefinitions="*,50" ColumnSpacing="10" RowDefinitions="50">
-                <Entry Grid.Column="0" x:Name="txtItemTitle" Placeholder="{x:Static lang:AppResource.Name}" TextColor="Black" FontSize="14"/>
+                <Entry Grid.Column="0" x:Name="txtItemTitle" Placeholder="{x:Static lang:AppResource.Name}" PlaceholderColor="White" TextColor="Black" FontSize="14"/>
                 <BoxView Grid.Column="1" x:Name="boxColor" CornerRadius="50" BackgroundColor="Transparent"/>
             </Grid>
             <Button x:Name="btnColor" Text="{x:Static lang:AppResource.btnEditColor}" WidthRequest="110" 

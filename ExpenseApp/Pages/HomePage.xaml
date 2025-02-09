@@ -77,7 +77,6 @@
                 Padding="0"
                 BorderWidth="5"
                 TextColor="Orange"
-                BorderColor="Orange"
                 BackgroundColor="Transparent"                
                 HorizontalOptions="End"
                 VerticalOptions="End"
