@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using ExpenseApp.Models;
+using ExpenseApp.Resources.languag;
 
 namespace ExpenseApp.ItemsView;
 
@@ -15,7 +16,7 @@ public partial class AddCatPopup : Popup
         this.treeItem = treeItem;
         if (treeItem.ID != 0)
         {
-            lblTitle.Text = " ⁄œÌ· «·⁄‰’—";
+            lblTitle.Text = AppResource.lbl_ItemEdit;
             GetItem();
         }
         else
@@ -55,7 +56,7 @@ public partial class AddCatPopup : Popup
     {
         if (string.IsNullOrEmpty(txtItemTitle.Text))
         {
-            Toast.Make("ÌÃ» „·√ «·»Ì«‰«  √Ê·«", ToastDuration.Short, 20).Show();
+            Toast.Make(AppResource.msg_error4, ToastDuration.Short, 14).Show();
             return false;
         }
         else

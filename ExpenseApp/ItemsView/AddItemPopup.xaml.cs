@@ -3,6 +3,8 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
+using System.Text.RegularExpressions;
+
 
 namespace ExpenseApp.ItemsView;
 
@@ -59,17 +61,17 @@ public partial class AddItemPopup
     {
         if (PkrCat.SelectedItem == null)
         {
-            await Toast.Make("íÌÈ ÇÎÊíÇÑ ÇáÝÆÉ", ToastDuration.Short, 14).Show();
+            await Toast.Make(AppResource.msg_error1, ToastDuration.Short, 14).Show();
             return false;
         }
         if (string.IsNullOrWhiteSpace(TxtAmount.Text))
         {
-            await Toast.Make("íÌÈ ÅÏÎÇá ÇáãÈáÛ", ToastDuration.Short, 14).Show();
+            await Toast.Make(AppResource.msg_error2, ToastDuration.Short, 14).Show();
             return false;
         }
-        if (!double.TryParse(TxtAmount.Text, out _))
+        if (!Regex.IsMatch(TxtAmount.Text, @"^\d+(\.\d{1,2})?$"))
         {
-            await Toast.Make("íÌÈ ÅÏÎÇá ÇáãÈáÛ ÈÔßá ÕÍíÍ", ToastDuration.Short, 14).Show();
+            await Toast.Make(AppResource.msg_error3, ToastDuration.Short, 14).Show();
             return false;
         }
         if (!string.IsNullOrWhiteSpace(TxtNote.Text) && TxtNote.Text.Length > 12)

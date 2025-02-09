@@ -351,4 +351,19 @@
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
   </data>
+  <data name="msg_error1" xml:space="preserve">
+    <value>يجب اختيار الفئة</value>
+  </data>
+  <data name="msg_error2" xml:space="preserve">
+    <value>يجب إدخال المبلغ</value>
+  </data>
+  <data name="msg_error3" xml:space="preserve">
+    <value>يجب إدخال المبلغ بشكل صحيح</value>
+  </data>
+  <data name="msg_error4" xml:space="preserve">
+    <value>يجب ادخال عنوان الصنف أولا</value>
+  </data>
+  <data name="lbl_ItemEdit" xml:space="preserve">
+    <value>تعديل العنصر</value>
+  </data>
 </root>

@@ -351,4 +351,19 @@
   <data name="btnSave" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="msg_error1" xml:space="preserve">
+    <value>Category must be selected</value>
+  </data>
+  <data name="msg_error2" xml:space="preserve">
+    <value>Amount must be entered</value>
+  </data>
+  <data name="msg_error3" xml:space="preserve">
+    <value>The amount must be entered correctly.</value>
+  </data>
+  <data name="msg_error4" xml:space="preserve">
+    <value>You must enter the item title first.</value>
+  </data>
+  <data name="lbl_ItemEdit" xml:space="preserve">
+    <value>Edit item</value>
+  </data>
 </root>

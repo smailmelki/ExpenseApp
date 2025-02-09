@@ -286,6 +286,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit item.
+        /// </summary>
+        internal static string lbl_ItemEdit {
+            get {
+                return ResourceManager.GetString("lbl_ItemEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select action.
         /// </summary>
         internal static string lblAction {
@@ -624,6 +633,42 @@ namespace ExpenseApp.Resources.languag {
         internal static string Msg_BackUp3 {
             get {
                 return ResourceManager.GetString("Msg_BackUp3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category must be selected.
+        /// </summary>
+        internal static string msg_error1 {
+            get {
+                return ResourceManager.GetString("msg_error1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount must be entered.
+        /// </summary>
+        internal static string msg_error2 {
+            get {
+                return ResourceManager.GetString("msg_error2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount must be entered correctly..
+        /// </summary>
+        internal static string msg_error3 {
+            get {
+                return ResourceManager.GetString("msg_error3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter the item title first..
+        /// </summary>
+        internal static string msg_error4 {
+            get {
+                return ResourceManager.GetString("msg_error4", resourceCulture);
             }
         }
         

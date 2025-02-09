@@ -53,7 +53,7 @@ public partial class SettingPage : ContentPage
         }
         catch (Exception ex)
         {
-            Debug.WriteLine("حدث استثناء: " + ex.Message);
+            Debug.WriteLine(ex.Message);
         }
     }
 
