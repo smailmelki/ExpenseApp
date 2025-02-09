@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Views;
 using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
+using System.Globalization;
 
 namespace ExpenseApp.ItemsView;
 
@@ -10,6 +11,10 @@ public partial class CatigoryPage : ContentPage
     public CatigoryPage()
 	{
 		InitializeComponent();
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            FlowDirection = FlowDirection.RightToLeft;
+        else
+            FlowDirection = FlowDirection.LeftToRight;
         collectionItem.ItemsSource = db.TreeItems.ToList();
     }
 

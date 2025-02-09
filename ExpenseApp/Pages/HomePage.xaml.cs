@@ -6,7 +6,6 @@ using ExpenseApp.Classes;
 using ExpenseApp.ItemsView;
 using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
-using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
@@ -79,131 +78,131 @@ public partial class HomePage : ContentPage
             GetData();
         }
     }
-    private async void OnItemLongPressedAsync(object sender, TappedEventArgs e)
+
+    private async void Menu_Delete_Clicked(object sender, EventArgs e)
     {
-        // «·Õ’Ê· ⁄·Ï «·⁄‰’— «·„Õœœ „‰ «·”Ì«ﬁ
-        if (sender is Grid grid && grid.BindingContext is ExpensView selectedItem)
+        // «” —Ã«⁄ «·‹ CommandParameter «·–Ì ÌÕ„· «·‹ ID
+        var swipeItem = sender as SwipeItem;
+        if (swipeItem != null && 
+            swipeItem.CommandParameter != null && 
+            int.TryParse(swipeItem?.CommandParameter?.ToString(), out int id))
         {
-            try
+            var selectedItem = items.FirstOrDefault(i => i.ID == id);
+            if (selectedItem == null)
             {
-                string action = await DisplayActionSheet(
-                    AppResource.lblAction,
-                    AppResource.btnCancel,
-                    null,
-                    AppResource.lblDelete,
-                    AppResource.lblEdit
-                );
-
-                switch (action)
-                {
-                    case var a when a == AppResource.lblDelete:
-                        //  √ﬂÌœ «·Õ–›
-                        bool confirmDelete = await DisplayAlert(
-                            AppResource.lblDelete,
-                            $"{AppResource.lblDeleteMsg} {selectedItem.Title}?",
-                            AppResource.lblYes,
-                            AppResource.lblNo
-                        );
-
-                        if (confirmDelete)
-                        {
-                            var itemToDelete = db.DetailItems.Find(selectedItem.ID);
-                            if (itemToDelete != null)
-                            {
-                                double amount = itemToDelete.Amount;
-                                var selectedIndex = items.IndexOf(selectedItem);
-                                // ≈“«·… «·⁄‰’— „ƒﬁ « „‰ Ê«ÃÂ… «·„” Œœ„
-                                items.Remove(selectedItem);
-                                // Ã„Ìœ «·Ê«ÃÂ… «À‰«¡ «·Õ–›
-                                itemCollection.IsEnabled = false;
-                                btnAddItem.IsEnabled = false;
-
-                                SumDay -= amount;
-                                SumMonth -= amount;
-                                AmountDay.Text = SumDay.ToString("C", culture);
-                                AmountMonth.Text = SumMonth.ToString("C", culture);
-
-                                bool backDelete = false;// ≈⁄œ«œ „ €Ì— ·· —«Ã⁄
-                                var snackbarOptions = new SnackbarOptions
-                                {
-                                    BackgroundColor = Colors.DarkGray,
-                                    TextColor = Colors.White,
-                                    ActionButtonTextColor = Colors.Yellow,
-                                    CornerRadius = new CornerRadius(10)
-                                };
-                                // ≈‰‘«¡ ﬂ«∆‰ TaskCompletionSource ·≈œ«—… «·«‰ Ÿ«—
-                                var tcs = new TaskCompletionSource<bool>();
-
-                                // ≈‰‘«¡ Snackbar
-                                var snackbar = Snackbar.Make(
-                                    AppResource.lblDeleteSecces,
-                                    action: () =>
-                                    {
-                                        backDelete = true; // «· —«Ã⁄ ⁄‰ «·Õ–›
-                                        tcs.TrySetResult(true); // ≈ﬂ„«· «·„Â„…
-                                    },
-                                    actionButtonText: AppResource.btnBack,
-                                    duration: TimeSpan.FromSeconds(5),
-                                    visualOptions: snackbarOptions
-                                );
-
-                                // ⁄—÷ Snackbar
-                                await snackbar.Show();
-
-                                // «·«‰ Ÿ«— Õ Ï «‰ Â«¡ Snackbar √Ê «·÷€ÿ ⁄·Ï " —«Ã⁄"
-                                await Task.WhenAny(tcs.Task, Task.Delay(5000));
-
-                                if (backDelete)
-                                {
-                                    // «” —Ã«⁄ «·⁄‰’— ≈·Ï «·ﬁ«∆„…
-                                    items.Insert(selectedIndex, selectedItem); // ≈⁄«œ… «·⁄‰’—
-                                    await Toast.Make(
-                                         AppResource.lblDeleteBack,
-                                        duration: ToastDuration.Short,
-                                        textSize: 14
-                                    ).Show();
-                                    SumDay += amount;
-                                    SumMonth += amount;
-                                    AmountDay.Text = SumDay.ToString("C", culture);
-                                    AmountMonth.Text = SumMonth.ToString("C", culture);
-                                }
-                                else
-                                {
-                                    // «·Õ–› «·‰Â«∆Ì „‰ ﬁ«⁄œ… «·»Ì«‰« 
-                                    db.DetailItems.Remove(itemToDelete);
-                                    db.SaveChanges();
-                                    GetData();
-                                }
-                                //«·€«¡  Ã„Ìœ «·Ê«ÃÂ…
-                                itemCollection.IsEnabled = true;
-                                btnAddItem.IsEnabled = true;
-                            }
-                        }
-                        break;
-
-                    case var b when b == AppResource.lblEdit:
-                        //  ‰›Ì– ⁄„·Ì… «· ⁄œÌ·
-                        var itemToEdit = db.DetailItems.Find(selectedItem.ID);
-                        if (itemToEdit != null)
-                        {
-                            var popup = new AddItemPopup(itemToEdit);
-                            var result = await this.ShowPopupAsync(popup);
-                            if (result is DetailItem updatedItem && updatedItem != null)
-                            {
-                                db.DetailItems.Update(updatedItem);
-                                db.SaveChanges();
-                                GetData();
-                            }
-                        }
-                        break;
-                    default:
-                        // ·« Ì „  ‰›Ì– √Ì ≈Ã—«¡
-                        break;
-                }
+                await DisplayAlert("Error", "Item not found", "OK");
+                return;
             }
-            catch (Exception ex)
+            bool confirmDelete = await DisplayAlert(
+                                AppResource.lblDelete,
+                                $"{AppResource.lblDeleteMsg} {selectedItem.Title}?",
+                                AppResource.lblYes,
+                                AppResource.lblNo
+                            );
+            // ‰›– «·⁄„·Ì… «·Œ«’… »«·Õ–›
+            if (confirmDelete)
             {
-                await DisplayAlert("Error", $"An error occurred during process\n {ex.Message}", "OK");
+                var itemToDelete = db.DetailItems.Find(selectedItem.ID);
+                if (itemToDelete != null)
+                {
+                    double amount = itemToDelete.Amount;
+                    var selectedIndex = items.IndexOf(selectedItem);
+                    // ≈“«·… «·⁄‰’— „ƒﬁ « „‰ Ê«ÃÂ… «·„” Œœ„
+                    items.Remove(selectedItem);
+                    // Ã„Ìœ «·Ê«ÃÂ… «À‰«¡ «·Õ–›
+                    itemCollection.IsEnabled = false;
+                    btnAddItem.IsEnabled = false;
+
+                    SumDay -= amount;
+                    SumMonth -= amount;
+                    AmountDay.Text = SumDay.ToString("C", culture);
+                    AmountMonth.Text = SumMonth.ToString("C", culture);
+
+                    bool backDelete = false;// ≈⁄œ«œ „ €Ì— ·· —«Ã⁄
+                    var snackbarOptions = new SnackbarOptions
+                    {
+                        BackgroundColor = Colors.DarkGray,
+                        TextColor = Colors.White,
+                        ActionButtonTextColor = Colors.Yellow,
+                        CornerRadius = new CornerRadius(10)
+                    };
+                    // ≈‰‘«¡ ﬂ«∆‰ TaskCompletionSource ·≈œ«—… «·«‰ Ÿ«—
+                    var tcs = new TaskCompletionSource<bool>();
+
+                    // ≈‰‘«¡ Snackbar
+                    var snackbar = Snackbar.Make(
+                        AppResource.lblDeleteSecces,
+                        action: () =>
+                        {
+                            backDelete = true; // «· —«Ã⁄ ⁄‰ «·Õ–›
+                            tcs.TrySetResult(true); // ≈ﬂ„«· «·„Â„…
+                        },
+                        actionButtonText: AppResource.btnBack,
+                        duration: TimeSpan.FromSeconds(5),
+                        visualOptions: snackbarOptions
+                    );
+
+                    // ⁄—÷ Snackbar
+                    await snackbar.Show();
+
+                    // «·«‰ Ÿ«— Õ Ï «‰ Â«¡ Snackbar √Ê «·÷€ÿ ⁄·Ï " —«Ã⁄"
+                    await Task.WhenAny(tcs.Task, Task.Delay(5000));
+
+                    if (backDelete)
+                    {
+                        // «” —Ã«⁄ «·⁄‰’— ≈·Ï «·ﬁ«∆„…
+                        items.Insert(selectedIndex, selectedItem); // ≈⁄«œ… «·⁄‰’—
+                        await Toast.Make(
+                             AppResource.lblDeleteBack,
+                            duration: ToastDuration.Short,
+                            textSize: 14
+                        ).Show();
+                        SumDay += amount;
+                        SumMonth += amount;
+                        AmountDay.Text = SumDay.ToString("C", culture);
+                        AmountMonth.Text = SumMonth.ToString("C", culture);
+                    }
+                    else
+                    {
+                        // «·Õ–› «·‰Â«∆Ì „‰ ﬁ«⁄œ… «·»Ì«‰« 
+                        db.DetailItems.Remove(itemToDelete);
+                        db.SaveChanges();
+                        GetData();
+                    }
+                    //«·€«¡  Ã„Ìœ «·Ê«ÃÂ…
+                    itemCollection.IsEnabled = true;
+                    btnAddItem.IsEnabled = true;
+                }
+
+            }
+        }
+    }
+
+    private async void Menu_Edit_Clicked(object sender, EventArgs e)
+    {
+        // «” —Ã«⁄ «·‹ CommandParameter «·–Ì ÌÕ„· «·‹ ID
+        var swipeItem = sender as SwipeItem;
+        if (swipeItem != null && 
+            swipeItem.CommandParameter != null && 
+            int.TryParse(swipeItem?.CommandParameter?.ToString(), out int id))
+        {
+            var selectedItem = items.FirstOrDefault(i => i.ID == id);
+            if (selectedItem == null)
+            {
+                await DisplayAlert("Error", "Item not found", "OK");
+                return;
+            }
+            var itemToEdit = db.DetailItems.Find(selectedItem.ID);
+            if (itemToEdit != null)
+            {
+                var popup = new AddItemPopup(itemToEdit);
+                var result = await this.ShowPopupAsync(popup);
+                if (result is DetailItem updatedItem && updatedItem != null)
+                {
+                    db.DetailItems.Update(updatedItem);
+                    db.SaveChanges();
+                    GetData();
+                }
             }
         }
     }

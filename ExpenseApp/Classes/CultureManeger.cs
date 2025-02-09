@@ -31,7 +31,9 @@ namespace ExpenseApp.Classes
         public static CultureInfo GetCultureInfo(string culture)
         {
             CultureInfo cultureInfo = new CultureInfo(culture);
-            cultureInfo.NumberFormat.CurrencySymbol = Tools.currency;
+            //cultureInfo.NumberFormat.CurrencySymbol = Tools.currency;
+            //AppResource.Sym_DZD
+            cultureInfo.NumberFormat.CurrencySymbol = Preferences.Default.Get<string>("Caruncy", "دج");
             return cultureInfo;
             //return new CultureInfo(culture);
         }

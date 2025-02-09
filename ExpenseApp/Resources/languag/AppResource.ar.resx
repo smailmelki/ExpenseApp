@@ -348,4 +348,7 @@
   <data name="btnBack" xml:space="preserve">
     <value>تراجع</value>
   </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
 </root>

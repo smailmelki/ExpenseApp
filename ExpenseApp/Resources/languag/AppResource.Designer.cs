@@ -169,6 +169,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string btnSave {
+            get {
+                return ResourceManager.GetString("btnSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Algerian Dinar.
         /// </summary>
         internal static string Cur_DZD {

@@ -2,6 +2,7 @@ using System.Globalization;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ExpenseApp.Models;
+using ExpenseApp.Resources.languag;
 
 namespace ExpenseApp.ItemsView;
 
@@ -12,17 +13,21 @@ public partial class AddItemPopup
     public AddItemPopup()
 	{
 		InitializeComponent();
-        PkrCat.ItemsSource = db.TreeItems.ToList();
-        detailItem = new DetailItem();
         if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
             borderContainer.FlowDirection = FlowDirection.RightToLeft;
         else
             borderContainer.FlowDirection = FlowDirection.LeftToRight;
+        PkrCat.ItemsSource = db.TreeItems.ToList();
+        detailItem = new DetailItem();       
     }
     public AddItemPopup(DetailItem detail)
     {
         InitializeComponent();
-        btnAdd.Text = "ÍÝÙ";
+        if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            borderContainer.FlowDirection = FlowDirection.RightToLeft;
+        else
+            borderContainer.FlowDirection = FlowDirection.LeftToRight;
+        btnAdd.Text = AppResource.btnSave;
         PkrCat.ItemsSource = db.TreeItems.ToList();
         detailItem = detail;
         GetData();

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lang="clr-namespace:ExpenseApp.Resources.languag"
              x:Class="ExpenseApp.ItemsView.CatigoryPage"   
-             FlowDirection="RightToLeft"
              Shell.TabBarIsVisible="False"
              Title="{x:Static lang:AppResource.Edit}">
     <AbsoluteLayout>
@@ -11,12 +10,12 @@
                               AbsoluteLayout.LayoutFlags="All" x:Name="collectionItem" EmptyView="{x:Static lang:AppResource.lblNoItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="40,*,50,50,50" Padding="5" ColumnSpacing="5">
-                        <Label Grid.Column="0" Text="{Binding ID}"/>
+                    <Grid ColumnDefinitions="40,*,70,50,50" Padding="5" ColumnSpacing="5">
+                        <Label Grid.Column="0" Text="{Binding ID}" HorizontalOptions="Center"/>
                         <Label Grid.Column="1" Text="{Binding Title}"/>
                         <BoxView Grid.Column="2" BackgroundColor="{Binding color}"/>
-                        <ImageButton Grid.Column="3" x:Name="btnEdit" Source="edit.png" Clicked="btnEdit_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
-                        <ImageButton Grid.Column="4" x:Name="btnDelete" Source="delete.png" Clicked="btnDelete_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
+                        <ImageButton Grid.Column="3" x:Name="btnEdit" Source="edit.svg" Clicked="btnEdit_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
+                        <ImageButton Grid.Column="4" x:Name="btnDelete" Source="delete.svg" Clicked="btnDelete_Clicked" BackgroundColor="Transparent" MinimumHeightRequest="20" MinimumWidthRequest="20" HeightRequest="25" WidthRequest="25"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
