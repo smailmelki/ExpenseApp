@@ -20,19 +20,21 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button AbsoluteLayout.LayoutBounds="1, 1"
+        <Button AbsoluteLayout.LayoutBounds="0, 1"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 x:Name="btnAddItem"
-                Clicked="btnAddItem_Clicked"
                 Text="+"
-                FontSize="40"
+                FontSize="34"
+                Padding="0"
+                BorderWidth="3"
+                TextColor="Orange"
+                BackgroundColor="Transparent"                
                 HorizontalOptions="End"
                 VerticalOptions="End"
-                WidthRequest="60"
-                HeightRequest="60"
-                CornerRadius="30"
-                TextColor="White"
-                Padding="0"
-                Margin="10"/>
+                WidthRequest="50"
+                HeightRequest="50"
+                CornerRadius="20"
+                Margin="10"
+                Clicked="btnAddItem_Clicked"/>
     </AbsoluteLayout>
 </ContentPage>

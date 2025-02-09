@@ -23,12 +23,12 @@
             </Grid>
             <Button x:Name="btnColor" Text="{x:Static lang:AppResource.btnEditColor}" WidthRequest="110" 
                     MinimumHeightRequest="30" HeightRequest="30" Padding="0" Clicked="btnColor_Clicked"/>
-            <HorizontalStackLayout Spacing="5" Padding="10">
-                <Button x:Name="btnSave" Text="{x:Static lang:AppResource.btnAdd}" Clicked="btnSave_Clicked" WidthRequest="70" 
+            <Grid ColumnDefinitions="1.4*,*,*" ColumnSpacing="5">
+                <Button Grid.Column="1" x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" Clicked="btnCancel_Clicked" WidthRequest="70"
                         MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-                <Button x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" Clicked="btnCancel_Clicked" WidthRequest="70"
+                <Button Grid.Column="2" x:Name="btnSave" Text="{x:Static lang:AppResource.btnAdd}" Clicked="btnSave_Clicked" WidthRequest="70" 
                         MinimumHeightRequest="30" HeightRequest="30" Padding="0"/>
-            </HorizontalStackLayout>
+            </Grid>
         </VerticalStackLayout>
     </Border>    
 </Toolkit:Popup>

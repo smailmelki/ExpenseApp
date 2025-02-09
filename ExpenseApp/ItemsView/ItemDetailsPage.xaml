@@ -43,7 +43,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView Margin="1" Padding="1">
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1" Margin="0" FlowDirection="MatchParent">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="25,25,1" Margin="0">
                             <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" MinimumWidthRequest="100" HorizontalOptions="Fill" FontSize="Subtitle" FontAttributes="Bold"/>
                             <Label Grid.Column="0" Grid.Row="1" Text="{Binding date , StringFormat='{0:dd MMMM HH:mm}'}" MinimumWidthRequest="100" HorizontalOptions="Fill"/>
                             <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Title}" MinimumWidthRequest="100" HorizontalOptions="Fill" VerticalOptions="Center"/>

@@ -15,12 +15,12 @@
             <Entry x:Name="TxtAmount" Placeholder="{x:Static lang:AppResource.lblAmountSpent}" TextColor="Black" PlaceholderColor="Gray" Keyboard="Numeric"/>
             <Editor x:Name="TxtNote" Placeholder="{x:Static lang:AppResource.lblNote}" TextColor="Black" PlaceholderColor="Gray"/>
             <Label Text="{x:Static lang:AppResource.lblDescription}" FontSize="Body" TextColor="Black"/>
-            <HorizontalStackLayout Spacing="5" FlowDirection="LeftToRight">
-                <Button x:Name="btnAdd" Text="{x:Static lang:AppResource.btnAdd}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
-            Padding="0" CornerRadius="40" Clicked="btnAdd_Clicked"/>
-                <Button x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
+            <Grid ColumnDefinitions="1.4*,*,*" ColumnSpacing="5" >
+                <Button Grid.Column="1" x:Name="btnCancel" Text="{x:Static lang:AppResource.btnCancel}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
             Padding="0" CornerRadius="40" Clicked="btnCancel_Clicked"/>
-            </HorizontalStackLayout>
+                <Button Grid.Column="2" x:Name="btnAdd" Text="{x:Static lang:AppResource.btnAdd}" WidthRequest="70" MinimumHeightRequest="30" HeightRequest="30" 
+            Padding="0" CornerRadius="40" Clicked="btnAdd_Clicked"/>
+            </Grid>
         </VerticalStackLayout>
     </Border>
 </Toolkit:Popup>
