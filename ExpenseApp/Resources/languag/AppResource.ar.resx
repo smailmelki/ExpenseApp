@@ -148,7 +148,7 @@
     <value>رصيد المحفظة : الراتب او الرصيد المخصص للإنفاق الشهري</value>
   </data>
   <data name="lblName" xml:space="preserve">
-    <value>تعديل الاسم والصورة الرمزية</value>
+    <value>تعديل الاسم</value>
   </data>
   <data name="lblNoyify" xml:space="preserve">
     <value>ارسال اشعار للتذكير بتسجيل المصروفات كل</value>

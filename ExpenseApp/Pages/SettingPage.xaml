@@ -11,100 +11,98 @@
             <Border 
                     StrokeShape="RoundRectangle 20,20,20,20"
                     Padding="15"
-                    Margin="10">                
-                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                    Margin="10">
+                <Grid RowDefinitions="*,*" ColumnDefinitions="3*,*,*,*,*">
                     <Label Grid.Column="0" Grid.Row="0" Text="{x:Static lang:AppResource.Languag}" VerticalTextAlignment="Center"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center">
-                        <Border >
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20,20,20,20" />
-                            </Border.StrokeShape>
-                            <Button x:Name="btnAr" Text="عربي" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
+                    <Border Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Button x:Name="btnAr" Text="عربي" CornerRadius="0" BorderWidth="0" 
                                     Padding="0" BackgroundColor="Orange" Clicked="btnAr_Clicked"/>
-                        </Border>
-                        <Border >
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20,20,20,20" />
-                            </Border.StrokeShape>
-                            <Button x:Name="btnEn" Text="english" CornerRadius="0" BorderWidth="0" WidthRequest="70" 
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Button x:Name="btnEn" Text="english" CornerRadius="0" BorderWidth="0" 
                                     Padding="0" BackgroundColor="Transparent" Clicked="btnEn_Clicked"/>
-                        </Border>
-                            </HorizontalStackLayout>
+                    </Border>
                     <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" Text="{x:Static lang:AppResource.Mode}"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="1" HorizontalOptions="Center">
-                        <Label Text="{x:Static lang:AppResource.Light}" VerticalTextAlignment="Center"/>
-                        <Switch x:Name="SwMode" Toggled="SwitchMode_Toggled"/>
-                        <Label Text="{x:Static lang:AppResource.Dark}" VerticalTextAlignment="Center"/>
-                    </HorizontalStackLayout>
+                    <Label Grid.Column="1" Grid.Row="1" Text="{x:Static lang:AppResource.Light}" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+                    <Switch Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" x:Name="SwMode" Toggled="SwitchMode_Toggled"  HorizontalOptions="Center"/>
+                    <Label Grid.Column="4" Grid.Row="1" Text="{x:Static lang:AppResource.Dark}" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
                 </Grid>
             </Border>
-            <Border  StrokeShape="RoundRectangle 20,20,20,20"
-                     Padding="15"
-                     Margin="10">
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                    Padding="15"
+                    Margin="10">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="{x:Static lang:AppResource.lblName}" HorizontalOptions="Center"/>
                     <Entry x:Name="txtName" Placeholder="{x:Static lang:AppResource.Name}" HorizontalTextAlignment="Center"/>
-                    <Button x:Name="btnName" Text="{x:Static lang:AppResource.Save}" Clicked="btnName_Clicked" WidthRequest="100" CornerRadius="40"/>
+                    <Button x:Name="btnName" Text="{x:Static lang:AppResource.Save}" Clicked="btnName_Clicked" WidthRequest="170"/>
                 </VerticalStackLayout>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
-                     Padding="15"
-                     Margin="10">
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" RowSpacing="5">
+                    Padding="15"
+                    Margin="10">
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="2*,1.5*,*" RowSpacing="5" ColumnSpacing="5">
                     <Label Grid.Column="0" Grid.Row="0" Text="{x:Static lang:AppResource.Balance}" VerticalOptions="Center"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
-                        <Entry x:Name="txtAmount" Placeholder="0.00" Keyboard="Numeric" 
-                               WidthRequest="120" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center"/>
-                        <Label x:Name="lblCaruncy2" Text="دج" 
-                               FontSize="16" VerticalOptions="CenterAndExpand"/>
-                    </HorizontalStackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static lang:AppResource.lblBalance}"/>
+                    <Entry Grid.Column="1" Grid.Row="0" x:Name="txtAmount" Placeholder="0.00" Keyboard="Numeric" 
+                           MinimumWidthRequest="120" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center"/>                    
+                    <Label Grid.Column="2" Grid.Row="0" x:Name="lblCaruncy2" Text="دج"                            
+                           FontSize="16" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                    
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Text="{x:Static lang:AppResource.lblBalance}"/>
+                    
                     <Label Grid.Column="0" Grid.Row="2" Text="{x:Static lang:AppResource.Currency}" VerticalOptions="Center"/>
-                    <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
-                        <Picker
-                                x:Name="CurrencyPicker"
-                                HorizontalOptions="StartAndExpand"
-                                HorizontalTextAlignment="Center"
-                                WidthRequest="120"
-                                SelectedIndexChanged="OnCurrencySelected">
-                            <Picker.ItemDisplayBinding>
-                                <Binding Path="Name" />
-                            </Picker.ItemDisplayBinding>
-                        </Picker>
-                        <Label 
-                                x:Name="lblCaruncy" 
-                                Text="دج" 
-                                FontSize="16"
-                                VerticalOptions="CenterAndExpand" />
-                    </HorizontalStackLayout>
-                    <Button x:Name="btnAmount" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                            Text="{x:Static lang:AppResource.Save}" WidthRequest="130" Clicked="btnAmount_ClickedAsync"/>
+                    <Picker Grid.Column="1" Grid.Row="2"
+                            x:Name="CurrencyPicker"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            WidthRequest="120"
+                            SelectedIndexChanged="OnCurrencySelected">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="Name" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                    <Label Grid.Column="2" Grid.Row="2"
+                            x:Name="lblCaruncy" 
+                            Text="دج" 
+                            FontSize="16"
+                           VerticalOptions="Center"
+                            HorizontalTextAlignment="Center" />
+                    
+                    <Button x:Name="btnAmount" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"
+                            Text="{x:Static lang:AppResource.Save}" WidthRequest="170" Clicked="btnAmount_ClickedAsync"/>
                 </Grid>
             </Border>
-            <Border StrokeShape="RoundRectangle 20,20,20,20"
+            <Border Grid.Column="2" Grid.Row="2"
+                    StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <Button x:Name="btnItems" Text="{x:Static lang:AppResource.Edit}" Clicked="btnItems_Clicked" WidthRequest="200" MinimumHeightRequest="40" HeightRequest="40" FontSize="12" Padding="0"/>
+                <Button x:Name="btnItems" Text="{x:Static lang:AppResource.Edit}" Clicked="btnItems_Clicked" WidthRequest="170" MinimumHeightRequest="40" HeightRequest="40" FontSize="12" Padding="0"/>
             </Border>
+            
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"
                      Margin="10">
-                <VerticalStackLayout Spacing="10">
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="80">
-                        <Label Text="{x:Static lang:AppResource.RecNotify}" VerticalTextAlignment="Center" />
-                        <Switch x:Name="SwNotify" Toggled="SwNotify_Toggled"/>
-                    </HorizontalStackLayout>
-                    <Label Text="{x:Static lang:AppResource.lblNoyify}" FontSize="Body"/>
-                    <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                        <myTools:MyButton x:Name="btn3" WidthRequest="90" Text="{x:Static lang:AppResource._3Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="3"/>
-                        <myTools:MyButton x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6"/>
-                        <myTools:MyButton x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
-                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="12"/>
-                    </HorizontalStackLayout>
-                    <Button x:Name="btnNotify" Text="{x:Static lang:AppResource.SaveNotify}" Clicked="btnNotify_ClickedAsync"/>
-                </VerticalStackLayout>
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*" RowSpacing="5" ColumnSpacing="5">
+                    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="{x:Static lang:AppResource.RecNotify}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Switch Grid.Column="2" Grid.Row="0" HorizontalOptions="Start"  x:Name="SwNotify" Toggled="SwNotify_Toggled"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Text="{x:Static lang:AppResource.lblNoyify}" FontSize="Body"/>
+
+                    <myTools:MyButton Grid.Column="0" Grid.Row="2" x:Name="btn3" WidthRequest="90" Text="{x:Static lang:AppResource._3Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="3" Margin="10"/>
+                    <myTools:MyButton Grid.Column="1" Grid.Row="2" x:Name="btn6" WidthRequest="90" Text="{x:Static lang:AppResource._6Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="6" Margin="10"/>
+                    <myTools:MyButton Grid.Column="2" Grid.Row="2" x:Name="btn12" WidthRequest="90" Text="{x:Static lang:AppResource._12Hours}" BackgroundColor="Gray" 
+                                BorderColor="DarkGray" BorderWidth="3" CornerRadius="0" Clicked="Button_Clicked" IsEnabled="False" tag="12" Margin="10"/>
+
+                    <Button  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" WidthRequest="170"
+                             x:Name="btnNotify" Text="{x:Static lang:AppResource.SaveNotify}" Clicked="btnNotify_ClickedAsync"/>
+                </Grid>
             </Border>
             <Border StrokeShape="RoundRectangle 20,20,20,20"
                      Padding="15"

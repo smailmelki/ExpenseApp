@@ -148,7 +148,7 @@
     <value>Wallet Balance : The salary or the designated amount for monthly expenses</value>
   </data>
   <data name="lblName" xml:space="preserve">
-    <value>Edit Name and avatar</value>
+    <value>Edit Name</value>
   </data>
   <data name="lblNoyify" xml:space="preserve">
     <value>Send a reminder notification to log expenses svery</value>
