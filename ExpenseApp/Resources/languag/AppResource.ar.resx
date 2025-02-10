@@ -366,4 +366,10 @@
   <data name="lbl_ItemEdit" xml:space="preserve">
     <value>تعديل العنصر</value>
   </data>
+  <data name="lbl_NoDetails" xml:space="preserve">
+    <value>بدون تفاصيل</value>
+  </data>
+  <data name="msg_Text_Length" xml:space="preserve">
+    <value>يجب أن لا تتجاوز النص 12 حرفا</value>
+  </data>
 </root>

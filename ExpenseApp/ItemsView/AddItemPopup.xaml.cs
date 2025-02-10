@@ -5,9 +5,7 @@ using ExpenseApp.Models;
 using ExpenseApp.Resources.languag;
 using System.Text.RegularExpressions;
 
-
 namespace ExpenseApp.ItemsView;
-
 public partial class AddItemPopup
 {
     DBContext db = new DBContext();
@@ -48,7 +46,7 @@ public partial class AddItemPopup
         detailItem.ParentID = ((dynamic)PkrCat.SelectedItem).ID;
         detailItem.Date = DateTime.Now;
         detailItem.Amount = Convert.ToDouble(TxtAmount.Text);
-        detailItem.Note = !string.IsNullOrWhiteSpace(TxtNote.Text) ? TxtNote.Text : "»œÊ‰  ›«’Ì·";
+        detailItem.Note = !string.IsNullOrWhiteSpace(TxtNote.Text) ? TxtNote.Text : AppResource.lbl_NoDetails;
     }
     void GetData()
     {
@@ -76,7 +74,7 @@ public partial class AddItemPopup
         }
         if (!string.IsNullOrWhiteSpace(TxtNote.Text) && TxtNote.Text.Length > 12)
         {
-            await Toast.Make("ÌÃ» √‰ ·«   Ã«Ê“ «·‰’ 12 Õ—›«", ToastDuration.Short, 14).Show();
+            await Toast.Make(AppResource.msg_Text_Length, ToastDuration.Short, 14).Show();
             return false;
         }
         return true;

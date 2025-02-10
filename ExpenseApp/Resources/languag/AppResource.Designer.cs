@@ -295,6 +295,15 @@ namespace ExpenseApp.Resources.languag {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No details.
+        /// </summary>
+        internal static string lbl_NoDetails {
+            get {
+                return ResourceManager.GetString("lbl_NoDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select action.
         /// </summary>
         internal static string lblAction {
@@ -732,6 +741,15 @@ namespace ExpenseApp.Resources.languag {
         internal static string msg_Saved {
             get {
                 return ResourceManager.GetString("msg_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text must not exceed 12 characters.
+        /// </summary>
+        internal static string msg_Text_Length {
+            get {
+                return ResourceManager.GetString("msg_Text_Length", resourceCulture);
             }
         }
         

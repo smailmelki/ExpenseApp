@@ -366,4 +366,10 @@
   <data name="lbl_ItemEdit" xml:space="preserve">
     <value>Edit item</value>
   </data>
+  <data name="lbl_NoDetails" xml:space="preserve">
+    <value>No details</value>
+  </data>
+  <data name="msg_Text_Length" xml:space="preserve">
+    <value>Text must not exceed 12 characters.</value>
+  </data>
 </root>
